@@ -28,7 +28,7 @@ p {
     line-height: 1.4em;
     color: #333;
 }
-footer {
+#footer {
     border-top: 1px solid #d5d5d5;
     font-size: .8em;
 }
@@ -40,4 +40,12 @@ ul.posts {
 
 ul.posts li {
     list-style: none;
+}
+
+.social {
+    float: left;
+}
+
+.associations { 
+    float: right;
 }
