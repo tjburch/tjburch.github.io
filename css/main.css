@@ -68,3 +68,6 @@ ul.posts li {
 .associations { 
     float: right;
 }
+.portrait{
+    border-radius: 25px;
+}
