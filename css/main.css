@@ -1,6 +1,12 @@
 body {
     margin: 60px auto;
     width: 70%;
+    background-image: url(../images/bubblechamber.jpeg);
+    height: 100%;     
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
@@ -8,6 +14,7 @@ nav ul, footer ul {
     list-style: none;
     font-weight: bold;
 }
+
 nav ul li, footer ul li {
     display: inline;
     margin-right: 20px;
@@ -22,16 +29,18 @@ a:hover {
 h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    color: seashell;    
 }
 h3 {
-    font-size: 1.1em;
+    font-size: 1em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    color: seashell;    
 }
 p {
     font-size: 1em;
     line-height: 1em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    color: #333;
+    color: seashell;    
 }
 #footer {
     border-top: 1px solid #d5d5d5;
@@ -41,10 +50,14 @@ p {
 ul.posts { 
     margin: 20px auto 40px; 
     font-size: 1.5em;
+    color: seashell;    
+
 }
 
 ul.posts li {
     list-style: none;
+    color: seashell;    
+
 }
 
 .social {
