@@ -70,4 +70,15 @@ ul.posts li {
 }
 .portrait{
     border-radius: 25px;
+    border-color: #527ac2;
+}
+
+.container{
+    border-radius: 25px;
+    background-color: #527ac2;
+}
+.blurb{
+    text-indent: 2em;
+    padding-bottom: 1em;
+    padding-top: .5mm;
 }
