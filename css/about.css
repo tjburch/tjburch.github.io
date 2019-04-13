@@ -1,0 +1,9 @@
+.container{
+    border-radius: 25px;
+    background-color: #527ac2;
+}
+h1 {
+    font-size: 3em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    color: seashell;    
+}
