@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Can You Turn America’s Pastime Into A Game Of Yahtzee?"
-date: 2017-03-29
+date: 2019-03-29
 categories: misc
 ---
 
