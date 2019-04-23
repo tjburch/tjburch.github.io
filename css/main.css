@@ -82,3 +82,7 @@ ul.posts li {
     padding-bottom: 1em;
     padding-top: .5mm;
 }
+.posts{
+    border-radius: 25px;
+    background-color: #527ac2;
+}
