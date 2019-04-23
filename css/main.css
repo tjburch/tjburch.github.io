@@ -32,13 +32,12 @@ h1 {
     color: seashell;    
 }
 h3 {
-    font-size: 1em;
+    font-size: 16pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
 }
 p {
-    font-size: 1em;
-    line-height: 1em;
+    font-size: 16pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
 }
