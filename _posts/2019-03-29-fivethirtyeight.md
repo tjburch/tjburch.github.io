@@ -2,7 +2,8 @@
 layout: post
 title: "Can You Turn America’s Pastime Into A Game Of Yahtzee?"
 date: 2019-03-29
-categories: misc
+categories: Misc
+tags: [fivethiryeight, puzzles, riddler]
 ---
 
 This weekend I decided to take on the weekly Riddler question, from fivethirtyeight. The original problem text can be found [here](https://fivethirtyeight.com/features/can-you-turn-americas-pastime-into-a-game-of-yahtzee/). My solution, in full can be found on [my github profile](https://github.com/tjburch/puzzles/tree/master/puzzler538_2019_Mar22). My solution was one of the two featured ones, [highlighted](https://fivethirtyeight.com/features/can-you-win-a-spelling-bee-if-you-know-99-percent-of-the-words/) at the bottom of the next week's edition.
