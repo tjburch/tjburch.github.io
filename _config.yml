@@ -3,3 +3,6 @@ title: Tyler James Burch
 description: Homepage for Tyler James Burch
 markdown: kramdown
 permalink: /blog/:categories/:title
+collections:
+  other:
+    output: true

@@ -2,10 +2,10 @@
 layout: default
 title: Blog
 ---
-<link rel="stylesheet" type="text/css" href="/css/blog.css">   
+<link rel="stylesheet" type="text/css" href="/css/blog.css">
 
 <div class="tags-expo">
-	<!-- Header with links to jump - re-enable once there's more blog posts
+  <!-- Header with links to jump - re-enable once there's more blog posts
 
   <div class="tags-expo-list">
 		{% for tag in site.categories %}
@@ -19,13 +19,24 @@ title: Blog
     <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
     <ul class="tags-expo-posts">
       {% for post in tag[1] %}
-        <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
-      <div>
-        {{ post.date | date_to_string }} -- {{ post.title }}
-			</div>
+      <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+        <div>
+          {{ post.date | date_to_string }} -- {{ post.title }}
+        </div>
       </a>
       {% endfor %}
     </ul>
+    {% endfor %}
+    <h2>General Posts</h2>
+
+    {% for post in site.other %}
+    <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+      <ul class="tags-expo-posts">
+        <div>
+          {{ post.title }}
+        </div>
+      </ul>
+    </a>
     {% endfor %}
   </div>
 </div>

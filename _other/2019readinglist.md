@@ -1,9 +1,8 @@
 ---
-layout: post
+layout: other
 title: "2019 Reading List"
-date: 2019-01-01
-categories: Misc
-tags: [misc]
+#categories: Misc
+#tags: [misc]
 ---
 
 ## Books Read in 2019:
