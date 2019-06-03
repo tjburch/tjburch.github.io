@@ -27,13 +27,14 @@ title: Blog
       {% endfor %}
     </ul>
     {% endfor %}
+    <!-- Here's for un-dated things-->
     <h2>General Posts</h2>
-
-    {% for post in site.other %}
+    {% assign gen_post = site.other | sort: 'date' | reverse %}
+    {% for post in  gen_post %}
     <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
       <ul class="tags-expo-posts">
         <div>
-          {{ post.title }}
+          {{ post.title }} 
         </div>
       </ul>
     </a>
