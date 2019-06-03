@@ -33,7 +33,7 @@ title: Blog
     {% for post in  gen_post %}
     <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
       <ul class="tags-expo-posts">
-        <div>
+        <div style='line-height:0.2em'> <!--Style fix here is tmp fix for double spacing-->
           {{ post.title }} 
         </div>
       </ul>
