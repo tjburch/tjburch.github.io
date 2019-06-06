@@ -20,5 +20,6 @@ title: "2019 Reading List"
 - __Moneyball: The Art of Winning an Unfair Game__ - Michael Lewis
 - __Pandora’s Lab: Seven Stories of Science Gone Wrong__ - Paul A. Offit
 - __Brotopia: Breaking Up the Boys' Club of Silicon Valley__ - Emily Chang
+- __The MVP Machine: How Baseball's New Nonconformists Are Using Data to Build Better Players__ - Ben Lindbergh, Travis Sawchik
 
-Last Update - June 2, 2019
+Last Update - June 6, 2019
