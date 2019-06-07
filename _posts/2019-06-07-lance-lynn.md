@@ -6,7 +6,7 @@ categories: Baseball
 tags: [baseball]
 ---
 
-If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0) page at Fangraphs today, most of the top pitchers by fWAR might not be so surprising, but tied for 6th overall at 2.3 WAR accrued is Lance Lynn. Lynn has posted a rather consistent career, being a 2-3 WAR guy who can eat innings, but hardly the type of character you would expect to break out, seeing he is currently in his age 32 season.
+If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0) page at Fangraphs today, most of the top pitchers by fWAR might not be so surprising, but tied for 6th overall at 2.3 WAR accrued is Lance Lynn. Lynn has posted a rather consistent career, being a 2-3 WAR guy who can eat innings, but hardly the type of character you would expect to break out, seeing as he is currently in his age 32 season.
 
 If you look longer at Lynn's row on the pitching leaderboard, something else might catch your eye - he's managed this while having a 4.50 ERA. This is symptomatic of fWAR being calculated using FIP, which is considerably better at 3.19, meaning the Rangers defense is costing him more than a run per 9 innings. This is highlighted in his BABIP, suffering from a career worst at .344, where league average this year is .292. In fact, his FIP is a full point lower than his own career average, indicating that there has been some significant, true improvement this year. To evaluate this season vs prior production, I took a look at Lynn's IP per WAR:
 
