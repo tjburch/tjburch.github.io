@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Evaluating Lance Lynn's Tremendous Start"
+title: "Evaluating Lance Lynn's Unexpected 2019"
 date: 2019-06-07
 categories: Baseball
 tags: [baseball]
 ---
 
-If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0) page at Fangraphs today, most of the top pitchers by fWAR might not be so surprising, but tied for 6th overall at 2.3 WAR accrued is Lance Lynn. Lynn has posted a rather consistent career, being a 2-3 WAR guy who can eat innings, but hardly the type of character you would expect to break out, at age 32.
+If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0) page at Fangraphs today, most of the top pitchers by fWAR might not be so surprising, but tied for 6th overall at 2.3 WAR accrued is Lance Lynn. Lynn has posted a rather consistent career, being a 2-3 WAR guy who can eat innings, but hardly the type of character you would expect to break out, seeing he is currently in his age 32 season.
 
-If you look longer at Lynn's row on the pitching leaderboard, something else might catch your eye - he's managed this while having a 4.50 ERA. This is symptomatic of fWAR being calculated using FIP, which is considerably better at 3.19, meaning the Rangers defense is costing him over a run per 9 innings. This is illuminated in his BABIP, suffering from a career worst at .344, where league average this year is .292. In fact, his FIP is a full point lower than his own career average, indicating that there has been some significant, true improvement this year. To evaluate this season vs prior production, I took a look at Lynn's IP per WAR:
+If you look longer at Lynn's row on the pitching leaderboard, something else might catch your eye - he's managed this while having a 4.50 ERA. This is symptomatic of fWAR being calculated using FIP, which is considerably better at 3.19, meaning the Rangers defense is costing him more than a run per 9 innings. This is highlighted in his BABIP, suffering from a career worst at .344, where league average this year is .292. In fact, his FIP is a full point lower than his own career average, indicating that there has been some significant, true improvement this year. To evaluate this season vs prior production, I took a look at Lynn's IP per WAR:
 
 <img src="/blogimages/lynn2019/ip_per_war.png" alt="" class="center" border="5" style="width:800px;"/>
 
@@ -16,7 +16,7 @@ Already this plot is a bit surprising, the expectation for such a distribution w
 
 <img src="/blogimages/lynn2019/lynn_ip_per_war_regression.png" alt="" class="center" border="5" style="width:800px;"/>
 
-But this breaks down entirely in 2019. Following the linear trend, you might expect him to be worth a win every 50 IP. If you were realistic and evaluated this against an aging curve, you might expect worse than that. Instead, he's been worth a win every 32 innings pitched, something nobody would have expected walking into this season. 
+But this trend has broken down in 2019. Following the linear trend, you might expect him to be worth a win every 50 IP. If you were realistic and evaluated this against an aging curve, you might expect worse than that. Instead, he's been worth a win every 32 innings pitched, something nobody would have expected walking into this season. 
 
 Lynn started a 3-year, $30M contract with the Rangers this year, so it's possible you can contribute some of this to pitching against different opponents, but for a change this significant, I went on to look into if there were any major smoking guns to indicate a change in approach.
 
@@ -28,6 +28,8 @@ In fact, that's the most notable change in his approach this year. Lynn's 4 and 
 
 <img src="/blogimages/lynn2019/lynn_line.png" alt="" class="center" border="5" style="width:800px;"/>
 
-While his fastball usage has decreased in aggregate, it's really that he's scaled back his 2-seam usage significantly. He's actually increased his 4-seam usage, and is getting more and more comfortable with his cutter, increasing usage by 5.8% over last year. This change in approach seems to have really helped his results. 
+While his fastball usage has decreased in aggregate, it's really that he's scaled back his 2-seam usage significantly. He's actually increased his 4-seam usage, and is getting more and more comfortable with his cutter, increasing throwing it 5.8% more than last year. So there's a notable change in pitch selection.
 
-It seems that not only does Lance love fastballs, but he's now focusing on the fastballs that return the love the most.
+To investigate if his improvement this year is a result of his change in pitch selection, I looked at the results of each pitch type. Over the course of his career, his cutter is thrown for strikes 3.1% more than his 2-seam fastball, and his 4-seamer is thrown for 3.7% more strikes than the 2-seamer. Furthermore, these pitches result in fewer balls in play: 4.3% fewer by the 4-seamer, 1.9% fewer by the cutter compared to the 2-seamer. So, the outcomes of these pitches do seem to be slightly more favorable, and in baseball, a game of large sample sizes, these percent-level improvements matter. 
+
+So in summary, Lance Lynn seems to be doing much better this year, a fact that you might not glean from his ERA, but is evidenced in his FIP. So far, he's working at a rate that produces a win roughly 20 IP quicker than expected, and some of this seems to be the product of transitioning away from his 2-seam fastball in favor of more 4-seamers and cutters.
