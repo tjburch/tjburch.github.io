@@ -32,4 +32,10 @@ While his fastball usage has decreased in aggregate, it's really that he's scale
 
 To investigate if his improvement this year is a result of his change in pitch selection, I looked at the results of each pitch type. Over the course of his career, his cutter is thrown for strikes 3.1% more than his 2-seam fastball, and his 4-seamer is thrown for 3.7% more strikes than the 2-seamer. Furthermore, these pitches result in fewer balls in play: 4.3% fewer by the 4-seamer, 1.9% fewer by the cutter compared to the 2-seamer. So, the outcomes of these pitches do seem to be slightly more favorable, and in a game of large sample sizes, these percent-level improvements matter. 
 
+One other interesting check is Lynn's usage of each pitch in the count. For this, I compared the rate he uses each pitch, subtracting his rate prior to 2019 to his usage so far this season. This table shows the change for 2019 vs previous years:
+
+<img src="/blogimages/lynn2019/usage_table.png" alt="" class="center" border="5" style="width:800px;"/>
+
+His reduction in 2-seam fastballs has been stronger earlier in the count, while his usage with 2 strikes hasn't fallen off quite as much. The integration of his cutter is heavily skewed toward situations with 1 strike. Looking at the raw values, this year he's thrown it in 26% of counts with 1-strike, compared to about 14% in 0 and 2-strike counts.
+
 In summary, Lance Lynn seems to be doing much better this year, a fact that you might not glean from his ERA, but is evidenced in his FIP. So far, he's working at a rate that produces a win roughly 20 IP quicker than expected, and some of this seems to be the product of transitioning away from his 2-seam fastball in favor of more 4-seamers and cutters.
