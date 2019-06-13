@@ -13,13 +13,12 @@ title: "2019 Reading List"
 - __The Only Rule Is It Has to Work: Our Wild Experiment Building a New Kind of Baseball Team__ - Ben Lindbergh, Sam Miller 
 - __Astroball: The New Way to Win It All__ - Ben Reiter
 - __Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts__ - Annie Duke
+- __Pandora’s Lab: Seven Stories of Science Gone Wrong__ - Paul A. Offit
 
 ### In Progress:
 
-
 - __Moneyball: The Art of Winning an Unfair Game__ - Michael Lewis
-- __Pandora’s Lab: Seven Stories of Science Gone Wrong__ - Paul A. Offit
 - __Brotopia: Breaking Up the Boys' Club of Silicon Valley__ - Emily Chang
 - __The MVP Machine: How Baseball's New Nonconformists Are Using Data to Build Better Players__ - Ben Lindbergh, Travis Sawchik
 
-Last Update - June 6, 2019
+Last Update - June 13, 2019
