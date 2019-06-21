@@ -10,11 +10,11 @@ If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx
 
 If you look longer at Lynn's row on the pitching leaderboard, something else might catch your eye - he's managed this while having a 4.40 ERA. This is symptomatic of fWAR being calculated using his FIP, which is considerably better at 3.03, meaning the Rangers defense is costing him more than a run per 9 innings. This is further highlighted in his BABIP, suffering from a career-worst at .349, where league average this year is .292. In fact, his FIP is a full point lower than his own career average, indicating that there has been some significant, true improvement this year. To evaluate this season against his prior production, I took a look at Lynn's IP per WAR:
 
-<img src="/blogimages/lynn2019/ip_per_war.png" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/lynn2019/ip_per_war.png" alt="" class="center" border="5" style="width:60%;"/>
 
 Already this plot is a bit surprising, the expectation for such a distribution would be to follow a typical aging curve, but, excluding the outlier, Lynn seems to be continuing to improve. If you do drop off the outlier and remove his missed year for Tommy John surgery, a linear regression does quite well in describing his improvement year-to-year:
 
-<img src="/blogimages/lynn2019/lynn_ip_per_war_regression.png" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/lynn2019/lynn_ip_per_war_regression.png" alt="" class="center" border="5" style="width:60%;"/>
 
 But this trend has broken down in 2019. Following the linear trend, you might expect him to be worth a win every 50 IP. If you were realistic and evaluated this against an aging curve, you might expect worse than that. Instead, he's been worth a win every 30 innings pitched, something nobody would have expected walking into this season. 
 
@@ -24,9 +24,9 @@ If you know anything about Lance Lynn, you know that he likes fastballs. I mean,
 
 In fact, that's the most notable change in his approach this year. Lynn's 4 and 2-seam fastball usage (FB%) is significantly down from prior years, to 69.0%, 8.0% lower than his career average. Taking a look at his total pitch composition:
 
-<img src="/blogimages/lynn2019/lynn_stack.png" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/lynn2019/lynn_stack.png" alt="" class="center" border="5" style="width:60%;"/>
 
-<img src="/blogimages/lynn2019/lynn_line.png" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/lynn2019/lynn_line.png" alt="" class="center" border="5" style="width:60%;"/>
 
 While his fastball usage has decreased in aggregate, it's really that he's scaled back his 2-seam usage significantly. He's actually increased his 4-seam usage and is getting more and more comfortable with his cutter, increasing throwing it 6.5% more than last year. So there's a notable change in pitch selection.
 
@@ -34,7 +34,7 @@ To investigate if his improvement this year is a result of this change in pitch 
 
 One other interesting check is Lynn's usage of each pitch based on the count. For this, I compared the rate he uses each pitch, subtracting his rate prior to 2019 from his usage so far this season. This table shows the change for 2019 vs previous years:
 
-<img src="/blogimages/lynn2019/usage_table.png" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/lynn2019/usage_table.png" alt="" class="center" border="5" style="width:60%;"/>
 
 His reduction in 2-seam fastballs has been more drastic earlier in the count, while his usage with 2 strikes hasn't fallen off quite as much. The integration of his cutter is heavily skewed toward situations with 1 strike. Looking at the raw values, this year he's thrown it in 25% of counts with 1-strike, compared to about 15% in 0 and 2-strike counts.
 

@@ -43,7 +43,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
-h1, h2, h3, p {
+h1, h2, h3, p, li {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
 h1 {

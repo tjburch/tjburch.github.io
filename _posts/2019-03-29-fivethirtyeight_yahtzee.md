@@ -10,78 +10,69 @@ This weekend I decided to take on the weekly Riddler question, from fivethirtyei
 
 The problem statement
 
-<span style="color:black">
-Over the years, people have invented many games that simulate baseball using two standard dice. In these games, each dice roll corresponds with a baseball event. Two players take turns rolling dice and tracking what happens on the field. Suppose you happen to be an ardent devotee of one of these simulated games from the late 19th century, called Our National Ball Game, which assigns rolls to baseball outcomes like so:</span>
+> Over the years, people have invented many games that simulate baseball using two standard dice. In these games, each dice roll corresponds with a baseball event. Two players take turns rolling dice and tracking what happens on the field. Suppose you happen to be an ardent devotee of one of these simulated games from the late 19th century, called Our National Ball Game, which assigns rolls to baseball outcomes like so:</span>
 
-1, 1: double
+>1, 1: double
 
-1, 2: single
+>1, 2: single
 
-1, 3: single
+>1, 3: single
 
-1, 4: single
+>1, 4: single
 
-1, 5: base on error
+>1, 5: base on error
 
-1, 6: base on balls
+>1, 6: base on balls
 
-2, 2: strike
+>2, 2: strike
 
-2, 3: strike
+>2, 3: strike
 
-2, 4: strike
+>2, 4: strike
 
-2, 5: strike
+>2, 5: strike
 
-2, 6: foul out
+>2, 6: foul out
 
-3, 3: out at 1st
+>3, 3: out at 1st
 
-3, 4: out at 1st
+>3, 4: out at 1st
 
-3, 5: out at 1st
+>3, 5: out at 1st
 
-3, 6: out at 1st
+>3, 6: out at 1st
 
-4, 4: fly out
+>4, 4: fly out
 
-4, 5: fly out
+>4, 5: fly out
 
-4, 6: fly out
+>4, 6: fly out
 
-5, 5: double play
+>5, 5: double play
 
-5, 6: triple
+>5, 6: triple
 
-6, 6: home run
+>6, 6: home run
 
-<span style="color:black">
-Given those rules, what’s the average number of runs that would be scored in nine innings of this dice game? What’s the distribution of the number of runs scored? (Histograms welcome.) You can assume some standard baseball things, like runners scoring from second on singles and runners scoring from third on fly outs.
-</span>
+>Given those rules, what’s the average number of runs that would be scored in nine innings of this dice game? What’s the distribution of the number of runs scored? (Histograms welcome.) You can assume some standard baseball things, like runners scoring from second on singles and runners scoring from third on fly outs.
 
 In summary, what I did was run a random number generator to simulate the dice rolling, then generated code to simulate base/out state progress given each event. Then I simulated 100,000 games and plotted the outcomes.
 
-<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/raw_scoring_histogram.png">
+<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/raw_scoring_histogram.png"  class="center" border="5" style="width:60%;">
 
 I also attempted to fit this distribution...
 
 
-<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/scoring_histogram_skewGaus.png">
+<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/scoring_histogram_skewGaus.png"  class="center" border="5" style="width:60%;">
 
 
 I then tried the Riddler Classic problem: 
 
-<div style="color:black">
-    Figuring the statistical outcomes of the 130-year-old game described in Riddler Express may be a bit outdated, so you decide that you can do better. You get to work making your own list of dice rolls, tweaking what corresponds to each roll to better match the real distributions of baseball run scores. You should be using that same set of standard baseball assumptions about when runners score (sacrifice flies, runners scoring from second, etc.).
-</div>
+> Figuring the statistical outcomes of the 130-year-old game described in Riddler Express may be a bit outdated, so you decide that you can do better. You get to work making your own list of dice rolls, tweaking what corresponds to each roll to better match the real distributions of baseball run scores. You should be using that same set of standard baseball assumptions about when runners score (sacrifice flies, runners scoring from second, etc.).
 
-<div style="color:black">
-Once you’ve matched the run-scoring environment, try to add other variables to your computations. What if you try to simulate strikeouts per game, batting average, etc.?
-</div>
+> Once you’ve matched the run-scoring environment, try to add other variables to your computations. What if you try to simulate strikeouts per game, batting average, etc.?
 
-<div style="color:black">
-In other words, how closely can you simulate the grand, yet subtle, complexities of the national pastime using only a pair of cubes? What does your roll list look like?
-</div>
+> In other words, how closely can you simulate the grand, yet subtle, complexities of the national pastime using only a pair of cubes? What does your roll list look like?
 
 Extending the philosophy from the express portion, the figure of merit for my solution is intended to be the mean and distribution of runs scored in a real MLB game. A solution was obtained by taking MLB data from 2018 using Statcast. First, to get close to the answer, assuming the simulation is written fine, mirroring the rates of the real life outcomes to the dice roll outcomes should get close to the solution. I found the rates of various events in real baseball and how frequently they occurred with respect to each other. Using this method, I was able to fill out all but 5 of the dice rolls. Since this should be ~close to the real mean I just tried to cancel out those by putting 3 good, 1 base events (singles, base on balls), and 2 bad events (outs). From there I ran the simulation, plotted the histogram, then tuned the last couple of outcomes to get the mean as close as possible. The final result:
 
@@ -128,5 +119,5 @@ Extending the philosophy from the express portion, the figure of merit for my so
 (5, 6): 'single'
 
 
-<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/mlb_simulation_overlay.png">
+<img src="https://github.com/tjburch/puzzles/raw/master/puzzler538_2019_Mar22/plots/mlb_simulation_overlay.png"  class="center" border="5" style="width:60%;">
 

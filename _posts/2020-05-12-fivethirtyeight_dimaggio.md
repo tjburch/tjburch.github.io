@@ -10,17 +10,11 @@ This weekend I took on fivethirtyeight's weekly Riddler question again. The orig
 
 The problem statement:
 
-<span style="color:black">
-Five brothers join the Riddler Baseball Independent Society, or RBIs. Each of them enjoys a lengthy career of 20 seasons, with 160 games per season and four plate appearances per game. (To make this simple, assume each plate appearance results in a hit or an out, so there are no sac flies or walks to complicate this math.)
-</span>
+>Five brothers join the Riddler Baseball Independent Society, or RBIs. Each of them enjoys a lengthy career of 20 seasons, with 160 games per season and four plate appearances per game. (To make this simple, assume each plate appearance results in a hit or an out, so there are no sac flies or walks to complicate this math.)
 
-<span style="color:black">
-Given that their batting averages are .200, .250, .300, .350 and .400, what are each brother’s chances of beating DiMaggio’s 56-game hitting streak at some point in his career? (Streaks can span across seasons.)
-</span>
+>Given that their batting averages are .200, .250, .300, .350 and .400, what are each brother’s chances of beating DiMaggio’s 56-game hitting streak at some point in his career? (Streaks can span across seasons.)
 
-<span style="color:black">
-By the way, their cousin has a .500 average, but he will get tossed from the league after his 10th season when he tests positive for performance enhancers. What are his chances of beating the streak?
-</span>
+>By the way, their cousin has a .500 average, but he will get tossed from the league after his 10th season when he tests positive for performance enhancers. What are his chances of beating the streak?
 
 There's two steps to this problem. First, find the probability of getting a hit in a game, which is trivial knowing BA:
 
@@ -34,19 +28,17 @@ The next step asks "What is the probability of getting a streak of length X in a
 
 But this is why we have computers. I wrote up a simulation to solve this problem simulating the careers of players with the indicated batting average and career length, and found how often said players would beat DiMaggio's hit streak. The results are as shown:
 
-<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/longest_streaks.png">
+<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/longest_streaks.png" class="center" border="5" style="width:60%;">
 
 The likelihood of a player beating DiMaggio's record can be thought of as how frequently a simulated careers beats the record compared to the total number of simulated careers. The plot just shows the [5%, 95%] range to avoid outliers from skewing the range. The results:
 
-<ul>
-<li>All players through the one with 0.300 have effectively no shot at beating DiMaggio's record.</li>
-<li>The player with .350 BA has a 0.8% chance of beating it, so not very likely at all. On average, this batter will just have a 35 game hitting streak.</li>
-<li>The player with .400 BA has a non-negligible chance of beating the record at about 14%, with an average of a 47 game hitting streak occurring during their career.</li>
-<li>Even with 10 fewer seasons, the PED player will very likely beat DiMaggio's streak, about 93.5% likelihood, and on average will beat it by nearly 24 games with a mean longest streak of 79.9.</li>
-</ul>
+- All players through the one with 0.300 have effectively no shot at beating DiMaggio's record.
+- The player with .350 BA has a 0.8% chance of beating it, so not very likely at all. On average, this batter will just have a 35 game hitting streak.
+- The player with .400 BA has a non-negligible chance of beating the record at about 14%, with an average of a 47 game hitting streak occurring during their career.
+- Even with 10 fewer seasons, the PED player will very likely beat DiMaggio's streak, about 93.5% likelihood, and on average will beat it by nearly 24 games with a mean longest streak of 79.9.
 
 For simulation validation, the final simulated BA of each player was plotted, and ensured that it did, in fact line up with the BA in the problem statement. It did, with a coefficient of variation (std/mean) of between 0.01 and 0.02.
 
-<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/simulated_ba.png">
+<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/simulated_ba.png" class="center" border="5" style="width:60%;">
 
 

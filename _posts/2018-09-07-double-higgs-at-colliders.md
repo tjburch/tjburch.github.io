@@ -12,4 +12,4 @@ I gave a talk on VBF HH Generation and Benchmarks. Di-Higgs production is a very
 
 My talk, summarizing the production mode, why it's interesting for HH, studies thus far, prospects for the future, and more can be found [here](https://indico.cern.ch/event/731450/contributions/3099727/attachments/1712396/2761176/vbf_hh_burch2018_final.pdf).
 
-<img src="/blogimages/doublehiggsatcolliders.jpg" alt="" class="center" border="5" style="width:800px;"/>
+<img src="/blogimages/doublehiggsatcolliders.jpg" alt="" class="center" border="5" style="width:60%;"/>
