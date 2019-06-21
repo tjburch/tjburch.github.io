@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>{{ page.title }}</title>
 		<!-- link to main stylesheet -->
@@ -7,13 +8,21 @@
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">     
     </head>
 
-    <body>
+    <div class="hero-image">
+        <div class="hero-text">
+        <h1 style="font-size:40px;"">Tyler James Burch</h1>
+        <p style="font-size:28px;">Particle Physics // Machine Learning // Music // Baseball</p>
+        </div>
+    </div>
+
+    <body class="main-text">
+        <div>
         <nav>
             <ul>
-                <li><a href="/" style="color:#999">Home</a></li>
-                <li><a href="/about" style="color:#999">About</a></li>
-                <li><a href="/documents/cv.pdf" style="color:#999">CV</a></li>
-                <li><a href="/blog" style="color:#999">Blog</a></li> 
+                <li><a href="/" class="header-footer">Home</a></li>
+                <li><a href="/about"  class="header-footer">About</a></li>
+                <li><a href="/documents/cv.pdf" class="header-footer">CV</a></li>
+                <li><a href="/blog" class="header-footer">Blog</a></li> 
             </ul>   
         </nav>
 
@@ -22,10 +31,10 @@
 		<footer>
             <h3 class="social">
             <ul>
-                <li><a href="mailto:burcht11@gmail.com" style="color:#999">email</a></li>
-                <li><a href="https://github.com/tjburch" style="color:#999">github</a></li>
-                <li><a href="https://gitlab.com/tjburch" style="color:#999">gitlab</a></li>
-                <a href="https://twitter.com/tylerjburch?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false" style="color:#999">Follow @tylerjburch</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <li><a href="mailto:burcht11@gmail.com" class="header-footer">email</a></li>
+                <li><a href="https://github.com/tjburch" class="header-footer">github</a></li>
+                <li><a href="https://gitlab.com/tjburch" class="header-footer">gitlab</a></li>
+                <li><a href="https://twitter.com/tylerjburch?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false" >Follow @tylerjburch</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
             </ul>
             </h3>
             <h3 class="associations">
@@ -34,6 +43,6 @@
                     <img src="/images/anllogo.jpg" class="inline" style="height:64px;"/>
             </h3>
         </footer>
-    
+        </div>
     </body>
 </html>        

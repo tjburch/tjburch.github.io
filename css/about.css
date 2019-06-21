@@ -1,7 +1,4 @@
-.container{
-    border-radius: 25px;
-    background-color: #527ac2;
-}
+
 h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
@@ -15,10 +12,14 @@ h1 {
  
 }
 p{
-    font-size: 18pt;
+    font-size: 20pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
     line-height: 110%;
 
     padding-right: 1em;
+}
+.aboutportrait{
+    border-radius: 25px;
+    border-width: 0px;
 }
