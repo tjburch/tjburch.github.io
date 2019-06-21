@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Can You Turn America’s Pastime Into A Game Of Yahtzee?"
+title: "538 Riddler - Can You Turn America’s Pastime Into A Game Of Yahtzee?"
 date: 2019-03-29
 categories: Misc
 tags: [fivethiryeight, puzzles, riddler]
