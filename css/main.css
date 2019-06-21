@@ -21,7 +21,7 @@ nav ul, footer ul {
 nav ul li, footer ul li {
     display: inline-block;
     margin-right: 5em;
-    font-size: 28px;
+    font-size: 1.2em;
     text-align: center;
     position: relative;
     left: 33%;
