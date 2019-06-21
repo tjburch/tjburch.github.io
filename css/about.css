@@ -1,6 +1,6 @@
 
 h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
 }
@@ -12,11 +12,10 @@ h1 {
  
 }
 p{
-    font-size: 20pt;
+    font-size: 1.15em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
     line-height: 110%;
-
     padding-right: 1em;
 }
 .aboutportrait{

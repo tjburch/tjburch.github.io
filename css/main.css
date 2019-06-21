@@ -16,6 +16,8 @@ nav ul, footer ul {
     padding: 0px;
     list-style: none;
     font-weight: bold;
+    text-align: center;
+
 }
 
 nav ul li, footer ul li {
@@ -24,9 +26,15 @@ nav ul li, footer ul li {
     font-size: 1.2em;
     text-align: center;
     position: relative;
-    left: 33%;
+    /*left: 33%;*/
 
 }
+nav ul li{margin-right: 5em;}
+footer ul li {
+    margin-right: 2em;
+    padding-left:0.5em;
+}
+
 a {
     text-decoration: none;
     color: navajowhite;
@@ -35,19 +43,19 @@ a {
 a:hover {
     text-decoration: underline;
 }
-h1 {
-    font-size: 4em;
+h1, h2, h3, p {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+}
+h1 {
+    font-size: 3em;
     color: seashell;    
 }
 h3 {
     font-size: 16pt;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
 }
 p {
-    font-size: 26pt;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-size: 1.25em;
     color: seashell;    
 }
 #footer {
@@ -84,10 +92,7 @@ ul.posts li {
     border-radius: 25px;
     background-color: #527ac2;
 }
-.info-box{
-    height: 40em;
 
-}
 .portrait{
 
     border-radius: 25px;
@@ -97,15 +102,11 @@ ul.posts li {
     margin-right: auto;
 }
 .blurb{
-    display: block;
+    /*display: block;*/
     margin-left: auto;
     margin-right: auto;
-    /*
-    position: absolute;
-    top: 65%;
-    left: 65%;
-    transform: translateX(-50%) translateY(-50%);
-    */
+    font-size: 1em;
+    padding-top: 2em; /*get more rigorous vert-align*/
 }
 .posts{
     border-radius: 25px;
@@ -147,4 +148,8 @@ body, html {
 }
 .header-footer{
     color: #DCD8CF;
+}
+
+.info-box{
+    height: 25em;
 }
