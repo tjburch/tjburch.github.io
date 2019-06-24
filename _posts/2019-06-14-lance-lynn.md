@@ -3,7 +3,7 @@ layout: post
 title: "Evaluating Lance Lynn's Unexpected 2019"
 date: 2019-06-14
 categories: Baseball
-tags: [baseball]
+tags: [baseball, fangraphs]
 ---
 
 If you scroll down the [pitching leaders](https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0) page at Fangraphs today, most of the top names are not so surprising, but one unexpected name is Lance Lynn. Currently, Lynn is tied for 3rd overall with 2.9 fWAR. Historically, Lynn has been a consistent pitcher, a 2-3 WAR guy who can eat innings, but he's hardly the type of character you would expect to break out. He's currently in his age 32 season, putting him on the wrong side of the starting pitcher aging curve, and post Tommy John surgery, which he underwent at the end of 2015.
@@ -39,3 +39,7 @@ One other interesting check is Lynn's usage of each pitch based on the count. Fo
 His reduction in 2-seam fastballs has been more drastic earlier in the count, while his usage with 2 strikes hasn't fallen off quite as much. The integration of his cutter is heavily skewed toward situations with 1 strike. Looking at the raw values, this year he's thrown it in 25% of counts with 1-strike, compared to about 15% in 0 and 2-strike counts.
 
 In summary, Lance Lynn seems to be doing much better this year, a fact that you might not glean from his ERA, but is evidenced in his FIP. So far, he's working at a rate that produces a win roughly 20 IP quicker than expected, and some of this seems to be the product of transitioning away from his 2-seam fastball in favor of more 4-seamers and cutters.
+
+_____________
+
+This article was first written and submitted to Fangraphs on June 7th, 2019. On June 14th, after Lynn's next start, I updated the numbers, which are what is reflected on this page. Then on June 20, Craig Edwards of Fangraphs published a very similar piece also analyzing Lance Lynn, and after chatting with some of the people over there, they ran this the next day as a companion, updating the inline numbers with his latest start, but the plots remained the same as shown here. The link for that post can be found [here](https://community.fangraphs.com/evaluating-lance-lynns-unexpected-2019/).
