@@ -14,11 +14,14 @@ title: "2019 Reading List"
 - __Astroball: The New Way to Win It All__ - Ben Reiter
 - __Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts__ - Annie Duke
 - __Pandora’s Lab: Seven Stories of Science Gone Wrong__ - Paul A. Offit
+- __Brotopia: Breaking Up the Boys' Club of Silicon Valley__ - Emily Chang
+
 
 ### In Progress:
 
 - __Moneyball: The Art of Winning an Unfair Game__ - Michael Lewis
-- __Brotopia: Breaking Up the Boys' Club of Silicon Valley__ - Emily Chang
 - __The MVP Machine: How Baseball's New Nonconformists Are Using Data to Build Better Players__ - Ben Lindbergh, Travis Sawchik
+- __Raise Your Game: High-Performance Secrets from the Best of the Best__ - Alan Stein, 
+Jon Sternfeld
 
-Last Update - June 13, 2019
+Last Update - September 2, 2019
