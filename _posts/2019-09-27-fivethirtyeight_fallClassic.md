@@ -42,9 +42,9 @@ The Jupyter notebook found [here](https://github.com/tjburch/puzzles/blob/master
 
 The solution found that:
 
->### The __Tennessee Taters have the best record__ at a __.574 winning percentage__.
+>### The __Tennessee Taters have the best record__ at a __.573 winning percentage__.
 >### The __Mississippi Moonwalkers__ were in the middle with a __.534 winning percentage__.
->### The __Delaware Doubloons__ were the worst with a __.394 winning percentage__.
+>### The __Delaware Doubloons__ were the worst with a __.393 winning percentage__.
 
 I also plotted winning percentage as games were played, to see how the solution evolved as games were simulated:
 
