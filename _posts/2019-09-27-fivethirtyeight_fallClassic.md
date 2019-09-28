@@ -20,7 +20,7 @@ I run this simulation over and over, and find the ratio of passing to the total 
 
 <img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/express_solution.png?raw=true" class="center" border="5" style="width:60%;">
 
-Since the simulation wasn't very intensive, 100,000,000 attempts were made. For the uncertainty, I took the 95% confidence interval, as calculated using the [Agresti–Coull interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval), where the CI is z\*sqrt(p*(1-p)/N), for p "passing results," N attempts, and z value of 1.96 corresponding to the 95% CI.
+Since the simulation wasn't very intensive, 100,000,000 attempts were made, converging on **a probability of 0.1406 ± 0.0001**. For the uncertainty, I took the 95% confidence interval, as calculated using the [Agresti–Coull interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval), where the CI is z\*sqrt(p*(1-p)/N), for p "passing results," N attempts, and z value of 1.96 corresponding to the 95% CI.
 
 The full Jupyter notebook for this solution can be found [here](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/notebooks/express.ipynb).
 
