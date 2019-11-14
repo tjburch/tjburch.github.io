@@ -18,11 +18,15 @@ The problem statement:
 
 There's two steps to this problem. First, find the probability of getting a hit in a game, which is trivial knowing BA:
 
+<img src="/blogimages/dimaggio-math.png" class="center" style="width:20%;">
+
+{% comment %}
 $$\color{white}{P(\text{no hits}) = (1 - P(\text{hit}))^{\text{attempts}}}$$
 
 $$\color{white}{\text{Given: BA = P(hit)}}$$
 
-$$\color{white}{\text{P(no hits) = (1 - BA)}^4}$$
+$$\color{white}{\text{P(no hits) = (1 - BA)}^4}$$  
+{% endcomment %}
 
 The next step asks "What is the probability of getting a streak of length X in a fixed number of attempts," which as it turns out, finding a closed form solution to this is not trivial -  see discussion on [askamathematician](https://www.askamathematician.com/2010/07/q-whats-the-chance-of-getting-a-run-of-k-successes-in-n-bernoulli-trials-why-use-approximations-when-the-exact-answer-is-known/) and [math.stackexchange](https://math.stackexchange.com/questions/383704/probability-of-streaks).
 
