@@ -28,7 +28,12 @@ I decided to take a look into _just_ the players that had PAs in both 2016 and 2
 - Max Stassi
 - Tyler White
 
-For these players, their K% does still drop significantly, from 22.2 to 16.5%. Ultimately this is a 5.7 K% drop year-over-year, and evaluating against the plot above, it's a **25.7% change**. Comparing to the presented plot, this would certainly be an extreme value, but not out of the realm of possibility. The author cites that the Rangers change from 2009 to 2010 was 25.6%, nearly identical. 
+For these players, their K% does still drop significantly, from 22.2 to 16.5%. Ultimately this is a 5.7 K% drop year-over-year, and evaluating against the plot above, it's a **25.7% change**. Comparing to the presented plot, this would certainly be an extreme value, but not out of the realm of possibility. The author cites that the Rangers change from 2009 to 2010 was 25.6%, nearly identical. Crudely adjusting that plot:
+
+<img src="/blogimages/astros-krate.png" class="center" style="width:70%;">
+
+
+
 
 The full work can be found in [this jupyter notebook](https://github.com/tjburch/baseball-studies/blob/master/notebooks/astros_krate_continuity.ipynb).
 
