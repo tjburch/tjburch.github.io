@@ -5,6 +5,6 @@ title: "Dissertation Progress"
 #tags: [misc]
 ---
 
-Last Update: Mon Dec 30 15:02:33 CST 2019
+Last Update: Mon Jan  6 17:27:39 CST 2020
 
 <img src="/blogimages/dissertationProgress.png" alt="" class="center" border="5" style="width:60%;"/>
