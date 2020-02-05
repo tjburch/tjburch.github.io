@@ -62,6 +62,6 @@ Otherwise, I wanted to close with some other broader takeaways:
 
 - These application processes absolutely monopolize time. All the questionnaires, phone calls, time interviewing, time traveling, and so on really add up. I will admit that I am likely more sensitive to this at this point, since I'm simultaneously writing my dissertation and trying to finish my physics analysis as well.
 
-- MLB R&D departments are smaller than you might expect, at least in my sample size of 2. Both of the teams I interviewed with, it was just a handful of people. Very bright people, along the way I met another physics Ph.D. and a statistics Ph.D., but from listening to a game broadcast, you get the impression these are huge teams of people, which is not the truth.
+- MLB R&D departments are smaller than you might expect, at least in my sample size of 2. Both of the teams I interviewed with, it was just a handful of people. These people are very bright, along the way I met another physics Ph.D. and a statistics Ph.D., but from listening to a game broadcast, you get the impression these are huge teams of people, which is not the truth.
 
 - Almost everybody I encountered through these experiences were fantastic, a lot of fun to talk to, and passionate about the game. For both interviews, it was an incredible amount of fun to take a day away from work and get to talk to so many people who think about the game and to talk about baseball at a deep level.
