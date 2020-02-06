@@ -2,11 +2,20 @@
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <html>
-    <head>
-        <title>{{ page.title }}</title>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157960843-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-157960843-1');
+    </script>
+
+    <title>{{ page.title }}</title>
 		<!-- link to main stylesheet -->
-        <link rel="stylesheet" type="text/css" href="/css/main.css">   
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">     
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
 
     <div class="hero-image">
@@ -23,8 +32,8 @@
                 <li><a href="/" class="header-footer">Home</a></li>
                 <li><a href="/about"  class="header-footer">About</a></li>
                 <li><a href="/documents/cv.pdf" class="header-footer">CV</a></li>
-                <li><a href="/blog" class="header-footer">Blog</a></li> 
-            </ul>   
+                <li><a href="/blog" class="header-footer">Blog</a></li>
+            </ul>
         </nav>
 
         {{ content }}
@@ -46,4 +55,4 @@
         </footer>
         </div>
     </body>
-</html>        
+</html>
