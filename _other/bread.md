@@ -30,9 +30,9 @@ I use the [King Arthur recipe](https://www.kingarthurflour.com/recipes/sourdough
 
 ## Cinnamon Rolls
 
-While not strictly "bread," per se, [these](https://tasty.co/recipe/homemade-cinnamon-rolls) homemade cinnamon rolls were quite fantastic, and surprisingly less difficult to make than expected.
+While probably more "pastry" than "bread," per se, [these](https://tasty.co/recipe/homemade-cinnamon-rolls) homemade cinnamon rolls were quite fantastic, and surprisingly less difficult to make than expected.
 
-<img src="/blogimages/bread/cinnamon_rolls.png" class="center" style="width:40%;">
+<img src="/blogimages/bread/cinnamon_rolls.jpg" class="center" style="width:30%;">
 
 
 ## Sourdough Loaves
