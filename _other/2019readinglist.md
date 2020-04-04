@@ -15,13 +15,17 @@ title: "2019 Reading List"
 - __Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts__ - Annie Duke
 - __Pandora’s Lab: Seven Stories of Science Gone Wrong__ - Paul A. Offit
 - __Brotopia: Breaking Up the Boys' Club of Silicon Valley__ - Emily Chang
+- __The Power of Vulnerability__ (audio) - Brene Brown
 
 
-### In Progress:
+## The Great Courses Lectures Completed:
 
-- __Moneyball: The Art of Winning an Unfair Game__ - Michael Lewis
-- __The MVP Machine: How Baseball's New Nonconformists Are Using Data to Build Better Players__ - Ben Lindbergh, Travis Sawchik
-- __Raise Your Game: High-Performance Secrets from the Best of the Best__ - Alan Stein, 
-Jon Sternfeld
+- __The Higgs Boson and Beyond__ - Sean Carroll
 
-Last Update - September 2, 2019
+
+## Audible Originals:
+
+- __Power Moves: Lessons from Davos__ - Adam Grant
+
+
+Last Update - April 4, 2020
