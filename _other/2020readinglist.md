@@ -12,7 +12,7 @@ title: "2020 Reading List"
 - __Indistractable: How to Control Your Attention and Choose Your Life__ (audio) - Nir Eyal, Julie Li
 - __Hello World: Being Human in the Age of Algorithms__ - Hannah Fry
 - __What If?: Serious Scientific Answers to Absurd Hypothetical Questions__ - Randall Munroe
-
+- __Misbehaving: The Making of Behavioral Economics__ - Richard Thaler
 
 ## The Great Courses Lectures Completed:
 
