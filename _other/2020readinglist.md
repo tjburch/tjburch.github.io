@@ -8,16 +8,16 @@ date: 2020-04-04
 
 ## Books Read in 2020:
 
-- __The Big Picture: On the Origins of Life, Meaning, and the Universe Itself__ - Sean Carroll
-- __The Tao of Pooh__ - Benjamin Hoff
-- __Indistractable: How to Control Your Attention and Choose Your Life__ (audio) - Nir Eyal, Julie Li
-- __Hello World: Being Human in the Age of Algorithms__ - Hannah Fry
-- __What If?: Serious Scientific Answers to Absurd Hypothetical Questions__ - Randall Munroe
-- __Misbehaving: The Making of Behavioral Economics__ - Richard Thaler
+- _The Big Picture: On the Origins of Life, Meaning, and the Universe Itself_ - Sean Carroll
+- _The Tao of Pooh_ - Benjamin Hoff
+- _Indistractable: How to Control Your Attention and Choose Your Life_ (audio) - Nir Eyal, Julie Li
+- _Hello World: Being Human in the Age of Algorithms_ - Hannah Fry
+- _What If?: Serious Scientific Answers to Absurd Hypothetical Questions_ - Randall Munroe
+- _Misbehaving: The Making of Behavioral Economics_ - Richard Thaler
 
 ## The Great Courses Lectures Completed:
 
-- __Understanding Complexity__ - Scott E. Page
+- _Understanding Complexity_ - Scott E. Page
 
 
 Last Update - April 4, 2020
