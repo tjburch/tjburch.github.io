@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: other
 title: "2018 Reading List"
 date: 2018-12-31
 categories: Misc

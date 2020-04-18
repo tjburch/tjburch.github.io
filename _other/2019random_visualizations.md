@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: other
 title: "2019 Random Visualizations"
 date: 2019-01-01
 categories: Misc
