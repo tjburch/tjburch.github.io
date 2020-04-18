@@ -1,6 +1,7 @@
 ---
 layout: other
 title: "2020 Reading List"
+date: 2020-04-04
 #categories: Misc
 #tags: [misc]
 ---

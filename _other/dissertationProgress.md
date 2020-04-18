@@ -1,6 +1,7 @@
 ---
 layout: other
 title: "Dissertation Progress"
+date: 2020-04-04
 #categories: Misc
 #tags: [misc]
 ---

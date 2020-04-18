@@ -1,6 +1,7 @@
 ---
 layout: other
 title: "2019 Reading List"
+date: 2019-12-31
 #categories: Misc
 #tags: [misc]
 ---
