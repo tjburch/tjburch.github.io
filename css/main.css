@@ -55,7 +55,7 @@ h3 {
     color: seashell;    
 }
 p {
-    font-size: 1.25em;
+    font-size: 16pt;
     color: gainsboro;    
 }
 #footer {
@@ -75,7 +75,6 @@ ul.posts {
 ul.posts li {
     list-style: none;
     color: seashell;    
-
 }
 
 .social {
