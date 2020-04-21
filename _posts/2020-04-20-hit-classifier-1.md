@@ -16,7 +16,7 @@ In 2015, MLB introduced [_Statcast_](http://m.mlb.com/glossary/statcast) to all 
 <img src="https://i.pinimg.com/originals/83/ee/cf/83eecf866a1fdef06bc1ea3bcd8acc0b.png" alt="Mike Trout Hitting Metrics"   class="center" style="width:70%;" />
 
 
-When these started becoming more popular, I found myself thinking quite often, "how do I know if this is _good_ or not?" With exit velocity, it's fairly easy to conceptualize, but less transparent for launch angle. This led me to try plotting these two variables using hit outcome as a figure of merit. The shown chart uses data from the 2018 season.
+The exit velocity is the speed of the ball off of the bat, the launch angle is the vertical angle off the bat (high values are popups, near zero values are horizontal, negative values are into the ground). When these started becoming more popular, I found myself thinking quite often, "how do I know if this is _good_ or not?" With exit velocity, it's fairly easy to conceptualize, but less transparent for launch angle. This led me to try plotting these two variables using hit outcome as a figure of merit. The shown chart uses data from the 2018 season.
 
 <img src="/blogimages/hit_classifier/2018_results.png" alt="Hit outcomes by Launch Angle and Launch Speed"   class="center" style="width:60%;" />
 
