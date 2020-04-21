@@ -2,6 +2,7 @@ theme: jekyll-theme-tactile
 title: Tyler James Burch
 description: Homepage for Tyler James Burch
 markdown: kramdown
+   math_engine: mathjax
 permalink: /blog/:categories/:title
 collections:
   other:
