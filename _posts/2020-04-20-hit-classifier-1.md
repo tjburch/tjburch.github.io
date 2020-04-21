@@ -70,7 +70,7 @@ The spray angle distribution looks similar for outs and singles, but the feature
 
 <img src="/blogimages/hit_classifier/3var_confusion.png" alt="Confusion matrices for the various models evaluated with spray angle"   class="center" style="width:100%;" />
 
-Adding this variable helped out the kNN and BDT models considerably. Both increased their correct predictions on outs, singles, doubles, and home runs. Most strikingly, the double prediction went from 17% accurate to 43% accurate for the BDT (24% to 49% for kNN) - this is a huge improvement. Interestingly, the SVC went from an overly liberal decision boundary on singles to an overly conservative one, which actually caused a worse overall accuracy, despite having more information.
+Adding this variable helped out the kNN and BDT models considerably. Both increased their correct predictions on outs, singles, doubles, and home runs. Most strikingly, the prediction for doubles went from 17% accurate to 43% accurate for the BDT (24% to 49% for kNN) - this is a huge improvement. Interestingly, the SVC went from an overly liberal decision boundary on singles to an overly conservative one, which actually caused a worse overall accuracy, despite having more information.
 
 
 ## Summary and Future Work
