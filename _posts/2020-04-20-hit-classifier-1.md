@@ -75,7 +75,7 @@ Adding this variable helped out the kNN and BDT models considerably. Both increa
 
 ## Summary and Future Work
 
-Ultimately, of the models tested, the best shown to classify hit outcomes based on launch angle, exit velocity, and spray angle is a BDT with a 77% accuracy. Future work on this model will focus on developing the BDT further. I'll be following up this post with several more as I develop the BDT, which I'll link here as they're posted. Some topics I'm going to address:
+Ultimately, of the models tested, the best shown to classify hit outcomes based on launch angle, exit velocity, and spray angle is a BDT with a 78% accuracy. Future work on this model will focus on developing the BDT further. I'll be following up this post with several more as I develop the BDT, which I'll link here as they're posted. Some topics I'm going to address:
 
 - Acting from the "team" perspective to incorporate additional parameters (batter speed, park effects).
 - Work to get the most accurate model, looking at more complex frameworks and dive into hyperparameter tuning.
