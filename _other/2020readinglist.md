@@ -14,10 +14,11 @@ date: 2020-04-04
 - _Hello World: Being Human in the Age of Algorithms_ - Hannah Fry
 - _What If?: Serious Scientific Answers to Absurd Hypothetical Questions_ - Randall Munroe
 - _Misbehaving: The Making of Behavioral Economics_ - Richard Thaler
+- _The Undoing Project: A Friendship That Changed Our Minds_ - Michael Lewis
 
 ## The Great Courses Lectures Completed:
 
 - _Understanding Complexity_ - Scott E. Page
 
 
-Last Update - April 4, 2020
+Last Update - May 6, 2020
