@@ -57,7 +57,7 @@ What we can draw from this:
 
 ## Moving from 2D to 3D
 
-Up until now, this model has been built by looking at just the launch angle and exit velocity. If you think about launch angle as the angle in the _z_ direction, and the exit velocity as the velocity vector, we've effectively<sup>3</sup> parametrized how high and how far a ball is hit. but completely ignoring the third dimension, _y_, or the _spray angle_. This was done to address the original question, "when broadcasters speak about these values, what should I take from it?" 
+Up until now, this model has been built by looking at just the launch angle and exit velocity. If you think about launch angle as the angle in the _z_ direction, and the exit velocity as the velocity vector, we've effectively<sup>3</sup> parametrized how high and how far a ball is hit, but completely ignoring the third dimension, _y_, or the _spray angle_. This was done to address the original question, "when broadcasters speak about these values, what should I take from it?" 
 
 The third dimension is a very non-trivial factor though. The corners are between 300-350 ft from home, while straight-away is between 390-440 ft. First, we should take a look at how the current models are handling this (plots shown for gBDT):
 
