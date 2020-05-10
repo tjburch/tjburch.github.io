@@ -32,6 +32,7 @@ h2{
     border-radius: 26px;
     padding: 0.5em 1em 0.5em 1em;
 }
+
 .post-title{
     /* Post titles 
        Blog page, so should be implied these things are links.
@@ -51,4 +52,8 @@ ul{
 }
 .fb_iframe_widget {
     vertical-align: top;
-  }
+}
+.tags-expo-posts{
+    color:seashell;
+
+}
