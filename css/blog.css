@@ -4,7 +4,6 @@
     font-size: 16pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     /*padding: 0.5em 1em 0.5em 1em;*/
-
 }
 a{
     color:rgb(233, 169, 74);
@@ -13,6 +12,7 @@ a{
 a:hover {
     text-decoration: underline;
 }
+
 .center {
     display: block;
     margin-left: auto;
@@ -41,7 +41,6 @@ h2{
 }
 ul{
     color:gainsboro;
-    font-size: 16pt;
 }
 .blog-wrap{
     margin: 1em 10em 1em 10em;
