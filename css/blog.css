@@ -3,7 +3,7 @@
     background-color: #527ac2;
     font-size: 16pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    padding: 0.5em 1em 0.5em 1em;
+    /*padding: 0.5em 1em 0.5em 1em;*/
 
 }
 a{
@@ -44,7 +44,8 @@ ul{
     font-size: 16pt;
 }
 .blog-wrap{
-    margin:10em;
+    margin: 1em 10em 1em 10em;
+
 }
 .post-body{
     font-size: 14px;
