@@ -8,7 +8,9 @@ date: 2020-04-04
 
 ## Final Draft Submitted!
 
-I officially defended March 26, 2020. Due to the COVID pandemic, I had to defend remotely, but that means the full defense was recorded - the stream is viewable [here](https://www.youtube.com/watch?v=m_e5al-Q5Cw).
+I defended March 26, 2020. Due to the COVID pandemic, I had to defend remotely, but that means the full defense was recorded, and saved for future viewing.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m_e5al-Q5Cw" class="center" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <img src="/blogimages/dissertationProgress.png" alt="" class="center" border="5" style="width:60%;"/>
 
