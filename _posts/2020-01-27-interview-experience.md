@@ -20,8 +20,7 @@ Over the last few months, I've applied for several jobs in MLB front offices. I 
 
 Most of my research is data analysis on large datasets, and I do baseball analysis in my spare time, often with similar methodology to my research, so I figured applying for these jobs would be a logical progression of my career, and one where I have experience. I'm purposefully omitting specifics on questions I was asked in questionnaires and names as well, however, I hope this account is interesting nonetheless.
 
-<img src="https://claycorp.com/wp-content/uploads/2017/09/busch-stadium-new-3.jpg" alt="Busch Stadium"   class="center" style="width:50%;" />
-
+<img src="/blogimages/busch-stadium-new-3.jpg" alt="Busch Stadium, St. Louis"   class="center" style="width:50%;" />
 
 
 ## Tampa Bay Rays
