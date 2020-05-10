@@ -7,6 +7,18 @@ tags: [baseball, statistics]
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- facebook root -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+<ul class="list-inline" id="buttons">
+    <!-- twitter share -->
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-2" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- facebook share -->
+    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-2" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-2&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+</ul>  
+
+
+
 
 ## Optimizing a model to predict hit outcomes
 

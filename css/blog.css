@@ -49,3 +49,6 @@ ul{
 .post-body{
     font-size: 14px;
 }
+.fb_iframe_widget {
+    vertical-align: top;
+  }
