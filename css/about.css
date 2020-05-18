@@ -8,17 +8,17 @@ h1 {
     font-size: 12pt;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;   
-    padding-left: 1em;
- 
+    padding-left: 2em;
+    padding-right: 4em;
 }
 p{
     font-size: 1.4em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     color: seashell;    
-    line-height: 115%;
+    line-height: 120%;
     padding-right: 1em;
 }
 .aboutportrait{
-    border-radius: 25px;
-    border-width: 0px;
+    border-width: 25px;
+    padding-left: 2em;
 }
