@@ -55,7 +55,7 @@ From there, I removed the stopping condition once a match was found, and reran f
 
 Next, I look at the extra credit portion of the question - which state has the most words which don't share letters with only it. The way I set up the function to check if a word was a "mackerel," it returned the name of the state which it shared no letters with; this return was designed to solve this part of the problem. I summed the counts for each state and found the following results:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/states_distribution.png?raw=true" class="center" border="5" style="width:60%;">
+<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/states_distribution.png?raw=true" class="center" border="5" style="width:80%;">
 
 
 This gives us the solution that:
