@@ -15,6 +15,8 @@ date: 2020-04-04
 - _What If?: Serious Scientific Answers to Absurd Hypothetical Questions_ - Randall Munroe
 - _Misbehaving: The Making of Behavioral Economics_ - Richard Thaler
 - _The Undoing Project: A Friendship That Changed Our Minds_ - Michael Lewis
+- _Hit Makers: The Science of Popularity in an Age of Distraction_ - Derek Thompson
+- _The Elephant in the Brain: Hidden Motives in Everyday Life_ - Kevin Simler , Robin Hanson
 
 ## The Great Courses Lectures Completed:
 
