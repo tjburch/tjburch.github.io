@@ -17,6 +17,7 @@ date: 2020-04-04
 - _The Undoing Project: A Friendship That Changed Our Minds_ - Michael Lewis
 - _Hit Makers: The Science of Popularity in an Age of Distraction_ - Derek Thompson
 - _The Elephant in the Brain: Hidden Motives in Everyday Life_ - Kevin Simler , Robin Hanson
+- _White Fragility: Why It's So Hard for White People to Talk About Racism_ - Robin DiAngelo
 
 ## The Great Courses Lectures Completed:
 
