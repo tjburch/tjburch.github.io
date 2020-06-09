@@ -23,5 +23,9 @@ date: 2020-04-04
 
 - _Understanding Complexity_ - Scott E. Page
 
+## Audible Originals:
 
-Last Update - May 6, 2020
+- _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
+- _The Burnout Generation_ - Anne Helen Petersen
+
+Last Update - June 9, 2020
