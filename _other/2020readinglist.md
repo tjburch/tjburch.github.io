@@ -18,14 +18,16 @@ date: 2020-04-04
 - _Hit Makers: The Science of Popularity in an Age of Distraction_ - Derek Thompson
 - _The Elephant in the Brain: Hidden Motives in Everyday Life_ - Kevin Simler , Robin Hanson
 - _White Fragility: Why It's So Hard for White People to Talk About Racism_ - Robin DiAngelo
+- _The Signal and the Noise: Why So Many Predictions Fail -- but Some Don't_ - Nate Silver
 
 ## The Great Courses Lectures Completed:
 
 - _Understanding Complexity_ - Scott E. Page
+- _The Learning Brain_ - Thad A. Polk
 
 ## Audible Originals:
 
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - June 9, 2020
+Last Update - July 1, 2020
