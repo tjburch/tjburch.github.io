@@ -39,7 +39,9 @@ This does help improve accuracy by a bit, bringing another 0.36% accuracy gain, 
 
 ### Explanation and Techniques
 
-In this section, I wanted to use this imbalanced multiclassification problem to try out and understand various resampling methods. Resampling is the method of balancing the dataset populations in the training process so that classes are equally represented<sup>2</sup>. For our problem, that means the training data has the same number of singles, doubles, triples, home runs, and outs. This can be achieved in two ways, upsampling and downsampling. There are several approaches to achieve either of these, for this analysis I studied 3 upsampling methods and 2 downsampling methods<sup>3</sup>.
+In this section, I wanted to use this imbalanced multiclassification problem to try out and understand various resampling methods. To elaborate, "imbalanced" means the populations of hit outcomes are drastically different. The training data set has over 33,000 outs, which is over half of all total observations. Meanwhile, there's only about 400 triples. Because of that imbalance, a model trained on this data will have far less opportunity to learn the parameters that result in triples, and this will affect how it makes predictions, for better or for worse.
+
+To navigate this problem, we turn to resampling. Resampling is the method of balancing the dataset populations in the training process so each class is equally represented<sup>2</sup>. For our problem, that means the training data has the same number of singles, doubles, triples, home runs, and outs. This can be achieved in two ways, upsampling and downsampling. There are several approaches to achieve either of these, for this analysis I studied 3 upsampling methods and 2 downsampling methods<sup>3</sup>.
 
 **1. Upsampling - increasing statistics in the minority classes to match the majority class**
 
