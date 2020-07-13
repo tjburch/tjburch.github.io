@@ -6,6 +6,23 @@ categories: Baseball
 tags: [baseball, statistics]
 ---
 
+<!-- facebook root -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+
+<ul class="social" id="buttons">
+<!-- twitter share -->
+<li>
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-3" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</li>
+<!-- facebook share -->
+<li>
+    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-3" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-3&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+</li>
+</ul>  
+
+
+
 ## Further Study at a Model to Predict Hit Outcomes
 
 Over the last two posts, I've been developing a model to predict hit outcomes. In the [first post](http://tylerjamesburch.com/blog/baseball/hit-classifier-1), I looked at employing hit kinematics (exit velocity, launch angle, and spray angle) for this task and found that a boosted decision tree (BDT) performs best in classifying these hits. In the [second post](http://tylerjamesburch.com/blog/baseball/hit-classifier-2), I looked at additional features to improve accuracy, adding park effects and player speed. The domain this problem falls into is an imbalanced multiclassification problem, so I wanted to take this opportunity to look into some resampling methods on a real-world problem. First, though, I want to do a quick revisit in feature engineering.

@@ -62,3 +62,11 @@ ol{
     color:seashell;
 
 }
+
+.social li{
+    display:inline;
+}  
+.fb-share-button{
+    position:relative;
+    top:-4px;
+}
