@@ -56,13 +56,13 @@ In this section, I wanted to use this imbalanced multiclassification problem to 
 - Raw Downsampling: randomly removing observations in your majority classes until they match the minority population
 - NearMiss Downsampling: similar to the ADASYN focus on the decision boundaries, NearMiss uses a nearest neighbors method to isolate samples nearest the decision boundary for retention
 
-In my experience, upsampling techniques more often work better of the two, since when downsampling you're getting rid of possible information the model could use (plus, nothing hurts worse than the idea of throwing away the data you worked hard to acquire and clean).
+In my experience, of the two, upsampling techniques usually work better, since in downsampling you're getting rid of possible information the model could use (plus, nothing hurts worse than the idea of throwing away the data you worked hard to acquire and clean).
 
 ### Evaluation Metric
 
 An important note here is that when we have imbalanced datasets, one big consideration is the metric we use. The canonical example taught in binary classification is cancer screenings, in which there are few positive ("does has cancer") cases compared to negatives ("does not have cancer"), however the cost of missing someone with cancer and leaving them untreated is much worse, so we want a model with high fidelity for the positives, even at the cost of a few extra false negatives. Another common real-world example of this is fraud flagging. 
 
-In such cases, "accuracy" is not always the best metric, so alternatives are used, such as precision, recall, or F1 score. The major question then to ask is, for the question posed, is one type of misclassification particularly worse than another? My answer to this question is no, miscategorizations for this model are all equivalently undesirable. So then I referenced a flowchart I from [machinelearningmastery.com](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/):
+In such cases, "accuracy" is not always the best metric, so alternatives are used, such as precision, recall, or F1 score. The major question to ask is, for this problem, is one type of misclassification particularly worse than another? Answering that question usually comes down to domain expertise. For this problem, my answer is no, miscategorizations for this model are all equivalently undesirable. So then I referenced a flowchart I from [machinelearningmastery.com](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/):
 
 <img src="/blogimages/hit_classifier/post3/metric-flowchart.png" alt="Confusion Matrix for models using the absolute (left) and adjusted (right) Spray Angle" class="center" style="width:60%;" />
 
