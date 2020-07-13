@@ -72,7 +72,7 @@ The first approach was to drop each of these techniques into the single multicla
 
 <img src="/blogimages/hit_classifier/post3/single_sampling_comparison.png" alt="Model accuracy when employing various resampling techniques" class="center" style="width:70%;" />
 
-There's a few takeaways to glean from this. First, the suspicion of worse accuracy when resampling proved to be true, the best result was our original model without resampling the training data. Further, the hesitancy on downsampling specifically also was confirmed - throwing away data and resampling down to the minority class proved to give the worst two results. Particularly NearMiss resampling did over 20% worse than any other model. To understand why, I plotted the distribution of field outs for the NearMiss training data against all the training data in the launch angle/launch speed space.
+There are a few takeaways to glean from this. First, the suspicion of worse accuracy when resampling proved to be true, the best result was our original model without resampling the training data. Further, the hesitancy on downsampling specifically also was confirmed - throwing away data and resampling down to the minority class proved to give the worst two results. Particularly NearMiss resampling did over 20% worse than any other model. To understand why, I plotted the distribution of field outs for the NearMiss training data against all the training data in the launch angle/launch speed space.
 
 <img src="/blogimages/hit_classifier/post3/nearmiss_outs.png" alt="NearMiss field outs" class="center" style="width:50%;" />
 
@@ -115,4 +115,4 @@ At this point, I'm satisfied with the state of this model. I've explored and ext
 
 [2] To emphasize - the resampling is performed _only_ on the training data. Testing data is left with the standard population imbalance, because we want to understand accuracy representative of what is encountered when applying to future data.
 
-[3] The raw resampling were performed with [scikit-learn's resample methods](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html). All others were performed with the exceptional [imbalanced-learn](https://imbalanced-learn.readthedocs.io/en/stable/) package.
+[3] The raw resampling methods were performed with [scikit-learn's resample methods](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html). All others were performed with the exceptional [imbalanced-learn](https://imbalanced-learn.readthedocs.io/en/stable/) package.
