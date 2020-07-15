@@ -19,6 +19,7 @@ date: 2020-04-04
 - _The Elephant in the Brain: Hidden Motives in Everyday Life_ - Kevin Simler , Robin Hanson
 - _White Fragility: Why It's So Hard for White People to Talk About Racism_ - Robin DiAngelo
 - _The Signal and the Noise: Why So Many Predictions Fail -- but Some Don't_ - Nate Silver
+- _Range: Why Generalists Triumph in a Specialized World_ - David Epstein
 
 ## The Great Courses Lectures Completed:
 
