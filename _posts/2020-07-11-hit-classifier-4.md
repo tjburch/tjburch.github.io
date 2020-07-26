@@ -61,6 +61,7 @@ Now that the stats are comparable, we can look at how players are affected by ev
 
 
 <!-- > Bokeh interactive plot <-->
+<div id="bokeh_center">
 <html lang="en">
   <head>
       <meta charset="utf-8">
@@ -111,6 +112,7 @@ Now that the stats are comparable, we can look at how players are affected by ev
         </script>    
   </body>  
 </html>
+</div>
 
 The _y=x_ line is shown - players above that line have a better model-based wOBA, players under that line have a better true wOBA. 
 
