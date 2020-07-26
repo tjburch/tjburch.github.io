@@ -7,6 +7,16 @@ tags: [baseball, statistics]
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- facebook root -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+
+<ul class="list-inline" id="buttons">
+    <!-- twitter share -->
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-4" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- facebook share -->
+    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-4" data-layout="button_count" data-size="small" id="button2"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-4&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+</ul>  
 
 Over the last 3 posts, I've shown the construction of a model to predict hit outcomes based on hit kinematics such as the launch angle, exit velocity, and spray angle, as well as additional properties such as sprint speed and park factors. In this post, I'll look at an application of it, and do some final reflections on the utility of this model.
 
