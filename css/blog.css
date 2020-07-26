@@ -20,6 +20,11 @@ a:hover {
     width: 50%;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
   }
+#bokeh_center{
+    width: 50%;
+    margin: 0 auto;
+}
+
 h2{
     /* Category Headers */
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
