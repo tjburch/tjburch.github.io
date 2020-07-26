@@ -57,7 +57,7 @@ This makes the full distribution of the model-based wOBA now look much more like
 
 <img src="/blogimages/hit_classifier/part4/scaled_woba_kde.png" class="center" style="width:60%;">
 
-Now that the stats are comparable, we can look at how players are affected by evaluating wOBA using the model, rather than the outcome based wOBA. This plot shows model-based wOBA vs true wOBA, and you can scroll over each data point to see which player it represents, along with their xwOBA. 
+Now that the stats are comparable, we can look at how players are affected by evaluating wOBA using the model, rather than the outcome based wOBA. This plot shows model-based wOBA vs true wOBA. You can scroll over each data point to see which player it represents, along with their xwOBA. 
 
 
 <!-- > Bokeh interactive plot <-->
@@ -114,7 +114,7 @@ Now that the stats are comparable, we can look at how players are affected by ev
 </html>
 </div>
 
-The _y=x_ line is shown - players above that line have a better model-based wOBA, players under that line have a better true wOBA. 
+The grey line shown represents where wOBA predicted by the model matches true wOBA (_y=x_). Players above that line have a better model-based wOBA, players under that line have a better true wOBA. 
 
 For those players above the line, the model believes that they have been unlucky in their outcomes, and have disproportionally worse true outcomes with respect to wOBA, based on the hit kinematics, player speed, and park factors. The 5 players with the biggest difference between model based and true wOBA are shown in green: Dansby Swanson, Mallex Smith, Willy Adames, Rougned Odor, and Dexter Fowler. By contrast, the players the model think have gotten the most lucky in their outcomes are shown in red: Jeff McNeil, Anthony Rendon, Ketel Marte, Yuli Gurriel, and Rafael Devers.
 
@@ -125,9 +125,9 @@ In Scott Page's _The Model Thinker_, he outlines 7 different possible uses for m
 
 ### Prediction
 
-This model can be used to predict hit outcomes, using just hit kinematics, player speed, and factors of the park you expect to be playing in. Because of this, it can be used for prediction in several useful regimes. However, it's very important to not make out-of-sample predictions, using the model somewhere it isn't trained to. This model was specifically trained on MLB data, so the domain of applicability is _only_ for MLB-like scenarios. Due to differences in pitching skill, it won't translate one-to-one to MILB data.
+This model can be used to predict hit outcomes, using just hit kinematics, player speed, and factors of the park you expect to be playing in. Because of this, it can be used for prediction in several useful regimes. However, it's very important to not make out-of-sample predictions, using the model somewhere it isn't trained to. This model was specifically trained on MLB data, so the domain of applicability is _only_ for MLB-like scenarios. Due to differences in pitching skill, it won't translate one-to-one to minor league (MILB) data.
 
-Where there is a clear value to prediction from this model would be situations where MLB starters practice against batters. In that case, it doesn't matter the level of the batters, they could be MLB, MILB, college, whatever, so long as the pitches they're seeing are MLB-like. If there's no defense on the field, it might not be clear how these practice hits would translate to real-world scenarios, but this model allows you predict how the practice would translate to a real game. The scenario I can immediately think of is spring training, in which minor leaguers you're trying to evaluate are playing against MLB caliber pitchers - this model would give you a more clear insight about what to expect from the minor leaguers.
+Where there is a clear value to prediction from this model would be situations where MLB starters practice against batters. In that case, it doesn't matter the level of the batters, they could be MLB, MILB, college, whatever, so long as the pitches they're seeing are MLB-like. If there's no defense on the field, it might not be clear how these practice hits would translate to real-world scenarios, but this model allows you to predict how the practice would translate to a real game. The scenario I can immediately think of is spring training, where minor leaguers are playing against MLB caliber pitchers - this model would give you a more clear insight about what to expect from the minor leaguers in real game situations.
 
 
 ### Acting
@@ -140,24 +140,25 @@ Further, as shown in the model-based wOBA application above, if wOBA is being us
 
 Through the way in developing this model, there have been several interesting insights, I'll wrap up with a few:
 
-- **Triples are tough to predict. Like, really tough.** - This is an obvious statement in passing, but it wasn't until fighting with this model to get any reasonable triple accuracy that I saw just how dire the situation was. They require the perfect coalescing of correct stadium, quick batter, slow fielder, and a solid hit, which make them incredible unpredictable. The one case where a model had some accuracy at triples was employing NearMiss re-sampling in [post 3](http://tylerjamesburch.com/blog/baseball/hit-classifier-3), however, to achieve that, overall model accuracy plummetted.
+- **Triples are tough to predict. Like, really tough.** - This is an obvious statement in passing, but it wasn't until fighting with this model to get any reasonable triple accuracy that I saw just how dire the situation was. They require the perfect coalescing of correct stadium, quick batter, slow fielder, and a solid hit, which make them incredibly unpredictable. The one case where a model had some accuracy at triples was employing NearMiss re-sampling in [post 3](http://tylerjamesburch.com/blog/baseball/hit-classifier-3), however, to achieve that, overall model accuracy plummetted.
 
 - **Hit kinematics get you most of the way there in predicting the outcome of a hit** - Beyond exit velocity, launch angle, and spray angle, further variables provided some improvements in accuracy, but not near the gain achieved by the initial three. The feature importance plots in [post 2](http://tylerjamesburch.com/blog/baseball/hit-classifier-2), accented this insight. This is important when considering things like the value of sprint speed - from an offensive perspective, it's far secondary to a quality hit.
 
-- **Focusing on true outcomes only loses some granularity neglects the quality of inputs** - In a high statistics regime, such as looking at all hits, there's going to be many cases where less likely outcomes ended up being the true result; even a 5% probable event sounds low, but still has a 1/20 opportunity of happening, which would occur a couple times every game. Looking at possible outcomes rather than realized outcomes allows a better understanding of underlying talent.
+- **Focusing on true outcomes loses understanding of underlying skill by neglecting the quality of inputs** - In a high statistics regime, such as looking at all hits, there's going to be many cases where less likely outcomes ended up being the true result; even a 5% probable event sounds low, but still has a 1/20 opportunity of happening, which would occur a couple times every game. Looking at possible outcomes rather than realized outcomes provides a better understanding of underlying talent.
 
 
 I also encountered some model building insights, that aren't necessarily insights into the game itself, but still useful to keep in mind, especially for those building models:
 
 - **Smart features are just as useful as smart models** - I prefer this framing to the often repeated "garbage in, garbage out" mantra. Taking a step back and using informative features is a great way to make sure your model is doing the best it can - take, for example, the favoring of adjusted spray angle over absolute spray angle in [post 3](http://tylerjamesburch.com/blog/baseball/hit-classifier-3).
 
-- **Simple questions can lead to useful projects** - The launch angle vs launch speed plot color coded by hit outcome was a plot I made quite some time ago, late 2018, because I was curious how to interpret those parameters. That plot sat for about a year, when I was thinking about projects I could use clustering on, and remembered what that distribution looked like, which inspired this project.
+- **Simple questions can lead to useful projects** - The launch angle vs launch speed plot color coded by hit outcome was a plot I made quite some time ago, late 2018, because I was curious how to interpret those parameters. That plot sat for about a year, until I was thinking about projects I could use clustering on, and remembered what that distribution looked like, which inspired this project.
 
 - **Sometimes your gut model isn't the right one** - I approached this problem thinking it'd be a neat way to employ k-Nearest Neighbors clustering. However, one of the first things I discovered in [post 1](http://tylerjamesburch.com/blog/baseball/hit-classifier-1) is that tree based methods do better than k-NN - keeping an open mind to alternative models is good, test as much as you can. This calls back to the "fox vs hedgehog" metaphor to approaching forecasting, popularized by [Tetlock](https://conceptually.org/fox-vs-hedgehog) - hedgehogs develop fixated on one model, where foxes consider different angles, which usually leads to more accurate predictions.
 
 
-I've spent quite some time fleshing out this model, and I think I'm putting it to rest (at least for now) to work on other projects, I hope that these posts have been useful, interesting, or informative! Thanks for reading. The code for this post can be found in [this jupyter notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/4-application.ipynb).
+I've spent quite some time fleshing out this model, and I think I'm putting it to rest (at least for now) to work on other projects, I hope that these posts have been useful, interesting, or informative! Thanks for reading. 
 
+The code for this post can be found in [this jupyter notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/4-application.ipynb).
 
 <!--
 I've spent quite some time fleshing out this model, and I think I'm putting it to rest to work on other projects, but there's a few ways to consider to extend this work. A recent [post on FanGraphs by Alan Nathan](https://blogs.fangraphs.com/contributions-to-variation-in-fly-ball-distances/) studied in detail what contributes to variation in fly ball distances. In the summary, he states that with exit velocity and launch angle fly ball distance is known to a standard deviation of 16.8 feet. Remaining variation comes from four sources: variation of backspin, sidespin, drag variation, and measurement noise. Three of those could be included in the model to better map where the ball will land, which will give a better understanding if a ball can be caught or not.
