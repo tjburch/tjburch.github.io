@@ -101,6 +101,9 @@ Looking at the feature importance of the final model can confirm this; all of th
 
 An additional upshot of doing this work is that the model does predict a handful of triples correctly, and sees an improvement in home runs and singles as well. Future posts will start looking at ways to improve further, investigating methods of balancing out the dataset, so knowing that these additional features help in that prediction gives a better starting point in approaching that problem.
 
+The code for this post can be found in [this Jupyter Notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/2-added-variables.ipynb).
+
+
 ## Appendix - A Multi-Level Model Approach
 
 In the development of this, I considered developing a multi-level model to improve the performance. The basic idea was to have one binary classifier to identify "is this a hit or not?" and one multiclassifier to identify "what type of hit is this?" I liked this idea, since it takes the single very imbalanced classification problem and converts it to a balanced binary classification and a _somewhat_ less imbalanced multiclassfication. Additionally, I thought different models might perform better at one task over the other, and this gives that flexibility.
