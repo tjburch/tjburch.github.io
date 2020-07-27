@@ -106,7 +106,7 @@ Wrapping up, I wanted to list some final takeaways I can gather from this post.
 
 At this point, I'm satisfied with the state of this model. I've explored and extinguished most ideas that would improve it further. In the next and last post, I'll discuss the utility of this model and how it can be deployed in real-world situations.
 
-- The code for this post is contained in [this jupyter notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/3-resample.ipynb). The other notebooks should be up in the coming weeks. Once I finish the last blog post, I'll make data available.
+- The code for this post is contained in [this Jupyter Notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/3-resample.ipynb).
 
 ----
 ### Footnotes

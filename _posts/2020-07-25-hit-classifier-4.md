@@ -158,7 +158,7 @@ I also encountered some model building insights, that aren't necessarily insight
 
 I've spent quite some time fleshing out this model, and I think I'm putting it to rest (at least for now) to work on other projects, I hope that these posts have been useful, interesting, or informative! Thanks for reading. 
 
-The code for this post can be found in [this jupyter notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/4-application.ipynb).
+The code for this post can be found in [this Jupyter Notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/4-application.ipynb).
 
 <!--
 I've spent quite some time fleshing out this model, and I think I'm putting it to rest to work on other projects, but there's a few ways to consider to extend this work. A recent [post on FanGraphs by Alan Nathan](https://blogs.fangraphs.com/contributions-to-variation-in-fly-ball-distances/) studied in detail what contributes to variation in fly ball distances. In the summary, he states that with exit velocity and launch angle fly ball distance is known to a standard deviation of 16.8 feet. Remaining variation comes from four sources: variation of backspin, sidespin, drag variation, and measurement noise. Three of those could be included in the model to better map where the ball will land, which will give a better understanding if a ball can be caught or not.

@@ -93,6 +93,7 @@ Ultimately, of the models tested, the best shown to classify hit outcomes based 
 - Work to get the most accurate model, looking at more complex frameworks and dive into hyperparameter tuning.
 - Resampling, including synthetic minority oversampling to manage imbalanced data, to assess the problem with low statistics for triples.
 
+The code for this post can be found in [this Jupyter Notebook](https://github.com/tjburch/mlb-hit-classifier/blob/master/notebooks/1-model-selection.ipynb).
 
 ----
 ### Footnotes
