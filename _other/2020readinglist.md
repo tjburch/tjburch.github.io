@@ -22,6 +22,7 @@ date: 2020-04-04
 - _Range: Why Generalists Triumph in a Specialized World_ - David Epstein
 - _Raise Your Game: High-Performance Secrets from the Best of the Best_ - Alan Stein
 - _K: A History of Baseball in Ten Pitches_ - Tyler Kepner
+- _When: The Scientific Secrets of Perfect Timing_ - Daniel H. Pink
 
 ## The Great Courses Lectures Completed:
 
@@ -33,4 +34,4 @@ date: 2020-04-04
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - July 27, 2020
+Last Update - August 3, 2020
