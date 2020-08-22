@@ -21,19 +21,19 @@ tags: [fivethiryeight, puzzles, riddler]
 
 ## Solution - 0.474
 
-This problem is relatively straightforward, throwing a random number sequentially and adding to the solution integer if it meets all the conditions. This is fairly straightforward in python, the code for which can be seen in [this git repository](https://github.com/tjburch/puzzles/tree/master/ridder538_2019_Nov15).
+This problem is relatively straightforward, throwing a random number sequentially and adding to the solution integer if it meets all the conditions. This is fairly straightforward in python, the code for which can be seen in [this git repository](https://github.com/tjburch/puzzles/tree/master/riddler538_2019_Nov15).
 
 To get a guess of what to expect, we can consider if we start by rolling a 1, the solution space is forced to a regime between 0.111... and 0.10. Conversely, if we start with a 9, the solution space is more flexible, ranging from 0.999... to 0.90. Thus, with a broader solution space toward the top of the value spectrum, we expect a bias upward in comparison to just a random value over the space [0,9], which would be 4.5. After simulating many trials, we can plot the values returned and see that constrained solution space:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/ridder538_2019_Nov15/values.png?raw=true" class="center" border="5" style="width:40%;">
+<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Nov15/values.png?raw=true" class="center" border="5" style="width:70%;">
 
 In fact, that is the solution we do see, resolving to a value of **0.454** after aggregating 100,000,000 attempts. The running mean as trials proceed are shown in the following plot:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/ridder538_2019_Nov15/running_mean.png?raw=true" class="center" border="5" style="width:40%;">
+<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Nov15/running_mean.png?raw=true" class="center" border="5" style="width:70%;">
 
 which resolves ultimately to the aforementioned value. One last sanity check I ran was a look at the length of values in the solutions, which should be monotonically decreasing, shown in the following plot.
 
-<img src="https://github.com/tjburch/puzzles/blob/master/ridder538_2019_Nov15/nValues.png?raw=true" class="center" border="5" style="width:40%;">
+<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Nov15/nValues.png?raw=true" class="center" border="5" style="width:70%;">
 
 
 
