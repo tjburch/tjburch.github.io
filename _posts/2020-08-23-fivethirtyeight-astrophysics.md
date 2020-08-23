@@ -27,7 +27,7 @@ To solve this, first I simulated observations consistent with the problem statem
 
 To achieve that, I threw random numbers ($$n=25000$$) on the interval $$[0,1]$$ with floating point precision. Then to achieve the proportions as designated, I set all instances on the interval $$[0.00, 0.45)$$ as 0, $$[0.45, 0.83)$$ as 1 and $$[0.83, 1.00]$$ as 2. This generated the following distribution of data, where the histogram is normalized to 1 in order to show rate rather than raw counts.
 
-<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/simulated_distribution.svg" class="center" border="3" style="width:70%;">
+<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/simulated_distribution.svg" class="center" border="3" style="width:65%;">
 
 This histogram is consistent with the given rates, so the generated data appears valid, with 25,000 observations.
 
@@ -37,7 +37,7 @@ This data can be modeled using a [Poisson Binomial distribution](https://en.wiki
 
 Generic Poisson Binomial distributions with $$i=2$$ for various $$p_i$$ values are shown in the figure below.
 
-<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/poisson_binomial_examples.svg" class="center" border="3" style="width:70%;">
+<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/poisson_binomial_examples.svg" class="center" border="3" style="width:65%;">
 
 Given two sources emitting with some fixed probability, this is the type of distribution I would expect. The distribution is bounded from 0-2, corresponding to neither source, one source, or both sources emitting during a sampling period. If both $$p$$ values are low, the sources aren't emitting frequently, so we expect many samplings with 0 readings. If both $$p$$ values are high, we expect many cases in which we receive signals from both, so many 2 readings. Anywhere in the middle, we run into a high degree of one or the other emitting a signal, so 1 is most common. This type of behavior we observe in these generic distributions, so this model seems to fit the problem.
 
@@ -68,7 +68,7 @@ This all looks normal, the fit appears to have worked well. Further, the r_hat v
 
 This solution approach searches for possible parameter values that can realize the observations. Meaning, to get the same observations, as one $$p$$ value increases, the other $$p$$ value ought to decrease. In other words, if one source is emitting signals more often, to get the same realized data, the other source must emit less often. Thus, we expect a negative correlation between the two emission probability parameters.
 
-<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/p_covariance.svg" class="center" border="3" style="width:65%;">
+<img src="https://raw.githubusercontent.com/tjburch/puzzles/98c38e31d639a4b36cecdf211c784379d6af2db6/riddler538_2020_Aug21/plots/p_covariance.svg" class="center" border="3" style="width:60%;">
 
 In fact, the parameters do have a negative correlation, -0.697.
 
