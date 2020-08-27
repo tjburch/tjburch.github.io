@@ -95,6 +95,8 @@ As mentioned, these are the most extreme values, so very, very unlikely to be re
 
 # Post-Mortem Reflection
 
+- Posted August 27, 2020
+
 After submission, I realized this solution isn't 100% correct. The quickest red flag that I should have considered was plotting the most observed data proportions against a Poisson Binomial function using the most likely parameter values.
 
 
