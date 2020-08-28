@@ -9,7 +9,7 @@ tags: [fivethiryeight, puzzles, riddler, julia, turing, bayesian]
 
 This year I've been trying to learn more about probabilistic programming and Bayesian inference. Additionally, I've been playing around with some other programming languages, R and Julia. This week's [Riddler question at FiveThirtyEight](https://fivethirtyeight.com/features/can-you-corral-your-hamster/) seemed like a good opportunity to utilize these things - I did this solution in Julia, using the [Turing.jl](https://turing.ml/dev/) probabilistic programming library. The code for this solution can be found on [my GitHub](https://github.com/tjburch/puzzles/tree/master/riddler538_2020_Aug21).
 
-This solution mentioned in the featured solutions - see [here](https://fivethirtyeight.com/features/can-you-cover-the-globe/)
+This solution mentioned in the featured solutions - see [here](https://fivethirtyeight.com/features/can-you-cover-the-globe/).
 
 
 ## Riddler Express
