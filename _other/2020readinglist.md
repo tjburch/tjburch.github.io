@@ -23,6 +23,7 @@ date: 2020-04-04
 - _Raise Your Game: High-Performance Secrets from the Best of the Best_ - Alan Stein
 - _K: A History of Baseball in Ten Pitches_ - Tyler Kepner
 - _When: The Scientific Secrets of Perfect Timing_ - Daniel H. Pink
+- _Superforecasting: The Art and Science of Prediction_ - Philip Tetlock , Dan Gardner
 
 ## The Great Courses Lectures Completed:
 
@@ -34,4 +35,4 @@ date: 2020-04-04
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - August 3, 2020
+Last Update - September 8, 2020
