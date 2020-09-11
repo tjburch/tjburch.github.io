@@ -18,6 +18,13 @@ p{
     line-height: 120%;
     padding-right: 1em;
 }
+ul{
+    font-size: 1.4em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    color: seashell;    
+    line-height: 120%;
+    padding-right: 1em;   
+}
 .aboutportrait{
     border-width: 25px;
     padding-left: 2em;
