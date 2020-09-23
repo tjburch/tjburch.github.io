@@ -24,6 +24,9 @@ date: 2020-04-04
 - _K: A History of Baseball in Ten Pitches_ - Tyler Kepner
 - _When: The Scientific Secrets of Perfect Timing_ - Daniel H. Pink
 - _Superforecasting: The Art and Science of Prediction_ - Philip Tetlock , Dan Gardner
+- _The Shift_ - Colby Martin
+- _Promise Me, Dad: A Year of Hope, Hardship, and Purpose_ - Joe Biden
+- _The Sin of Certainty_  - Peter Enns
 
 ## The Great Courses Lectures Completed:
 
@@ -35,4 +38,4 @@ date: 2020-04-04
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - September 8, 2020
+Last Update - September 23, 2020
