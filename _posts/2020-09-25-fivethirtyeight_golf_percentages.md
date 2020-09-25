@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Fivethirtyeight Riddler: Golf Percentages"
-date: 2020-08-21
+date: 2020-09-25
 categories: Misc
 tags: [fivethiryeight, puzzles, riddler]
 ---
