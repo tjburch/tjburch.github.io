@@ -27,6 +27,7 @@ date: 2020-04-04
 - _The Shift_ - Colby Martin
 - _Promise Me, Dad: A Year of Hope, Hardship, and Purpose_ - Joe Biden
 - _The Sin of Certainty_  - Peter Enns
+- _How to Be an Antiracist_ - Ibram X. Kendi
 
 ## The Great Courses Lectures Completed:
 
@@ -38,4 +39,4 @@ date: 2020-04-04
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - September 23, 2020
+Last Update - October 23, 2020
