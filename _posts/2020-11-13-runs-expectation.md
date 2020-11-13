@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Box Score Thoughts: Tempering Runs Expectations from Hits"
+title: "Box Score Thoughts: Tempering Run Expectations from Hits"
 date: 2020-11-13
 categories: Baseball
 tags: [baseball]
