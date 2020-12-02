@@ -30,6 +30,10 @@ date: 2020-04-04
 - _How to Be an Antiracist_ - Ibram X. Kendi
 - _Scarcity: Why Having Too Little Means So Much_ - Sendhil Mullainathan, Eldar Shafir
 
+## Textbooks Completed:
+
+- _Statistical Rethinking_ - Richard McElreath
+
 ## The Great Courses Lectures Completed:
 
 - _Understanding Complexity_ - Scott E. Page
