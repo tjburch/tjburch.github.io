@@ -29,6 +29,7 @@ date: 2020-04-04
 - _The Sin of Certainty_  - Peter Enns
 - _How to Be an Antiracist_ - Ibram X. Kendi
 - _Scarcity: Why Having Too Little Means So Much_ - Sendhil Mullainathan, Eldar Shafir
+- _The Universe Speaks in Numbers: How Modern Math Reveals Nature's Deepest Secrets_ - Graham Farmelo
 
 ## Textbooks Completed:
 
@@ -44,4 +45,4 @@ date: 2020-04-04
 - _Caffeine: How Caffeine Created the Modern World_ - Michael Pollan
 - _The Burnout Generation_ - Anne Helen Petersen
 
-Last Update - November 19, 2020
+Last Update - December 11, 2020
