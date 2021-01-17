@@ -11,5 +11,6 @@ date: 2021-01-01
 
 - _The Model Thinker: What You Need to Know to Make Data Work for You_ - Scott E. Page
 - _In Defense of Food: An Eater's Manifesto_ - Michael Pollan
+- _Whistling Vivaldi: How Stereotypes Affect Us and What We Can Do_ - Claude M. Steele
 
-Last Update - January 7, 2021
+Last Update - January 17, 2021
