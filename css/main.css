@@ -33,6 +33,7 @@ nav ul li{margin-right: 5em;}
 footer ul li {
     margin-right: 2em;
     padding-left:0.5em;
+    
 }
 
 a {
@@ -46,6 +47,10 @@ a:hover {
 h1, h2, h3, p, li {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
+li {
+    color: seashell;
+}
+
 h1 {
     font-size: 3em;
     color: seashell;    
