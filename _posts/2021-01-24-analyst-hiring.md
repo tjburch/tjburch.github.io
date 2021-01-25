@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tyler Burch, Baseball Analyst"
-date: 2021-01-24
+date: 2021-01-25
 categories: Baseball
 tags: [baseball]
 ---
