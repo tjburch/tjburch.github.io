@@ -14,7 +14,7 @@ tags: [baseball]
 </ul>
 
 
-Almost a year ago to the date I posted what was by far the most popular post on this blog - [a summary of my experience applying to jobs in baseball](http://tylerjamesburch.com/blog/baseball/interview-experience). That application cycle yielded two interviews, but unfortunately, none converted to job offers. 
+Almost a year ago to the day, I posted what was by far the most popular post on this blog - [a summary of my experience applying to jobs in baseball](http://tylerjamesburch.com/blog/baseball/interview-experience). That application cycle yielded two interviews, but unfortunately, none converted to job offers. 
 
 After that experience, I dusted myself off and did some introspection about my future while wrapping up my Ph.D. and applying to jobs. I wasn't quite ready to let my dream of working in baseball die, and fortunately I received an offer to be a postdoctoral appointee at Argonne National Lab. This gave me the flexibility to continue advancing my skills in statistics and programming, while also doing something interesting (and receiving a paycheck). Also, since I was already was doing graduate research at Argonne, I wouldn't have to relocate in the midst of a pandemic, which was a nice plus. However, from day one, I made sure that I was focused on the next job and that I did everything I could to make myself a better candidate for the next baseball application cycle, even discussing with my supervisor which projects would translate well across domains.
 
