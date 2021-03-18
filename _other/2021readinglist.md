@@ -13,5 +13,6 @@ date: 2021-01-01
 - _In Defense of Food: An Eater's Manifesto_ - Michael Pollan
 - _Whistling Vivaldi: How Stereotypes Affect Us and What We Can Do_ - Claude M. Steele
 - _Calypso_ - David Sedaris
+- _Other Minds: The Octopus, the Sea, and the Deep Origins of Consciousness_ - Peter Godfrey-Smith
 
-Last Update - February 24, 2021
+Last Update - March 18, 2021
