@@ -1,6 +1,6 @@
 ---
 layout: other
-title: "2020 Reading List"
+title: "2021 Reading List"
 date: 2021-01-01
 #categories: Misc
 #tags: [misc]
@@ -16,10 +16,14 @@ date: 2021-01-01
 - _Other Minds: The Octopus, the Sea, and the Deep Origins of Consciousness_ - Peter Godfrey-Smith
 - _Searching for Sunday_ - Rachel Held Evans
 - _A Mind for Numbers: How to Excel at Math and Science (Even If You Flunked Algebra)_ - Barbara Oakley
+- _Comedy Sex God_ - Pete Holmes 
+- _I'm Still Here: Black Dignity in a World Made for Whiteness_ - Austin Channing Brown
+- _Ninety Percent Mental_ - Bob Tewksbury , Scott Miller
+- _Friendship in the Age of Loneliness: An Optimist's Guide to Connection_ -  Adam Smiley Poswolsky
 
 
 ## The Great Courses Lectures Completed:
 
 - _The New Testament_ - Bart D. Ehrman
 
-Last Update - July 13, 2021
+Last Update - August 31, 2021
