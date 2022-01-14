@@ -47,7 +47,7 @@ using StatsPlots
 
 ## baseballr
 
-Prerequisite: a working R installation with baseballr installed. Open R and run the command `devtools::install_github("BillPetti/baseballr")`.
+Prerequisite: a working R installation with baseballr installed. Open R and run: `devtools::install_github("BillPetti/baseballr")`.
 
 Interoperability with R is done via [RCall.jl](https://juliainterop.github.io/RCall.jl/stable/). RCall can load R libraries via the `@rlibrary` macro, which can then be used to call `baseballr` (provided the library is installed). Once the library is loaded, then you can call functions via an R string, and use `rcopy` to migrate an R dataframe to a Julia one.
 
