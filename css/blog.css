@@ -65,7 +65,6 @@ ol{
 }
 .tags-expo-posts{
     color:seashell;
-
 }
 
 .social li{
@@ -74,4 +73,33 @@ ol{
 .fb-share-button{
     position:relative;
     top:-4px;
+}
+
+.max-width {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+pre {
+    white-space: pre-wrap;
 }
