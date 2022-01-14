@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Baseball Data in Julia"
+title: "Accessing Public Baseball Data in Julia"
 date: 2022-01-10
 categories: Baseball
 tags: [baseball, julia]
