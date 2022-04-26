@@ -1,22 +1,11 @@
 ---
-layout: post
+layout: posts
 title: "Classifying MLB Hit Outcomes - Part 3: Studying Re-sampling Methods"
 date: 2020-07-12
 categories: Baseball
 tags: [baseball, statistics]
+excerpt: "Diving into resampling to sort out a very imbalanced class problem"
 ---
-
-<!-- facebook root -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
-
-<ul class="list-inline" id="buttons">
-<!-- twitter share -->
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-3" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<!-- facebook share -->
-<div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-3" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-3&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>  
-
 
 
 ## Further Study at a Model to Predict Hit Outcomes
@@ -27,11 +16,12 @@ Over the last two posts, I've been developing a model to predict hit outcomes. I
 
 I was recently reading [Alan Nathan's blog](http://baseball.physics.illinois.edu/), where he posted a study on [fly ball carry](http://baseball.physics.illinois.edu/carry-v2.pdf). I noticed that the variable used was not absolute spray angle, but an adjusted spray angle - this flips the spray angle sign (+ to - or vice versa) for left-handed batters. In doing so, the spray angle depicts push-pull angle in the _x_ direction rather than absolute _x_. I wanted to take a look at if this might be more informative as a feature to my model<sup>1</sup>. First, I plotted the distribution to see how this changes the spray angle.
 
-<img src="/blogimages/hit_classifier/post3/adj_spray_angle_hist.png" alt="Histograms for absolute and adjusted spray angles"   class="center" style="width:65%;" />
+![center](/blogimages/hit_classifier/post3/adj_spray_angle_hist.png) 
+
 
 We can see the histogram becomes asymmetric, showing that pulling occurs more frequently - hopefully this is something the model can use. Next, I retrained the model, using the adjusted spray angle instead of the absolute spray angle.
 
-<img src="/blogimages/hit_classifier/post3/adj_spray_angle_result.png" alt="Confusion Matrix for models using the absolute (left) and adjusted (right) Spray Angle" class="center" style="width:85%;" />
+![center](/blogimages/hit_classifier/post3/adj_spray_angle_result.png) 
 
 This does help improve accuracy by a bit, bringing another 0.36% accuracy gain, so I chose to keep the adjusted push/pull spray angle in my model in lieu of the absolute spray angle.
 
@@ -62,7 +52,8 @@ An important note here is that when we have imbalanced datasets, one big conside
 
 In such cases, "accuracy" is not always the best metric, so alternatives are used, such as precision, recall, or F1 score. To decide, the major question to ask is if one type of misclassification is particularly worse than another. Answering that question usually comes down to domain expertise. For this problem, my answer is no, miscategorizations for this model are all equivalently undesirable. So then I referenced a flowchart I from [machinelearningmastery.com](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/):
 
-<img src="/blogimages/hit_classifier/post3/metric-flowchart.png" alt="Confusion Matrix for models using the absolute (left) and adjusted (right) Spray Angle" class="center" style="width:60%;" />
+![center](/blogimages/hit_classifier/post3/metric-flowchart.png) 
+
 
 We follow the far left tree of this and stick with accuracy as our evaluation metric. This, however, gives us some assumption about what to expect from re-sampling - since the training will cause the model to learn the population ratios, and the test sample has equivalent population ratios, re-sampling likely will hurt overall performance. Nonetheless, it's worthwhile to study, especially looking at how we can best improve the smallest minority classes.
 
@@ -70,11 +61,11 @@ We follow the far left tree of this and stick with accuracy as our evaluation me
 
 The first approach was to drop each of these techniques into the single multiclassifier with classes for each hit type, to see how each performed. To lead with the result, employing these yielded the following accuracy:
 
-<img src="/blogimages/hit_classifier/post3/single_sampling_comparison.png" alt="Model accuracy when employing various re-sampling techniques" class="center" style="width:70%;" />
+![center](/blogimages/hit_classifier/post3/single_sampling_comparison.png) 
 
 There are a few takeaways to glean from this. First, the suspicion of worse accuracy when re-sampling proved to be true, the best result was our original model without re-sampling the training data. Further, the hesitancy on downsampling specifically also was confirmed - throwing away data and re-sampling down to the minority class proved to give the worst two results. Particularly NearMiss re-sampling did over 20% worse than any other model. To understand why, I plotted the distribution of field outs for the NearMiss training data against all the training data in the launch angle/launch speed space.
 
-<img src="/blogimages/hit_classifier/post3/nearmiss_outs.png" alt="NearMiss field outs" class="center" style="width:50%;" />
+![center](/blogimages/hit_classifier/post3/nearmiss_outs.png) 
 
 The NearMiss strategy of downsampling narrowed the range where field outs occur in this space, so it's not trained to make predictions outside of that region. This explains the poor performance since it only predicts 28% of outs correctly. 
 
@@ -88,7 +79,7 @@ The next approach I wanted to analyze was a two-step classification approach. I 
 
 In the previous appendix, I showed that, if you use the same features in both BDTs, the two-step approach does slightly worse. This might not hold true when employing re-sampling, so I revisited this idea. The approach was to do the binary classification as-is, then apply the re-sampling only on hit candidates (that is, those that passed the binary classification). The following plot shows the accuracy when applying each of the re-sampling approaches described above to just the hit candidates.
 
-<img src="/blogimages/hit_classifier/post3/multi_sampling_comparison.png" alt="Two-Step model accuracy when employing various re-sampling techniques to only the hit classification" class="center" style="width:70%;" />
+![center](/blogimages/hit_classifier/post3/multi_sampling_comparison.png) 
 
 Maybe not a surprise, but the order of which re-sampling methods perform best is consistent between the two-step approach and single model approach; SMOTE still performs best. All of the resampled approaches performed better in the two-step paradigm than in the single large multiclassifier - this is because before it even reaches the multiclassifier, it starts with over 27,000 correct predictions from the binary classifier, which is 82.4% accurate on over 33,000 field outs. Even if the multiclassifier got no correct classifications, the final model would be 51% accurate due to these field outs, which is better than the single model NearMiss accuracy already.
 

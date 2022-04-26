@@ -1,60 +1,42 @@
-<!DOCTYPE html>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+---
+---
 
-<html lang="en">
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/syntax.css"/>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157960843-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-157960843-1');
-    </script>
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include_cached skip-links.html %}
+    {% include_cached browser-upgrade.html %}
+    {% include_cached masthead.html %}
 
-    <title>{{ page.title }}</title>
-		<!-- link to main stylesheet -->
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-    </head>
-
-    <div class="hero-image">
-        <div class="hero-text">
-        <h1 style="font-size:3em;"">Tyler James Burch</h1>
-        <p style="font-size:1.3em;">Particle Physics // Machine Learning // Music // Baseball</p>
-        </div>
+    <div class="initial-content">
+      {{ content }}
     </div>
 
-    <body class="main-text">
-        <div>
-        <nav>
-            <ul>
-                <li><a href="/" class="header-footer">Home</a></li>
-                <li><a href="/about"  class="header-footer">About</a></li>
-                <li><a href="/documents/cv.pdf" class="header-footer">CV</a></li>
-                <li><a href="/blog" class="header-footer">Blog</a></li>
-            </ul>
-        </nav>
+    {% if site.search == true %}
+      <div class="search-content">
+        {% include_cached search/search_form.html %}
+      </div>
+    {% endif %}
 
-        {{ content }}
+    <div id="footer" class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include_cached footer.html %}
+      </footer>
+    </div>
 
-		<footer>
-            <h3 class="social">
-            <ul>
-                <li><a href="mailto:burcht11@gmail.com" class="header-footer">email</a></li>
-                <li><a href="https://github.com/tjburch" class="header-footer">github</a></li>
-                <li><a href="https://gitlab.com/tjburch" class="header-footer">gitlab</a></li>
-                <li><a href="https://twitter.com/tylerjburch?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false" >Follow @tylerjburch</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-            </ul>
-            </h3>
-            <h3 class="associations">
-                    <img src="/images/brslogo.jpeg" class="inline" style="height:64px;"/>
-            </h3>
-        </footer>
-        </div>
-    </body>
+    {% include scripts.html %}
+
+  </body>
 </html>

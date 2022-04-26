@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Fivethirtyeight Riddler: Can The Riddler Bros. Beat Joe DiMaggio’s Hitting Streak?"
 date: 2019-05-12
 categories: Misc
 tags: [fivethiryeight, puzzles, riddler]
+excerpt: "How do theoretical players stack up against Joe Dimaggio?"
 ---
 
 This weekend I took on fivethirtyeight's weekly Riddler question again. The original problem text can be found [here](https://fivethirtyeight.com/features/can-the-riddler-bros-beat-joe-dimaggios-hitting-streak/)).
@@ -18,7 +19,7 @@ The problem statement:
 
 There's two steps to this problem. First, find the probability of getting a hit in a game, which is trivial knowing BA:
 
-<img src="/blogimages/dimaggio-math.png" class="center" style="width:20%;">
+![center](/blogimages/dimaggio-math.png)
 
 {% comment %}
 $$\color{white}{P(\text{no hits}) = (1 - P(\text{hit}))^{\text{attempts}}}$$
@@ -32,7 +33,7 @@ The next step asks "What is the probability of getting a streak of length X in a
 
 But this is why we have computers. I wrote up a simulation to solve this problem simulating the careers of players with the indicated batting average and career length, and found how often said players would beat DiMaggio's hit streak. The results are as shown:
 
-<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/longest_streaks.png" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/longest_streaks.png)
 
 The likelihood of a player beating DiMaggio's record can be thought of as how frequently a simulated careers beats the record compared to the total number of simulated careers. The plot just shows the [5%, 95%] range to avoid outliers from skewing the range. The results:
 
@@ -43,6 +44,6 @@ The likelihood of a player beating DiMaggio's record can be thought of as how fr
 
 For simulation validation, the final simulated BA of each player was plotted, and ensured that it did, in fact line up with the BA in the problem statement. It did, with a coefficient of variation (std/mean) of between 0.01 and 0.02.
 
-<img src="https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/simulated_ba.png" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/simulated_ba.png)
 
 

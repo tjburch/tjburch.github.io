@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Accessing Public Baseball Data in Julia"
-date: 2022-01-10
+date: 2022-01-13
 categories: Baseball
 tags: [baseball, julia]
+excerpt: "Interoperability is the name of the game"
 ---
 
 **tl;dr** - see [this GitHub gist](https://gist.github.com/tjburch/364f244688e0942d5d4cb0ae28cfa053)
@@ -43,7 +44,7 @@ using StatsPlots
     )
 {% endhighlight%}
 
-<img src="/blogimages/baseball_in_julia/example.png" class="center" style="width:50%;">
+![center](/blogimages/baseball_in_julia/example.png)
 
 ## baseballr
 

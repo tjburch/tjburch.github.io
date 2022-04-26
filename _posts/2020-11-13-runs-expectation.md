@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Box Score Thoughts: Tempering Run Expectations from Hits"
 date: 2020-11-13
 categories: Baseball
 tags: [baseball]
+excerpt: "Revisiting some old work, and handling some heteroscadasticity"
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -18,7 +19,7 @@ That night I quickly put together an ad hoc analysis which I posted here, but ne
 
 Just looking at the raw distribution of this parameter space for 2018 data:
 
-<img src="/blogimages/runs_v_hits/raw_data.png" class="center" style="width:50%;">
+![center](/blogimages/runs_v_hits/raw_data.png)
 
 There's a lot to note here. First, most of these points represent many, many games, and this distribution is overwhelmed by the data in the lower corner of the distribution. This is emphasized both by the density contours shown in red and the histograms on each axis. However another key feature here is that width of distribution spreads out as the number of hits increases. This is a quality known as heteroscedasticity, a word which I will never be able to spell right on the first try. It's important to note that one of the assumptions for **traditional** linear regression is that it's _homoscedastic_, so this assumption is violated in this case.
 
@@ -27,17 +28,15 @@ There's a lot to note here. First, most of these points represent many, many gam
 
 After considering several different ways to model this, I ultimately used a Bayesian linear regression model (using PyMC3), with an extra trick to manage the heteroscedasticity. While standard linear regression assumes constant variance, instead I used a linear model for both the mean _and_ variance of the outcome variable. That is to say, we assume that the number of runs is normally distributed, in which both the mean _and variance_ of that normal distribution scale linearly with respect to the number of hits. Expressly, the model is:
 
-<img src="/blogimages/runs_v_hits/model_defn.png" class="center" style="width:20%;">
-
+![center](/blogimages/runs_v_hits/model_defn.png)
 
 Here you can see two linear models for each of the parameters of the normal distribution. I've applied a trick to $$\sigma_i$$, the standard deviation, transforming the linear model with an exponential function in order to ensure that the value is positive. In terms of a directed acyclic graph, this looks like:
 
-<img src="/blogimages/runs_v_hits/DAG.svg" class="center" style="width:35%;">
-
+![center](/blogimages/runs_v_hits/DAG.svg)
 
 This model is then conditioned on the data from 2018, and yields the following distribution, with the 1 and 2 standard deviation bands shown. 
 
-<img src="/blogimages/runs_v_hits/runs_v_hits_heteroscedasticity.png" class="center" style="width:50%;">
+![center](/blogimages/runs_v_hits/runs_v_hits_heteroscedasticity.png)
 
 
 This model has good coverage of the data, and takes into account heteroscedasticity pretty well. Several other models were considered - a standard normally distributed linear regression, a more robust regression using a Student's T-distribution, and this one proved to be the best (in terms of information criteria metrics).
@@ -57,10 +56,10 @@ Recently after seeing a box score with many hits but no runs, I've been thinking
 
 I went and looked at 2018 data for runs scored based on number of hits and did a linear regression:
 
-<img src="/blogimages/runs_v_hits/runs_v_hits_linregression.png" class="center" border="5" style="width:50%;">
+![center](/blogimages/runs_v_hits/runs_v_hits_linregression.png)
 
 As expected, the Pearson Correlation is 0.779, which falls under "strongly correlated." In an attempt to try to get to some prediction method, I calculated the mean at every hit value, and plotted those values, then tried to fit that data. 
 
-<img src="/blogimages/runs_v_hits/runs_v_hits.png" class="center" border="5" style="width:50%;">
+![center](/blogimages/runs_v_hits/runs_v_hits.png)
 
 Looking at just the means, a linear fit does not match the data well, so a polynomial fit of order 2 was used, which does. The coefficient on the x<sup>2</sup> term appears small, but once you get to 6 hits, it raises the expectation by an additional run. Once you add standard deviation uncertainty lines to this plot though, you could see that within the 68% confidence interval of 1 sigma, a linear fit could probably work just as well to this data.

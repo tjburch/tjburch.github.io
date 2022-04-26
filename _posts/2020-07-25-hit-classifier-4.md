@@ -1,22 +1,13 @@
 ---
-layout: post
+layout: posts
 title: "Classifying MLB Hit Outcomes - Part 4: Application and Reflection"
 date: 2020-07-25
 categories: Baseball
 tags: [baseball, statistics]
+excerpt: "Creating a practical application for the hit classifier (along with some reflections on the model development)"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-<!-- facebook root -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
-
-<ul class="list-inline" id="buttons">
-    <!-- twitter share -->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-4" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- facebook share -->
-    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-4" data-layout="button_count" data-size="small" id="button2"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-4&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>  
 
 Over the last 3 posts, I've shown the construction of a model to predict hit outcomes based on kinematics such as the launch angle, exit velocity, and spray angle, as well as additional properties such as sprint speed and park factors. In this post, I'll look at an application of it, and do some final reflections on the utility of this model.
 
@@ -27,7 +18,7 @@ A common stat to evaluate offensive production is [Weighted On Base Average (wOB
 
 To calculate wOBA, multiply each offensive result that advances baserunners (BB, HBP, 1B, 2B, 3B, HR) by its relative weight, and sum. Then, divide that value by all possible opportunities. Explicitly,
 
-<img src="/blogimages/hit_classifier/part4/woba_calculation.png" class="center" style="width:95%;">
+![center](/blogimages/hit_classifier/part4/woba_calculation.png)
 
 where variables preceded by "n" indicate "number of" (e.g. _n1B_ = number of singles), and variables with "w" indicate a weight. The linear weights [vary year-to-year](https://www.fangraphs.com/guts.aspx?type=cn) based on run environment.
 
@@ -43,19 +34,19 @@ If you're into baseball stats, you might be thinking this sounds _very_ familiar
 
 I evaluated model-based wOBA using 2019 data<sup>1</sup> on all qualified hitters. First, I made the pair plot of true wOBA (scraped from [FanGraphs](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2019&month=0&season1=2019&ind=0&team=0&rost=0&age=0&filter=&players=0&startdate=2019-01-01&enddate=2019-12-31&sort=16,d), denoted fg_woba), wOBA calculated by my model (model_woba), and xwOBA (scraped from [Baseball Savant](https://baseballsavant.mlb.com/leaderboard/expected_statistics)). Since we're capturing similar information with these statistics, they ought to be correlated.
 
-<img src="/blogimages/hit_classifier/part4/woba_pairplot.png" class="center" style="width:70%;">
+![center](/blogimages/hit_classifier/part4/woba_pairplot.png)
 
 The Pearson Correlation between my model and true wOBA is 60%, while the correlation between xwOBA and true wOBA is 86%. Looking at the pair plot, there does seem to be a difference of scale - overlaying the histograms shows this more explicitly.
 
-<img src="/blogimages/hit_classifier/part4/unscaled_woba_hist.png" class="center" style="width:70%;">
+![center](/blogimages/hit_classifier/part4/unscaled_woba_hist.png)
 
-This plot accentuates the differences in both mean and deviation for these distributions. This isn't unexpected however - wOBA is scaled to league average OBP, so that it's easily parsable. This is a common approach for stat construction in baseball, so for interpretability, we'll apply this transform to the model evaluations too. For observation _x_0_, we transform by subtracting the mean of it's distribution, then scale by the ratio of the standard deviations to set the distribution deviation, then finally add the mean about which we wish to center the distribution.
+This plot accentuates the differences in both mean and deviation for these distributions. This isn't unexpected however - wOBA is scaled to league average OBP, so that it's easily parsable. This is a common approach for stat construction in baseball, so for interpretability, we'll apply this transform to the model evaluations too. For observation $$x_0$$, we transform by subtracting the mean of it's distribution, then scale by the ratio of the standard deviations to set the distribution deviation, then finally add the mean about which we wish to center the distribution.
 
-<img src="/blogimages/hit_classifier/part4/transform.png" class="center" style="width:30%;">
+![center, width=80%](/blogimages/hit_classifier/part4/transform.png)
 
 This makes the full distribution of the model-based wOBA now look much more like the other distributions (now shown with kernel density estimate, since 3 overlaying histograms are hard to distinguish<sup>2</sup>), with no loss of information.
 
-<img src="/blogimages/hit_classifier/part4/scaled_woba_kde.png" class="center" style="width:60%;">
+![center](/blogimages/hit_classifier/part4/scaled_woba_kde.png)
 
 Now that the stats are comparable, we can look at how players are affected by evaluating wOBA using the model, rather than the outcome based wOBA. This plot shows model-based wOBA vs true wOBA. You can scroll over each data point to see which player it represents, along with their xwOBA. 
 
@@ -124,4 +115,4 @@ Other thoughts might be to investigate
 
 [2] Proof:
 
-<img src="/blogimages/hit_classifier/part4/scaled_woba_hist.png" class="center" style="width:60%;">
+![center](/blogimages/hit_classifier/part4/scaled_woba_hist.png)

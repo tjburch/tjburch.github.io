@@ -1,38 +1,37 @@
 ---
-layout: post
+layout: posts
 title: "Astros 2017 K% Change"
 date: 2019-11-14
 categories: Baseball
 tags: [baseball]
+excerpt: "Perhaps we're being a bit hyperbolic"
 ---
 
 This week, major news broke about the Astros stealing signs at home in 2017, and relaying this information to their players via hitting a trash can in their dugout. There's been a lot of mixed reporting on how much this actually affected their play. Some have argued there wasn't significant impact, citing that they performed comparably, or even better, on the road. Others, such as [this study](https://www.reddit.com/r/baseball/comments/dw9wnd/the_astros_home_k_dropped_from_244_in_2016_to_166/) by a Reddit user claim that it dramatically helped them, referencing their year-to-year K%.
 
-<img src="https://i.redd.it/k2upnaryqny31.png" class="center" border="5" style="width:70%;">
+![center](https://i.redd.it/k2upnaryqny31.png)
 
 The oversight in this study is that the personnel changed dramatically between 2016 and 2017, getting rid of players like Castro, Rasmus, Valbuena, and Gomez, while acquiring players like Beltran and Reddick. This is something that I wanted to investigate further, trying to remove the influence of the changing players.
 
 I decided to take a look into _just_ the players that had PAs in both 2016 and 2017, giving continuity over the years, and providing samples in both a time before and after the trash can sign stealing began. Ultimately this list came to the following players:
 
-- Jose Altuve
-- Alex Bregman
-- Carlos Correa
-- Evan Gattis
-- Marwin Gonzalez
-- Yuli Gurriel
-- Tony Kemp
-- Jake Marisnick
-- Colin Moran
-- AJ Reed
-- George Springer
-- Max Stassi
-- Tyler White
+- Jose Altuve  
+- Alex Bregman  
+- Carlos Correa  
+- Evan Gattis  
+- Marwin Gonzalez  
+- Yuli Gurriel  
+- Tony Kemp  
+- Jake Marisnick  
+- Colin Moran  
+- AJ Reed  
+- George Springer  
+- Max Stassi  
+- Tyler White  
 
 For these players, their K% does still drop significantly, from 22.2 to 16.5%. Ultimately this is a 5.7 K% drop year-over-year, and evaluating against the plot above, it's a **25.7% change**. Getting back to the question of, "did sign stealing actually help them all that much," comparing to the presented plot, this would certainly still be an extreme value, so naively it seems like it most probably did help. However, I don't think you can entirely rule out the null hypothesis, the author cites that the Rangers change from 2009 to 2010 was 25.6%, nearly identical to the change the Astros experienced. Crudely adjusting that plot:
 
-<img src="/blogimages/astros-krate.png" class="center" style="width:70%;">
-
-
+![center](/blogimages/astros-krate.png)
 
 
 The full work can be found in [this jupyter notebook](https://github.com/tjburch/baseball-studies/blob/master/notebooks/astros_krate_continuity.ipynb).

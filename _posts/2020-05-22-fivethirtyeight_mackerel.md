@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Fivethirtyeight Riddler: Can You Find The Fish In State Names?"
 date: 2020-05-22
 categories: Misc
 tags: [fivethiryeight, puzzles, riddler]
+excerpt: "Or, 'how I learned the word pneumonoultramicroscopicsilicovolcanoconiosis'"
 ---
 
 [Original problem page](https://fivethirtyeight.com/features/somethings-fishy-in-the-state-of-the-riddler/)
@@ -30,7 +31,7 @@ First things first, I downloaded the data linked in the original problem stateme
 
  In essence, that's not really the question we're worried about. For the comparison we're making, we're interested in the number of _unique_ characters in each word. Those figures are lower than the total dataset - the mean is 7.71, median is 8, and standard deviation is 1.9. Further, this reduces the problem to 101,137 unique character sets, from the original 263,533.
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/count_distribution.png?raw=true" class="center" border="5" style="width:80%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/count_distribution.png?raw=true) 
 
 The word with the most unique characters is "phenylthiocarbamides," which uses an impressive 20 out of the 26 letters in the alphabet. According to [wikipedia](https://en.wikipedia.org/wiki/Phenylthiocarbamide), this is:
 
@@ -50,12 +51,12 @@ For the first part of the problem, I need to find the length of the longest word
 
 From there, I removed the stopping condition once a match was found, and reran for the full dataset (computationally, this problem was manageable; this ran quickly). I found 45,385 words that met the criteria of sharing letters with all but one state. These words match the total population well, the mean word length is similar at 9.37.
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/passing_distribution.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/passing_distribution.png?raw=true) 
 
 
 Next, I look at the extra credit portion of the question - which state has the most words which don't share letters with only it. The way I set up the function to check if a word was a "mackerel," it returned the name of the state which it shared no letters with; this return was designed to solve this part of the problem. I summed the counts for each state and found the following results:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/states_distribution.png?raw=true" class="center" border="5" style="width:80%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/states_distribution.png?raw=true) 
 
 
 This gives us the solution that:
@@ -65,7 +66,7 @@ This gives us the solution that:
 One note here is that four states with the most "Mackerels" are Ohio (11,342), Alabama (8,274), Utah (6,619), and Mississippi (4,863). These are notable because they have 3, 4, 4, and 4 _unique_ letters in them, respectively. This gets back to something I mentioned earlier: the real question here is how many _unique_ characters are in each. So I took a look at the correlation between number of "mackerels," the words that don't share letters with only that state, and the number of unique characters in the state name. 
 
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/scatter_state.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2020_May22/plots/scatter_state.png?raw=true) 
 
 As expected, these exhibit a negative correlation, to the tune of -0.53, meaning the more unique characters a state has, the fewer of these words we expect. The states with the fewest number of "mackerels" both have 7 unique characters, Connecticut (9 "mackerels") and Michigan (7 "mackerels"). The states with the most unique characters are North Dakota and New Mexico, each with 9 unique characters. As expected, both of these are in the bottom 6 in terms of number of "mackerels," with 54 and 30 respectively.
 

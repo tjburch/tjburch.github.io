@@ -1,22 +1,12 @@
 ---
-layout: post
+layout: posts
 title: "Classifying MLB Hit Outcomes - Part 2: Optimization"
 date: 2020-05-09
 categories: Baseball
 tags: [baseball, statistics]
+excerpt: "Amping up the hit outcome model with feature engineering and hyperparameter optimization"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-<!-- facebook root -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
-<ul class="list-inline" id="buttons">
-    <!-- twitter share -->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-2" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- facebook share -->
-    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-2" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-2&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>  
-
 
 
 
@@ -24,7 +14,7 @@ tags: [baseball, statistics]
 
 In [the first part of this series](http://tylerjamesburch.com/blog/baseball/hit-classifier-1), I looked at how launch angle and exit velocity translate to MLB hit outcomes using data from 2018. To predict the outcome of future hits, several models were investigated including k-Nearest Neighbors, a gradient Boosted Decision Tree, and a Support Vector Classifier. Of these three, the tree-based method was the most accurate, correctly classifying 77.7% of hits.
 
-<img src="/blogimages/hit_classifier/unoptimized_gbdt.png" alt="Predictions from the gradient Boosted Decision tree using launch angle, exit velocity, and spray angle as inputs"   class="center" style="width:85%;" />
+![center](/blogimages/hit_classifier/unoptimized_gbdt.png)
 
 That was an out-of-the-box model from Scikit-learn, with just 3 inputs describing the kinematics of the ball, namely the launch angle, spray angle, and exit velocity. In this post, I’ll extend that work by looking at a couple of ways to improve on the model, through incorporating new inputs and optimizing the model parameters.
 
@@ -42,7 +32,7 @@ When considering as an input, I selected to use more granular park factors: the 
 
 In terms of the model, this added 4 new features, 1B park factor, 2B park factor, and so on corresponding to the batter's handedness. Since this is evaluated on 2018 data, I assumed park factors from 2017 were known and used values from [Fangraphs](https://www.fangraphs.com/guts.aspx?type=pfh&teamid=0&season=2017). I retrained the BDT using the park factors and original hit parameter inputs, now using the XGBoost framework (a better and more flexible framework for gBDTs). I've also increased the maximum depth to 12 to allow the model to take advantage of new features.
 
-<img src="/blogimages/hit_classifier/parkfactor_confusion.png" alt="Confusion matrices comparing the original BDT to one with park factors added"   class="center" style="width:85%;" />
+![center](/blogimages/hit_classifier/parkfactor_confusion.png)
 
 By increasing depth, the accuracy improves marginally from the previous 77.7% to 77.8%. Then, by adding the park factors, this increases up to 78.2%. Also notably, it now is predicting a handful of triples accurately - 6 correct of the 432 in the dataset.
 
@@ -52,7 +42,7 @@ Another factor in hits is how fast the player can run. With respect to extra-bas
 
 To add this information into the model, I included player sprint speed from the 2017 season<sup>1</sup>, which is available at [Baseball Savant](https://baseballsavant.mlb.com/sprint_speed_leaderboard). I made a small quality cut, requiring at least 10 attempts. Players that either did not play in the 2017 season or who failed that cut were assigned the mean sprint speed value.
 
-<img src="/blogimages/hit_classifier/sprint_confusion.png" alt="Confusion matrices comparing the original BDT to one with sprint speed added"   class="center" style="width:85%;" />
+![center](/blogimages/hit_classifier/sprint_confusion.png)
 
 Adding this information only marginally improves the model, improving accuracy by just 0.02%. Most of that improved accuracy comes from better predicting doubles, however this model also predicts 5 triples correctly (and only one of those triples was the same as the correctly predicted one from the park factor model).
 
@@ -61,7 +51,7 @@ Adding this information only marginally improves the model, improving accuracy b
 
 So far, we've looked at improving the BDT through adding park effect information and sprint speed to the original hit kinematic variables independently. Now, we can put those together and see how this model performs. For those of you counting along, this model has 8 inputs: 3 hit parameters, 4 park effect variables, and sprint speed.
 
-<img src="/blogimages/hit_classifier/newfeature_confusion.png" alt="Confusion matrix adding all new inputs"   class="center" style="width:85%;" />
+![center](/blogimages/hit_classifier/newfeature_confusion.png)
 
 Putting all this information together gives a slightly better model than any prior ones, at 78.24% accuracy. Ultimately this gain is still small, but still of interest: this model now correctly predicts 10 triples. Obviously, while better than before, this isn't an overwhelming success, but it highlights how difficult triples are to predict. The model also is better at predicting doubles (from 46% to 50%) and home runs (from 73% to 76%). 
 
@@ -77,15 +67,15 @@ The two hyperparameters we'll look at are ```max_depth``` and ```learning_rate``
 
 I trained models first finding the best possible depth, all other hyperparameters kept the same, then the best learning rate (using the best depth found before). The best value for maximum depth was 5, beyond that the accuracy on testing data doesn't improve, and it just becomes more overfit on the training data. For learning rate, accuracy leveled out on training data at 0.3. 
 
-<img src="/blogimages/hit_classifier/real_HP_optimization.png" alt="Hyperparameter optimization for max depth (left) and learning rate (right)"   class="center" style="width:80%;" /> 
+![center](/blogimages/hit_classifier/real_HP_optimization.png)
 
 As far as number of trees used, another important hyperparameter, I employ "early stopping." If the model hasn't improved for 30 trees, then it will stop producing additional trees. The number of trees is then set to a large value, I chose 200, intending to stop before this number. To verify this, I trained models at various values for maximum number of trees and find that it hits this wall by about 100, so this configuration is fine for that hyperparameter. The final model looked at 121 trees in training, meaning there were not additional improvements beyond the 91st tree.
 
-<img src="/blogimages/hit_classifier/n_trees_opt.png" alt="Accuracy for various values for number of trees"   class="center" style="width:45%;" /> 
+![center](/blogimages/hit_classifier/n_trees_opt.png)
 
 Finally, I built a model using these optimized hyperparameters, and generated the confusion matrix again.
 
-<img src="/blogimages/hit_classifier/nfinal_confusion.png" alt="Confusion matrix for the original model (left), the model with all new features added (center), and the hyperparameter optimized model (right)"   class="center" style="width:100%;" /> 
+![center](/blogimages/hit_classifier/nfinal_confusion.png)
 
 The model has improved to 78.78% accurate, which is a nice improvement over the prior models. Most of that improvement comes from better predicting singles and home runs. It does make sense that the optimization prioritized these, since singles are the most dominant non-out hit type - in the testing data, there's 12,762 singles compared to 7,439 other hits (4,184 doubles, 432 triples, and 2,823 home runs). Unfortunately, this comes at the sacrifice of triples - the new model moves down to just 3 predicted accurately.
 
@@ -97,7 +87,7 @@ In adding new variables that I assumed would be useful in helping predict outcom
 
 Looking at the feature importance of the final model can confirm this; all of these features are far less useful than the original 3 we started from. The feature importance shows either the improvement in accuracy by cutting on a feature (gain), or a count of how many times a feature is cut on (weight). By both metrics, the hit kinematics are far more important in the prediction than any of the other features.
 
-<img src="/blogimages/hit_classifier/hp_optimized_importance.png" alt="Feature Importance for HP optimized model"   class="center" style="width:80%;"/>
+![center](/blogimages/hit_classifier/hp_optimized_importance.png)
 
 An additional upshot of doing this work is that the model does predict a handful of triples correctly, and sees an improvement in home runs and singles as well. Future posts will start looking at ways to improve further, investigating methods of balancing out the dataset, so knowing that these additional features help in that prediction gives a better starting point in approaching that problem.
 
@@ -108,26 +98,26 @@ The code for this post can be found in [this Jupyter Notebook](https://github.co
 
 In the development of this, I considered developing a multi-level model to improve the performance. The basic idea was to have one binary classifier to identify "is this a hit or not?" and one multiclassifier to identify "what type of hit is this?" I liked this idea, since it takes the single very imbalanced classification problem and converts it to a balanced binary classification and a _somewhat_ less imbalanced multiclassfication. Additionally, I thought different models might perform better at one task over the other, and this gives that flexibility.
 
-<img src="/blogimages/hit_classifier/two_model_accuracy.png" alt="Accuracies for various model types"   class="center" style="width:80%;"/>
+![center](/blogimages/hit_classifier/two_model_accuracy.png)
 
 I found that in both cases the BDT still performs the best, the left showing for the binary classifier (hit or not), the right for the multiclassifier (what type of hit). There's not really a strong motivation to change the features in one over the other: the hit kinematics, park factors, and player speed are all relevant to both questions, so the same features are used in each.
 
 
 If both models are BDTs, and both have the same input features, there shouldn't be an advantage in splitting the model in two stages in this manner (provided there are sufficient trees, verified above). Nonetheless, I went ahead and tried it, first optimizing the hyperparameters for each classifier.
 
-<img src="/blogimages/hit_classifier/binary_HP_optimization.png" alt="HP optimization for the binary classifier"   class="center" style="width:80%;"/>
+![center](/blogimages/hit_classifier/binary_HP_optimization.png)
 
-<img src="/blogimages/hit_classifier/multi_HP_optimization.png" alt="HP optimization for the multi classifier"   class="center" style="width:80%;"/>
+![center](/blogimages/hit_classifier/multi_HP_optimization.png)
 
 The binary classifier is optimized at depth 6, and learning rate 0.15. The multiclassifier is optimized at more shallow trees, just depth 3. A learning rate of 0.15 is optimum for it as well.
 
 Additionally, I scanned over the probability distribution output by the binary classifier, to find the most accurate point to draw the distinction of what I consider a hit. The left plot shows the probability score the BDT assigns on the whole testing set, the right shows the _overall_ accuracy if the cut to distinguish "hit" is made at that point.
 
-<img src="/blogimages/hit_classifier/binary_prob_cuts.png" alt="HP optimization for the multi classifier"   class="center" style="width:80%;"/>
+![center](/blogimages/hit_classifier/binary_prob_cuts.png)
 
 It was found to be optimum at 0.55 (expected to be around 0.5, so this is good). Instances higher than that are considered hits and evaluated by the multiclassifier, lower than that are classified as field outs. Then, drawing the confusion matrix, I find that, in fact, this model does marginally worse.
 
-<img src="/blogimages/hit_classifier/confusion_multi_level.png" alt="Confusion matrix fro the original model (left), optimized single model (middle), and multi-level model (right)"   class="center" style="width:100%;"/>
+![center](/blogimages/hit_classifier/confusion_multi_level.png)
 
 Granted, we're still looking at differences of tenths of a percent, so this loss isn't incredibly meaningful. When I consider resampling approaches in the upcoming posts, though, I'll keep this model in mind since it will reduce the number of instances that fall into the imbalanced dataset.
 

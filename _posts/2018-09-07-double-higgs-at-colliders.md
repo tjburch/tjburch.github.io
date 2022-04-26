@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Double Higgs Production at Colliders Workshop - VBF HH Generation and Benchmarks"
 date: 2018-09-07
 categories: Physics
 tags: [physics, talks, HH]
+excerpt: "Double the Higgs, double the fun!"
 ---
 
 I recently was given the opportunity to speak at the Double Higgs Production at Colliders Workshop. This workshop was a really interesting one, with involvement from ATLAS, CMS, and theorists. Contributions covered experimental results from many di-Higgs decay channels, analysis techniques, phenomenology, and more. There were a ton of great discussions and interesting talks.
@@ -12,4 +13,4 @@ I gave a talk on VBF HH Generation and Benchmarks. Di-Higgs production is a very
 
 My talk, summarizing the production mode, why it's interesting for HH, studies thus far, prospects for the future, and more can be found [here](https://indico.cern.ch/event/731450/contributions/3099727/attachments/1712396/2761176/vbf_hh_burch2018_final.pdf).
 
-<img src="/blogimages/doublehiggsatcolliders.jpg" alt="" class="center" border="5" style="width:60%;"/>
+![center](blogimages/doublehiggsatcolliders.jpg) 

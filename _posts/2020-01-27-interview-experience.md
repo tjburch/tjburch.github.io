@@ -1,26 +1,18 @@
 ---
-layout: post
+layout: posts
 title: "Applying to Work in MLB Front Offices - My Experience"
 date: 2020-01-27
 categories: Baseball
 tags: [baseball, jobs]
+excerpt: "A summary of my experience applying to work in MLB Front Offices over the 2019-2020 offseason"
 ---
-<!-- facebook root -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
-<ul class="list-inline" id="buttons">
-    <!-- twitter share -->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/interview-experience" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- facebook share -->
-    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/interview-experience" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Finterview-experience&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>  
 
 
 Over the last few months, I've applied for several jobs in MLB front offices. I wanted to recount my experience so others could see what this process looks like:  the work required in the application process, the application timeline, people you interact with, and so on. For visitors, I'm a Ph.D. student working in particle physics writing my dissertation and am looking for the next step afterward.
 
 Most of my research is data analysis on large datasets, and I do baseball analysis in my spare time, often with similar methodology to my research, so I figured applying for these jobs would be a logical progression of my career, and one where I have experience. I'm purposefully omitting specifics on questions I was asked in questionnaires and names as well, however, I hope this account is interesting nonetheless.
 
-<img src="/blogimages/busch-stadium-new-3.jpg" alt="Busch Stadium, St. Louis"   class="center" style="width:50%;" />
+![center](/blogimages/busch-stadium-new-3.jpg)
 
 
 ## Tampa Bay Rays

@@ -1,9 +1,10 @@
 ---
-layout: post
+layout: posts
 title: "Fivethirtyeight Riddler: Which Baseball Team Will Win The Riddler Fall Classic?"
 date: 2019-09-27
 categories: Misc
 tags: [fivethiryeight, puzzles, riddler]
+excerpt: "Revisiting more fake-baseball for 538"
 ---
 
 This weekend I took on fivethirtyeight's weekly Riddler question again. The original problem text can be found [here](https://fivethirtyeight.com/features/which-baseball-team-will-win-the-riddler-fall-classic/).
@@ -18,7 +19,7 @@ The solution to this was pretty straightforward. Basically my approach was to ru
 
 I run this simulation over and over, and find the ratio of passing to the total number of attempts, shown in this plot (note the log scaled x-axis):
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/express_solution.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/express_solution.png?raw=true)
 
 Since the simulation wasn't very intensive, 100,000,000 attempts were made, converging on **a probability of 0.1406 ± 0.0001**. For the uncertainty, I took the 95% confidence interval, as calculated using the [Agresti–Coull interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval), where the CI is z\*sqrt(p*(1-p)/N), for p "passing results," N attempts, and z value of 1.96 corresponding to the 95% CI.
 
@@ -42,26 +43,26 @@ The Jupyter notebook found [here](https://github.com/tjburch/puzzles/blob/master
 
 The solution found that:
 
->### The __Tennessee Taters have the best record__ at a __.573 winning percentage__.
->### The __Mississippi Moonwalkers__ were in the middle with a __.534 winning percentage__.
->### The __Delaware Doubloons__ were the worst with a __.393 winning percentage__.
+>### The __Tennessee Taters have the best record__ at a __.573 winning percentage__.  
+>### The __Mississippi Moonwalkers__ were in the middle with a __.534 winning percentage__.  
+>### The __Delaware Doubloons__ were the worst with a __.393 winning percentage__.  
 
 I also plotted winning percentage as games were played, to see how the solution evolved as games were simulated:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/winning_percentage.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/winning_percentage.png?raw=true)
 
 Also of interest was the scoring distribution of each team, to better understand the game as defined. Since we know the actions and rates of each team, it's interesting to see exactly how those translate to runs within the confines of a standard baseball game.
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/scoring_multiplot.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/scoring_multiplot.png?raw=true)
 
 We can also overlay these onto one plot:
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/scoring_overlay.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/scoring_overlay.png?raw=true)
 
 Last, we can look at head-to-head winning percentages. These plots were made from the winning team's perspective, but to get the losing team's winning percentage, you'd just mirror over the x-axis.
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/tm_relative.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/tm_relative.png?raw=true)
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/td_relative.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/td_relative.png?raw=true)
 
-<img src="https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/md_relative.png?raw=true" class="center" border="5" style="width:60%;">
+![center](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/plots/md_relative.png?raw=true)

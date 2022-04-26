@@ -1,22 +1,12 @@
 ---
-layout: post
+layout: posts
 title: "Classifying MLB Hit Outcomes - Part 1: Model Selection"
 date: 2020-04-21
 categories: Baseball
 tags: [baseball, statistics]
+excerpt: "Can we classify the outcome of a baseball hit based on the hit kinematics?"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-<!-- facebook root -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
-
-<ul class="list-inline" id="buttons">
-    <!-- twitter share -->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/hit-classifier-1" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- facebook share -->
-    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/hit-classifier-1" data-layout="button_count" data-size="small" id="button2"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fhit-classifier-1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>  
 
 
 
@@ -24,13 +14,11 @@ tags: [baseball, statistics]
 
 In 2015, MLB introduced [_Statcast_](http://m.mlb.com/glossary/statcast) to all 30 stadiums. This system monitors player and ball movement through the combination of two tracking systems: a Trackman Doppler radar and HD Chyron Hego cameras. This has provided a wealth of new information to teams, but also has introduced many new terms to broadcasting parlance. Two specific terms, _exit velocity_ and _launch angle_, have been used quite frequently since, with good reason - they're very evocative of the action happening on the field.
 
-
-<img src="https://i.pinimg.com/originals/83/ee/cf/83eecf866a1fdef06bc1ea3bcd8acc0b.png" alt="Mike Trout Hitting Metrics"   class="center" style="width:70%;" />
-
+![center](https://i.pinimg.com/originals/83/ee/cf/83eecf866a1fdef06bc1ea3bcd8acc0b.png)
 
 The exit velocity is the speed of the ball off of the bat, the launch angle is the vertical angle off the bat (high values are popups, near zero values are horizontal, negative values are into the ground). When these started becoming more popular, I found myself thinking quite often, "how do I know if this is _good_ or not?" With exit velocity, it's fairly easy to conceptualize, but less transparent for launch angle. This led me to try plotting these two variables using hit outcome as a figure of merit. The shown chart uses data from the 2018 season.
 
-<img src="/blogimages/hit_classifier/2018_results.png" alt="Hit outcomes by Launch Angle and Launch Speed"   class="center" style="width:60%;" />
+![center](/blogimages/hit_classifier/2018_results.png)
 
 There are some macro-trends of note here:
 
@@ -59,7 +47,7 @@ This gave the following takeaways:
 
 An appropriate benchmark for this is a bit non-obvious. This being an imbalanced dataset<sup>2</sup>, an appropriate way to understand if we've gained anything by modeling in the first place is to benchmark over just choosing majority label each time. In the dataset, 62% of the outcomes are outs, so accuracy above and beyond 62% is a gain - all three models perform better than this. In many imbalanced classification problems, the type of error matters heavily (with the canonical example being cancer treatment, where false positives/negatives impact treatment approaches), but it's a bit less obvious what type of errors are "worse" for this problem - probably the best approach is to make sure the model is conservative toward higher valued hits. The confusion matrix gives a good idea of misclassifications.
 
-<img src="/blogimages/hit_classifier/2var_confusion.png" alt="Confusion matrices for the various models evaluated"   class="center" style="width:100%;" />
+![center](/blogimages/hit_classifier/2var_confusion.png)
 
 What we can draw from this:
 
@@ -74,13 +62,13 @@ Up until now, this model has been built by looking at just the launch angle and 
 The third dimension is a very non-trivial factor though. The corners are between 300-350 ft from home, while straight-away is between 390-440 ft. First, we should take a look at how the current models are handling this (plots shown for gBDT):
 
 
-<img src="/blogimages/hit_classifier/spray_angle.png" alt="Spray angle for various events by hit type"   class="center" style="width:100%;" />
+![center](/blogimages/hit_classifier/spray_angle.png)
 
 The spray angle distribution looks similar for outs and singles, but the features for doubles and home runs are not at all present. This means that adding this variable will provide the models with additional information, which should help improve the accuracy. Adding this additional variable, retraining and retesting gives the following:
 
-<img src="/blogimages/hit_classifier/3var_classifier_comp.png" alt="Predicted hit outcomes for the various models evaluated with spray angle"   class="center" style="width:100%;" />
+![center](/blogimages/hit_classifier/3var_classifier_comp.png)
 
-<img src="/blogimages/hit_classifier/3var_confusion.png" alt="Confusion matrices for the various models evaluated with spray angle"   class="center" style="width:100%;" />
+![center](/blogimages/hit_classifier/3var_confusion.png)
 
 Adding this variable helped out the kNN and BDT models considerably. Both increased their correct predictions on outs, singles, doubles, and home runs. Most strikingly, the prediction for doubles went from 17% accurate to 43% accurate for the BDT (24% to 49% for kNN) - this is a huge improvement. Interestingly, the SVC went from an overly liberal decision boundary on singles to an overly conservative one, which actually caused a worse overall accuracy, despite having more information.
 

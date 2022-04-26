@@ -1,17 +1,11 @@
 ---
-layout: post
+layout: posts
 title: "Tyler Burch, Baseball Analyst"
 date: 2021-01-25
 categories: Baseball
 tags: [baseball]
+excerpt: "I got a job!"
 ---
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="3KOCJZwK"></script>
-<ul class="list-inline" id="buttons">
-    <!-- twitter share -->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="http://tylerjamesburch.com/blog/baseball/analyst-hiring" data-via="tylerjburch" data-related="" data-show-count="false" id="button1">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <div class="fb-share-button" data-href="http://tylerjamesburch.com/blog/baseball/analyst-hiring" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftylerjamesburch.com%2Fblog%2Fbaseball%2Fanalyst-hiring&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-</ul>
 
 
 Almost a year ago to the day, I posted what was by far the most popular post on this blog - [a summary of my experience applying to jobs in baseball](http://tylerjamesburch.com/blog/baseball/interview-experience). That application cycle yielded two interviews, but unfortunately, none converted to job offers. 
@@ -26,9 +20,8 @@ Through much of this work, I worked with a library called [pybaseball](https://g
 
 The contract for my postdoctoral appointment was two years, which bought me two hiring cycles to apply. Frankly, I was pretty uncertain about job prospects in the 2020-2021 off-season, with the pandemic and the shortened baseball season, I imagined teams largely didn't have much money to put toward hiring. To my surprise though, there were actually quite a few listings. I applied to all the jobs I thought I might be reasonably well-suited for. With only two cycles, I couldn't burn any opportunities, so I applied to listings from Cleveland, Los Angeles (Dodgers), Toronto, and Boston.
 
-<div class="info-box" style="overflow:hidden;float: left; width: 50%">
-<img src="/images/bosox.png" class="center" style="width:70%;">
-</div>
+![center](/images/bosox.png)
+
 
 I won't belabor the actual application and hiring processes this year, they were very similar to what I outlined [in the last post](http://tylerjamesburch.com/blog/baseball/interview-experience). However, the end result this year was quite different. **I'm proud to announce that I've accepted and started a position with the Boston Red Sox, where I'll be working as an analyst in baseball research and development**. I'm incredibly happy to have received this job offer, and super excited to work for this team. It will be a fantastic place to learn the ropes and start building my career.
 
