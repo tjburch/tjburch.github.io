@@ -7,7 +7,7 @@ main:
    - title: "About"
      url:  /about/
    - title: "CV"
-     url: /documents/cv.pdf/
+     url: /documents/cv.pdf
    - title: "Blog"
      url: /blog/
   # - title: "Sitemap"
