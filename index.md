@@ -6,7 +6,7 @@ author_profile: true
 ![center](images/sox_win.png)
 
 
-Analyst, Bastball Operations - Boston Red Sox
+Analyst, Baseball Operations - Boston Red Sox
 
 Formerly:
 
