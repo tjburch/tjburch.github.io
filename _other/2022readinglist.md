@@ -14,5 +14,6 @@ date: 2022-01-01
 - _Weapons of Math Destruction_ - Cathy O'Neil
 - _The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution_ - Gregory Zuckerman
 - _Shape: The Hidden Geometry of Information, Biology, Strategy, Democracy, and Everything Else_ - Jordan Ellenberg
+- _The Hitchhiker's Guide to the Galaxy_ - Douglas Adams
 
-Last Update - September 4, 2022
+Last Update - September 7, 2022
