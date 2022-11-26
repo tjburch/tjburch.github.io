@@ -15,5 +15,7 @@ date: 2022-01-01
 - _The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution_ - Gregory Zuckerman
 - _Shape: The Hidden Geometry of Information, Biology, Strategy, Democracy, and Everything Else_ - Jordan Ellenberg
 - _The Hitchhiker's Guide to the Galaxy_ - Douglas Adams
+- _The Arm: Inside the Billion-Dollar Mystery of the Most Valuable Thing in Sports_ - Jeff Passan
+- _Peak: Secrets from the New Science of Expertise_ -  Robert Pool, Anders Ericsson
 
-Last Update - September 7, 2022
+Last Update - November 26, 2022
