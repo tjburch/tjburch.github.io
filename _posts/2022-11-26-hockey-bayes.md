@@ -81,7 +81,7 @@ Here we can see that due to having the best score differential (+37), the model 
 
 Last we want to take a look at the posterior predictive distribution. Using the sampled values for parameters, if we reran the matches, what would we expect scoring and win totals to look like. 
 
-This does pose a particular problem though: by construction this model does not forbid ties, the two Poisson processes can yield the same number of goals. However to estimate win totals, we will have to decide those ties.
+This does create a problem though: by construction this model does not forbid ties, the two Poisson processes can yield the same number of goals. However to estimate win totals, we will have to decide those ties.
 
 This was done in a bit of an ad-hoc way. For each simulated season, I took the number of decided wins and number of decided losses for a given team, these would be proportional to their goal creation and goal suppression ability, so it made sense to use. Of the decisions, I created a "win-rate," $$p_{i}$$ given by decided wins divided by total decided matches for each team. In each given matchup, if the Poisson processes yielded a tie, I rolled a Bernoulli trial, with success probability equal to the harmonic mean of $$p_{ih}$$ and $$(1-p_{iv})$$. If the trial is successful, the home team wins the tie, otherwise the away team does.
 
@@ -106,6 +106,8 @@ That being said, this model is built on a slightly shaky foundation, and there i
 Secondarily, latent goal creating and goal suppressing parameters are very broad concepts. Sweeping goal tending and defense into one parameter is definitely not the best possible approach here, and the easiest gain might be to model goal tending itself - possibly by using shots on goal as a Poisson process, and playing a similar game where the rate is lowered by a latent skill parameter of the opposing goalie.
 
 All in all, this study allowed me to employ a model which I've found quite clean on an interesting use-case, the Bruins hot start, giving insights into goal creation and goal suppression ability league-wide so far this year.
+
+Code to replicate this study can be found on [GitHub](https://github.com/tjburch/quick-bayes-hockey-study/blob/main/hierarchical_nhl.ipynb), and data is pulled from the [Hockey-Reference Schedule and Results](https://www.hockey-reference.com/leagues/NHL_2023_games.html).
 
 
 ## Citations
