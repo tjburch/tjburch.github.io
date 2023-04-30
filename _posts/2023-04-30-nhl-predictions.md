@@ -34,8 +34,9 @@ Where $$h$$ is the home ice advantage, $$a$$ is the "attack strength," $$d$$ is 
 
 However, some crucial updates have been made, specifically accounting for the overtime mechanisms in hockey. For games that reach overtime, the $\theta$ parameters are scaled down to the relative time frame 
 
-1. $$\text{ot\_home\_theta} = \text{home\_theta} \times \frac{1}{K},$$
-2. $$\text{ot\_away\_theta} = \text{away\_theta} \times \frac{1}{K}.$$
+$$ \theta_{h,o} = \theta_h \times \frac{1}{K},$$
+
+$$ \theta_{a,o} = \theta_a \times \frac{1}{K}.$$
 
 $$K$$ represents the scaling factor for overtime expectations. For the regular season, $$K = 12$$, since overtime is 5 minutes. In playoff games, $$K$$ is set to 3, as each overtime period lasts one-third of the time of a regulation period. This assumption implies that the goal creation and suppression parameters remain the same during overtime, a necessary compromise given the relatively small dataset of OT games.
 
@@ -47,35 +48,99 @@ I also introduce a custom likelihood function, which compares the observed home 
 
 For each allowed outcome $$(h\_goals, a\_goals)$$, we calculate the log-likelihood of the observed home and away overtime goals as follows:
 
-$\text{log\_likelihood}_{h\_goals, a\_goals} = \log P(y_{ot\_home} | \text{ot\_home\_theta}, h\_goals) + \log P(y_{ot\_away} | \text{ot\_away\_theta}, a\_goals)$$
+$$\text{loglikelihood}_{h_g, a_g} = \log P(y_{h,ot} | \theta_{h,ot}, h_g) + \log P(y_{a,ot} | \theta_{a,ot}, a_g)$$
 
-Here, $$P(y_{ot\_home} | \text{ot\_home\_theta}, h\_goals)$$ and $$P(y_{ot\_away} | \text{ot\_away\_theta}, a\_goals)$$ represent the probabilities of observing the home and away overtime goals, given their respective expected goal rates and the allowed outcome. And recall, these are Poisson distributed.
+Here, $$P(y_{h,ot}) $$ and $$P(y_{a,ot})$$ represent the probabilities of observing the home and away overtime goals, given their respective expected goal rates and the allowed outcome. And recall, these are Poisson distributed.
 
-$$P(y_{ot\_home} | \text{ot\_home\_theta}, h\_goals) \sim \text{Poisson}(\text{ot\_home\_theta} \cdot h\_goals)$$
+$$P(y_{h,ot} | \theta_{h,ot}, h_g) \sim \text{Poisson}(\theta_{h,ot} \cdot h_g)$$
 
-$$P(y_{ot\_away} | \text{ot\_away\_theta}, a\_goals) \sim \text{Poisson}(\text{ot\_away\_theta} \cdot a\_goals)$$
+$$P(y_{a,ot} | \theta_{a,ot}, a_g) \sim \text{Poisson}(\theta_{a,ot} \cdot a_g)$$
 
 Then for custom likelihood function, the log-sum-exp of the log-likelihoods is as follows:
 
-$$\text{overtime\_goals\_likelihood} = \log \left(\sum_{(h\_goals, a\_goals) \in \text{allowed\_outcomes}} \exp\left({\text{log\_likelihood}_{h\_goals, a\_goals}}\right)\right)$$
+$$\text{OT goals likelihood} = \log \left(\sum_{(h_g, a_g) \in \text{outcomes}} \exp\left({\text{loglikelihood}_{h_g, a_g}}\right)\right)$$
 
-Here, $$\exp(\text{log\_likelihood}_{h\_goals, a\_goals})$$ simply represents the likelihood of observing the home and away overtime goals, given their respective expected goal rates and the allowed outcome.
+Here, $$\exp(\text{loglikelihood}_{h_g, a_g})$$ simply represents the likelihood of observing the home and away overtime goals, given their respective expected goal rates and the allowed outcome.
 
 ### Shootouts
 
-For regular season games, if the score is still the same after the overtime consideration, a shootout model is then introduced, modeling the probability of the home team winning the using a familiar logistic regression. I introduce team-specific coefficients for shootout success and failure, denoted by $$\text{so\_coeff\_a}$$ (success) and $$\text{so\_coeff\_d}$$ (failure), as well as an intercept term $$\text{so\_intercept}$$ and a home advantage term $$\text{so\_coeff\_h}$$. The shootout logit is calculated as follows:
+For regular season games, if the score is still the same after the overtime consideration, a shootout model is then introduced, modeling the probability of the home team winning the using a familiar logistic regression. I introduce team-specific coefficients for shootout success and failure, denoted by $$so_o$$ (success) and $$so_d$$ (failure), as well as an intercept term $$so_i$$ and a home advantage term $$so_{adv}$$. Then, we calculate the probability of the home team winning the shootout using the logistic function:
 
-$$\text{so\_logit} = \text{so\_intercept} + \text{so\_coeff\_a}[\text{home\_idx[shootout]}] - \text{so\_coeff\_a}[\text{away\_idx[shootout]}] + \text{so\_coeff\_d}[\text{home\_idx[shootout]}] - \text{so\_coeff\_d}[\text{away\_idx[shootout]}] + \text{so\_coeff\_h} \times \text{home}$$
+$$ \text{logit}(so_{P_\text{home}}) = so_i + (so_{o,h} - so_{o,a}) + (so_{d,h} - so_{d,a}) + so_{adv} * h_i $$
 
-Then, we calculate the probability of the home team winning the shootout using the logistic function:
+Finally, we model the shootout_winner variable as a Bernoulli random variable with probability $$so_{P_\text{home}}$$:
 
-$$\text{so\_prob} = \text{logit}^{-1}(\text{so\_logit})$$
-
-Finally, we model the shootout_winner variable as a Bernoulli random variable with probability $$\text{so\_prob}$$:
-
-$$\text{shootout\_winner} \sim \text{Bernoulli}(\text{so\_prob})$$
+$$\text{shootout winner} \sim \text{Bernoulli}(so_{P_\text{home}})$$
 
 This shootout model is conditioned only on games that went to a shootout.
+
+Frankly, I believe all this is far more transparent with code. So without further ado,
+
+```python
+home_idx, teams = pd.factorize(data["home_team"], sort=True)
+away_idx, _ = pd.factorize(data["away_team"], sort=True)
+
+coords = {
+    "team": teams,
+    "match": np.arange(len(data)),
+}
+
+with pm.Model(coords=coords) as model:
+    # Global model parameters
+    intercept = pm.Normal("intercept", mu=0, sigma=2)
+    home = pm.Normal("home", mu=0, sigma=0.2)
+
+    # Hyperpriors for attacks and defs
+    sd_att = pm.HalfCauchy("sd_att", 0.2)
+    sd_def = pm.HalfCauchy("sd_def", 0.2)
+
+    # Team-specific model parameters
+    atts_star = pm.Normal("atts_star", mu=0, sigma=sd_att, dims="team")
+    defs_star = pm.Normal("defs_star", mu=0, sigma=sd_def, dims="team")
+
+    # Demeaned team-specific parameters
+    atts = pm.Deterministic("atts", atts_star - at.mean(atts_star), dims="team")
+    defs = pm.Deterministic("defs", defs_star - at.mean(defs_star), dims="team")
+
+    # Expected goals for home and away teams during regulation
+    home_theta = at.exp(intercept + home + atts[home_idx] - defs[away_idx])
+    away_theta = at.exp(intercept + atts[away_idx] - defs[home_idx])
+
+    # Likelihood (Poisson distribution) for regulation goals
+    home_points = pm.Poisson("home_points", mu=home_theta, observed=data['home_goals'], dims="match")
+    away_points = pm.Poisson("away_points", mu=away_theta, observed=data['away_goals'], dims="match")
+
+    # Overtime and shootout deterministics
+    overtime = data['home_goals'] == data['away_goals']
+    shootout = (data['home_goals_ot'] == data['away_goals_ot']) & overtime
+
+    # Expected goals for home and away teams during overtime (scaled down by 1/12)
+    ot_home_theta = home_theta * (1 / 12)
+    ot_away_theta = away_theta * (1 / 12)
+
+    # Likelihood (custom likelihood function) for overtime goals
+    if overtime.sum() > 0:
+        pm.Potential("ot_goals_constraint",
+                    overtime_goals_likelihood(data.home_goals_ot, data.away_goals_ot, ot_home_theta, ot_away_theta))
+
+    # Shootout model (conditioned on games that went to shootout)
+    so_coeff_o = pm.Normal("so_coeff_o", mu=0, sigma=1, dims="team")  # Offensive shootout coefficient
+    so_coeff_d = pm.Normal("so_coeff_d", mu=0, sigma=1, dims="team")  # Defensive shootout coefficient
+    so_coeff_h = pm.Normal("so_coeff_h", mu=0, sigma=1)  # Home advantage coefficient
+    so_intercept = pm.Normal("so_intercept", mu=0, sigma=1)  # Intercept term
+
+    so_logit = (so_intercept +
+                so_coeff_o[home_idx[shootout]] - so_coeff_o[away_idx[shootout]] +
+                so_coeff_d[home_idx[shootout]] - so_coeff_d[away_idx[shootout]] +
+                so_coeff_h * home)
+
+    if shootout.sum() > 0:
+        so_prob = pm.math.invlogit(so_logit)
+        shootout_winner = pm.Bernoulli("shootout_winner", p=so_prob, observed=data['shootout_winner'][shootout])
+
+    trace = pm.sample(4000, tune=3000)
+return model, trace
+```
 
 
 ## Playoff Predictions
