@@ -77,6 +77,19 @@ This shootout model is conditioned only on games that went to a shootout.
 Frankly, I believe all this is far more transparent with code. So without further ado,
 
 ```python
+
+def overtime_goals_likelihood(observed_ot_h_goals, observed_ot_a_goals, ot_h_theta, ot_a_theta):
+    allowed_outcomes = [(0, 0), (1, 0), (0, 1)]
+    likelihoods = []
+
+    for h_goals, a_goals in allowed_outcomes:
+        h_likelihood = pm.logp(pm.Poisson.dist(mu=ot_h_theta), observed_ot_h_goals * h_goals)
+        a_likelihood = pm.logp(pm.Poisson.dist(mu=ot_a_theta), observed_ot_a_goals * a_goals)
+        likelihoods.append(h_likelihood + a_likelihood)
+
+    return pm.math.logsumexp(pm.math.stack(likelihoods), axis=0)
+
+    
 home_idx, teams = pd.factorize(data["home_team"], sort=True)
 away_idx, _ = pd.factorize(data["away_team"], sort=True)
 
