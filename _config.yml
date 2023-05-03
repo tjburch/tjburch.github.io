@@ -44,6 +44,13 @@ defaults:
       layout: single
       author_profile: true
 
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-WQ3JL3NLY9"
+    anonymize_ip: false # default
+
+
 # Site owner
 author:
   name: Tyler James Burch
@@ -51,8 +58,6 @@ author:
   bio: "Baseball Analyst for the Boston Red Sox. Interested in Python, Julia, Bayesian Methods, and Uncertainty Quantification in Machine Learning"
   location: Salem, MA
   twitter: tylerjburch
-  google:
-    analytics: UA-15790843-1
   github: tjburch
   linkedin: tylerjburch
   email: burcht11@gmail.com
