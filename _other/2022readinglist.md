@@ -17,5 +17,5 @@ date: 2022-01-01
 - _The Hitchhiker's Guide to the Galaxy_ - Douglas Adams
 - _The Arm: Inside the Billion-Dollar Mystery of the Most Valuable Thing in Sports_ - Jeff Passan
 - _Peak: Secrets from the New Science of Expertise_ -  Robert Pool, Anders Ericsson
+- _The Simplest Baby Book in the World: The Illustrated, Grab-and-Do Guide for a Healthy, Happy Baby_ - Stephen Gross
 
-Last Update - November 26, 2022
