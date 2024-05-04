@@ -6,8 +6,8 @@ main:
      url:  /
    - title: "About"
      url:  /about/
-   - title: "CV"
-     url: /documents/cv.pdf
+   - title: "Resume"
+     url: /documents/resume.pdf
    - title: "Blog"
      url: /blog/
   # - title: "Sitemap"
