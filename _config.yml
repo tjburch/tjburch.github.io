@@ -55,8 +55,8 @@ analytics:
 author:
   name: Tyler James Burch
   avatar: images/bosox.png
-  bio: "Baseball Analyst for the Boston Red Sox. Interested in Python, Julia, Bayesian Methods, and Uncertainty Quantification in Machine Learning"
-  location: Salem, MA
+  bio: "Senior Data Analyst for the Boston Red Sox. Interested in Python, Julia, Bayesian Methods, and Uncertainty Quantification in Machine Learning"
+  location: Peabody, MA
   twitter: tylerjburch
   github: tjburch
   linkedin: tylerjburch
@@ -68,5 +68,7 @@ footer:
       url: "https://twitter.com/tylerjburch"
     - label: "GitHub"
       url: "https://github.com/tjburch"
+    - label: "BlueSky"
+      url: "https://bsky.app/profile/tylerjamesburch.com"
     
   
