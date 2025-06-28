@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2021 Reading List"
-date: 2021-01-01
-#categories: Misc
-#tags: [misc]
+date: 2021-12-31
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2021"
 ---
 
 ## Books Read in 2021:

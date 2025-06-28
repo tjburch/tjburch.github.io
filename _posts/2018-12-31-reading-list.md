@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2018 Reading List"
 date: 2018-12-31
-categories: Misc
-tags: [misc]
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2018"
 ---
 
 ## Books Read in 2018:

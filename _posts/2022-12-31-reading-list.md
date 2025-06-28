@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2022 Reading List"
-date: 2022-01-01
-#categories: Misc
-#tags: [misc]
+date: 2022-12-31
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2022"
 ---
 
 ## Books Read in 2022:

@@ -3,7 +3,7 @@ locale: en_US
 url: http://tylerjamesburch.com
 repository: tjburch/tjburch.github.io
 email:
-description: Homepage for Tyler James Burch
+description: "Senior Data Analyst for the Boston Red Sox. Baseball analytics, data science, and particle physics research."
 twitter_username: tylerjburch
 github_username: tjburch
 minimal_mistakes_skin: dark
@@ -13,15 +13,12 @@ teaser: /images/bosox.png
 og_image: /images/bosox.png
 
 
-plugins: [jekyll-include-cache, jekyll-sitemap]
+plugins: [jekyll-include-cache, jekyll-sitemap, jekyll-assets, jekyll-seo-tag]
 remote_theme: mmistakes/minimal-mistakes@4.24.0
 markdown: kramdown
 highlighter: rouge
 
 permalink: /blog/:categories/:title
-collections:
-  other:
-    output: true
 
 
 defaults:
@@ -55,7 +52,7 @@ analytics:
 author:
   name: Tyler James Burch
   avatar: images/bosox.png
-  bio: "Senior Data Analyst for the Boston Red Sox. Interested in Python, Julia, Bayesian Methods, and Uncertainty Quantification in Machine Learning"
+  bio: "Applying research methods, statistics, machine learning, and Bayesian modeling to solve problems in professional baseball analytics."
   location: Peabody, MA
   twitter: tylerjburch
   github: tjburch

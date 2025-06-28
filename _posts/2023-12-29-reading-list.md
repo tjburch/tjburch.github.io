@@ -1,7 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2023 Reading List"
 date: 2023-12-29
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2023"
 ---
 
 ## Books Read in 2023:

@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "Dissertation Progress and Defense"
 date: 2020-04-04
-#categories: Misc
-#tags: [misc]
+categories: Physics
+tags: [academia, dissertation, physics]
+excerpt: "Updates on my PhD dissertation progress and defense"
 ---
 
 ## Final Draft Submitted!

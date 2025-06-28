@@ -7,3 +7,5 @@ _site/
 Gemfile.lock
 *.gem
 .DS_Store
+
+/.quarto/

@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "Bread!"
 date: 2020-04-01
-#categories: Misc
-#tags: [misc]
+categories: Personal
+tags: [baking, hobbies]
+excerpt: "My bread baking adventures and favorite recipes"
 ---
 
 I've recently developed an interest in bread baking in my (always copious) spare time. For now, I've created this post as a single one to aggregate my collection of my best bread pictures and links to my favorite recipes. Eventually I might flesh these out into individual posts. All images on this are my own bakes :)

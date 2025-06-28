@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2019 Random Visualizations"
 date: 2019-01-01
-categories: Misc
-tags: [misc]
+categories: Personal
+tags: [visualization, data-science]
+excerpt: "Random one-off visualizations from 2019"
 ---
 
 From time to time, I like to make random one-off visualizations to tweet for fun. Sometimes these are meant to be informative, other times they're meant to be humorous, but since I put in various amounts of work making these, I figured I'd collect them and display them all here. Enjoy!

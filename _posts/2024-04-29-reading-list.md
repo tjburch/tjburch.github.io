@@ -1,7 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2024 Reading List"
 date: 2024-04-29
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2024"
 ---
 
 # Books Read in 2024

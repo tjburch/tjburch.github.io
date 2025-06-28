@@ -1,9 +1,10 @@
 ---
-layout: other
+layout: single
 title: "2020 Reading List"
-date: 2020-04-04
-#categories: Misc
-#tags: [misc]
+date: 2020-12-31
+categories: Personal
+tags: [books, reading]
+excerpt: "Books I read in 2020"
 ---
 
 ## Books Read in 2020:
