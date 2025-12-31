@@ -33,10 +33,12 @@ A few reflections after a year of working in R full-time:
 
 Speaking of R, after some initial skepticism, I've grown pretty fond of the `tidymodels` framework.
 
+<div style="display: flex; justify-content: center;">
 <blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:ct7boh6ncbhxjuyrebejsov2/app.bsky.feed.post/3ljr5567d2224" data-bluesky-cid="bafyreibpl3csknoxqosnv3zphztxqbgsqkwy2l62kefh7qey5uvktafowi">
 <p lang="en">I'm here to walk back this take after 3 months. The upfront pain provides a lot of really good guardrails against doing really stupid statistical malpractice, and also makes downstream stuff (e.g. model tuning) trivially easy.</p>
 &mdash; <a href="https://bsky.app/profile/did:plc:ct7boh6ncbhxjuyrebejsov2?ref_src=embed">Tyler Burch (@tylerjamesburch.com)</a> <a href="https://bsky.app/profile/did:plc:ct7boh6ncbhxjuyrebejsov2/post/3ljr5567d2224?ref_src=embed">March 7, 2025</a>
 </blockquote>
+</div>
 <script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
 
 Following my personal policy of helping out the libraries that help me, I made a couple of small PRs to `tidymodels`, probably the most interesting being [adding fold weighting to the `tune` package](https://github.com/tidymodels/tune/pull/1007).
@@ -94,4 +96,8 @@ I have a tendency to value myself entirely based on my work and the things I pro
 
 Right now I'm most appreciating the sense of wonder from my toddler. I dread air travel, airports are awful, logistics are a nightmare, I could go on for hours. But hearing my daughter say "I'm so excited" while getting on a plane, and watching her stare with awe out the window during takeoff, has made me stop for a few moments and appreciate how cool life really can be. There are countless places where getting a chance to look through her lens has made me far more appreciative of the little things in life.
 
-![center](/blogimages/2025_postseason.png)
+<div style="display: flex; justify-content: center;">
+<img src="/blogimages/2025_postseason.png" style="width: 60%;" />
+</div>
+
+See you again, hopefully before another 2 years go by, but no promises.
