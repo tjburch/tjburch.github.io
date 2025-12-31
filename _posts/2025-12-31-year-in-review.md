@@ -100,4 +100,4 @@ Right now I'm most appreciating the sense of wonder from my toddler. I dread air
 <img src="/blogimages/2025_postseason.png" style="width: 60%;" />
 </div>
 
-See you again, hopefully before another 2 years go by, but no promises.
+See you soon, hopefully before another 2 years go by, but no promises.
