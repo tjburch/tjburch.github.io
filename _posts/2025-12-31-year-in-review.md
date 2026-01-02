@@ -5,6 +5,8 @@ date: 2025-12-31
 categories: Personal
 tags: [R, statistics, forecasting, LLM, personal]
 excerpt: "A lightning-round collection of loose threads from 2025"
+header:
+  og_image: /blogimages/2025_postseason.png
 ---
 
 In case anyone is keeping score, it's been a while since I've posted anything to this blog (assuming like most people, you consider 2 calendar years to be a long time). I'm going to chalk it up to being _really_ locked in.
