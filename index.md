@@ -11,7 +11,7 @@ classes: wide
 <div class="professional-hero">
   <div class="hero-content">
     <div class="hero-image">
-      <img src="images/bosox.png" alt="Tyler James Burch" class="professional-portrait" />
+      <img src="images/podium.jpg" alt="Tyler James Burch" class="professional-portrait" />
     </div>
     
     <div class="hero-text">
