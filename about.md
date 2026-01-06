@@ -11,7 +11,7 @@ excerpt: "Background and experience of Tyler James Burch"
 
 ![Podium photo](/images/podium.jpg){: .align-right style="max-width: 400px; margin: 0 0 1rem 2rem; border-radius: 8px;"}
 
-I'm a Senior Data Analyst working in baseball research and development with the Boston Red Sox. I now work on our Player Evaluation team, after spending my first handful of years working in Baseball Sciences.
+I'm a Lead Data Analyst working in baseball research and development with the Boston Red Sox. I now work on our Player Evaluation team, after spending my first handful of years working in Baseball Sciences.
 
 Formerly, I was a postdoctoral researcher at Argonne National Laboratory where I worked to develop simulation and machine learning for particle physics on the first US exascale computer, Aurora.
 

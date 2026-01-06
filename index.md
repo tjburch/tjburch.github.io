@@ -16,7 +16,7 @@ classes: wide
     
     <div class="hero-text">
       <h1 class="hero-name">Tyler James Burch</h1>
-      <p class="hero-title">Senior Data Analyst, Baseball Analytics</p>
+      <p class="hero-title">Lead Data Analyst, Baseball Analytics</p>
       <p class="hero-company">Boston Red Sox</p>
       
       <div class="hero-description">
