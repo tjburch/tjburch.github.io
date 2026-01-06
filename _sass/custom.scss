@@ -1059,9 +1059,9 @@ code {
   margin-left: auto;
 
   &:hover {
-    color: var(--accent-primary);
-    border-color: var(--accent-primary);
-    background: rgba(240, 165, 0, 0.1);
+    color: #e60012;
+    border-color: #e60012;
+    background: rgba(230, 0, 18, 0.1);
   }
 }
 
@@ -1646,6 +1646,54 @@ code {
   50% { opacity: 0.4; }
 }
 
+/* Pixel Runner Animation */
+.pixel-runner-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 0 !important;
+  right: auto !important;
+  top: auto !important;
+  z-index: 100001 !important;
+  pointer-events: none !important;
+  animation: pixelRun 2.5s linear forwards !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.pixel-runner {
+  width: 24px;
+  height: 36px;
+  position: relative;
+  image-rendering: pixelated;
+  animation: pixelBounce 0.15s steps(1) infinite, pixelJump 2.5s ease-in-out forwards;
+}
+
+@keyframes pixelRun {
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes pixelBounce {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -3px; }
+}
+
+@keyframes pixelJump {
+  0%, 40% { margin-bottom: 0; }
+  50% { margin-bottom: 60px; }
+  60%, 100% { margin-bottom: 0; }
+}
+
+@keyframes legRun {
+  0% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+}
+
+@keyframes armSwing {
+  0% { transform: translateY(-2px); }
+  50% { transform: translateY(2px); }
+}
+
 /* Scrollbar */
 .nostalgia-mode::-webkit-scrollbar {
   width: 14px;
@@ -1659,4 +1707,791 @@ code {
 
 .nostalgia-mode::-webkit-scrollbar-thumb:hover {
   background: var(--nes-black);
+}
+
+/* ==========================================================================
+   TACO MODE - 90s Taco Bell Memphis Design Experience
+   Inspired by the iconic 90s Taco Bell interior aesthetic
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;500;600&display=swap');
+
+/* Theme Toggle Buttons Container */
+.theme-toggles {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Toggle Button - Normal state (matches site style) */
+.taco-toggle {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+
+  &:hover {
+    color: #ef1897;
+    border-color: #ef1897;
+    background: rgba(239, 24, 151, 0.1);
+  }
+}
+
+/* Geometric Wipe Transition Animation */
+@keyframes geometric-wipe {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.taco-wipe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  background: linear-gradient(135deg, #ef1897 0%, #36399a 50%, #fee012 100%);
+  animation: geometric-wipe 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Taco Shower Animation */
+@keyframes tacoFall {
+  0% {
+    top: -50px;
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    top: 110vh;
+    opacity: 0;
+    transform: rotate(720deg);
+  }
+}
+
+/* Taco Bell 90s Color Palette - Light/Pastel Approach */
+.taco-mode {
+  --tb-blue: #36399a;
+  --tb-pink: #ef1897;
+  --tb-yellow: #fee012;
+  --tb-purple: #a77bca;
+  --tb-turquoise: #00b4b4;
+  --tb-dark: #2a2456;
+
+  /* Light/Pastel theme mapping */
+  --bg-primary: #fff8f0;
+  --bg-secondary: #ffeef6;
+  --bg-tertiary: #e8f8f8;
+  --text-primary: var(--tb-dark);
+  --text-secondary: #4a4070;
+  --text-muted: #7a6a9a;
+  --accent-primary: var(--tb-pink);
+  --accent-secondary: var(--tb-blue);
+  --accent-tertiary: var(--tb-yellow);
+
+  --font-display: 'Bungee', cursive;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Smooth anti-aliasing for this theme */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Memphis Pattern Background */
+.taco-mode {
+  background: var(--bg-primary) !important;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Triangle 1 --%3E%3Cpolygon points='20,10 40,50 0,50' fill='%23ef1897' opacity='0.8'/%3E%3C!-- Circle 1 --%3E%3Ccircle cx='80' cy='30' r='15' fill='%2336399a' opacity='0.7'/%3E%3C!-- Squiggle 1 --%3E%3Cpath d='M120 20 Q130 10 140 20 Q150 30 160 20' stroke='%23fee012' stroke-width='4' fill='none' opacity='0.9'/%3E%3C!-- Triangle 2 --%3E%3Cpolygon points='170,60 190,90 150,90' fill='%23a77bca' opacity='0.7'/%3E%3C!-- Circle 2 --%3E%3Ccircle cx='30' cy='100' r='12' fill='%2300b4b4' opacity='0.6'/%3E%3C!-- Cross --%3E%3Crect x='75' y='85' width='30' height='8' fill='%23ef1897' opacity='0.7'/%3E%3Crect x='87' y='73' width='8' height='30' fill='%23ef1897' opacity='0.7'/%3E%3C!-- Zigzag --%3E%3Cpath d='M130 80 L140 95 L150 80 L160 95 L170 80' stroke='%2336399a' stroke-width='3' fill='none' opacity='0.6'/%3E%3C!-- Circle 3 --%3E%3Ccircle cx='180' cy='140' r='18' fill='%23fee012' opacity='0.6'/%3E%3C!-- Triangle 3 --%3E%3Cpolygon points='50,130 75,170 25,170' fill='%2336399a' opacity='0.6'/%3E%3C!-- Dots --%3E%3Ccircle cx='110' cy='130' r='5' fill='%23a77bca' opacity='0.8'/%3E%3Ccircle cx='125' cy='145' r='5' fill='%23a77bca' opacity='0.8'/%3E%3Ccircle cx='115' cy='155' r='5' fill='%23a77bca' opacity='0.8'/%3E%3C!-- Squiggle 2 --%3E%3Cpath d='M20 180 Q35 165 50 180 Q65 195 80 180' stroke='%2300b4b4' stroke-width='4' fill='none' opacity='0.7'/%3E%3C!-- Triangle 4 --%3E%3Cpolygon points='150,160 165,195 135,195' fill='%23ef1897' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+}
+
+/* Typography */
+.taco-mode {
+  body {
+    font-family: var(--font-body) !important;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3, .page__title {
+    font-family: var(--font-display) !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-body) !important;
+    font-weight: 600;
+    color: var(--tb-dark) !important;
+  }
+
+  h1, .page__title {
+    font-size: 28px !important;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  h2 {
+    font-size: 22px !important;
+    line-height: 1.4;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+
+  p, li {
+    font-family: var(--font-body) !important;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  small, .small, figcaption, .page__meta {
+    font-family: var(--font-body) !important;
+    font-size: 14px !important;
+    color: var(--text-muted);
+  }
+}
+
+/* Header - Bold geometric style on deep blue */
+.taco-mode .masthead {
+  background: linear-gradient(135deg, var(--tb-blue) 0%, #4a45b5 100%) !important;
+  border-bottom: 5px solid var(--tb-pink) !important;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(54, 57, 154, 0.3);
+
+  /* Zigzag pattern accent */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--tb-yellow) 0px,
+      var(--tb-yellow) 20px,
+      var(--tb-pink) 20px,
+      var(--tb-pink) 40px,
+      var(--tb-turquoise) 40px,
+      var(--tb-turquoise) 60px
+    );
+  }
+}
+
+.taco-mode .greedy-nav {
+  background: transparent !important;
+}
+
+/* Site Title Badge - Taco Bell style rounded rectangle */
+.taco-mode .site-title {
+  background: var(--tb-yellow) !important;
+  color: var(--tb-blue) !important;
+  border: 4px solid var(--tb-pink) !important;
+  border-radius: 8px !important;
+  padding: 8px 20px !important;
+  font-family: var(--font-display) !important;
+  font-size: 14px !important;
+  box-shadow: 4px 4px 0 var(--tb-dark);
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: #fff200 !important;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--tb-dark);
+  }
+}
+
+/* Nav Links */
+.taco-mode .greedy-nav .visible-links a:not(.site-title) {
+  font-family: var(--font-display) !important;
+  font-size: 16px !important;
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 0.4rem !important;
+
+  &:hover {
+    color: var(--tb-yellow) !important;
+  }
+
+  &::before {
+    background: var(--tb-yellow) !important;
+  }
+}
+
+/* Links */
+.taco-mode a:not(.btn):not(.taco-toggle):not(.nostalgia-toggle):not(.site-title):not(.cta-button) {
+  color: var(--tb-pink) !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--tb-blue) !important;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Buttons */
+.taco-mode .btn,
+.taco-mode .cta-button,
+.taco-mode input[type="submit"] {
+  background: var(--tb-pink) !important;
+  color: white !important;
+  border: 3px solid var(--tb-dark) !important;
+  font-family: var(--font-display) !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 4px 4px 0 var(--tb-dark);
+  border-radius: 4px !important;
+  padding: 12px 24px !important;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: var(--tb-blue) !important;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--tb-dark);
+  }
+
+  &.primary {
+    background: var(--tb-yellow) !important;
+    color: var(--tb-dark) !important;
+  }
+
+  &.secondary {
+    background: white !important;
+    color: var(--tb-pink) !important;
+    border-color: var(--tb-pink) !important;
+    box-shadow: 4px 4px 0 var(--tb-pink);
+
+    &:hover {
+      background: var(--tb-pink) !important;
+      color: white !important;
+      box-shadow: 2px 2px 0 var(--tb-dark);
+    }
+  }
+}
+
+/* Cards - Playful Memphis style with slight rotation */
+.taco-mode .archive__item,
+.taco-mode .highlight-card,
+.taco-mode .recent-post-card,
+.taco-mode .feature__item {
+  background: white !important;
+  border: 3px solid var(--tb-purple) !important;
+  box-shadow: 6px 6px 0 var(--tb-pink);
+  border-radius: 8px !important;
+  padding: 24px !important;
+  transform: rotate(-0.5deg);
+  transition: all 0.2s ease;
+
+  &:nth-child(even) {
+    transform: rotate(0.5deg);
+    border-color: var(--tb-turquoise) !important;
+    box-shadow: 6px 6px 0 var(--tb-blue);
+  }
+
+  &:hover {
+    transform: rotate(0deg) translateY(-4px) !important;
+    box-shadow: 8px 8px 0 var(--tb-blue);
+  }
+
+  &::before {
+    display: none !important;
+  }
+
+  h3, h3 a {
+    font-family: var(--font-display) !important;
+    font-size: 16px !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--tb-pink) !important;
+    }
+  }
+
+  p {
+    font-family: var(--font-body) !important;
+    font-size: 15px !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.6;
+  }
+}
+
+/* Hero Section */
+.taco-mode .professional-hero {
+  background: linear-gradient(135deg, #fff8f0 0%, #ffeef6 50%, #e8f8f8 100%) !important;
+  border: 4px solid var(--tb-purple);
+  box-shadow: 8px 8px 0 var(--tb-pink);
+  border-radius: 12px !important;
+
+  &::before {
+    display: none;
+  }
+}
+
+.taco-mode .hero-text {
+  .hero-name {
+    font-family: var(--font-display) !important;
+    font-size: 32px !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+    background: var(--tb-yellow);
+    padding: 12px 28px !important;
+    border: 4px solid var(--tb-pink);
+    border-radius: 8px !important;
+    box-shadow: 4px 4px 0 var(--tb-dark);
+    display: inline-block;
+    letter-spacing: 0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 24px !important;
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-display) !important;
+    font-size: 18px !important;
+    color: var(--tb-pink) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 14px !important;
+    }
+  }
+
+  .hero-company {
+    font-family: var(--font-body) !important;
+    font-size: 16px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+  }
+
+  .hero-description p {
+    font-family: var(--font-body) !important;
+    font-size: 16px !important;
+    color: var(--text-primary) !important;
+    line-height: 1.7;
+  }
+}
+
+.taco-mode .professional-portrait {
+  border: 4px solid var(--tb-pink) !important;
+  box-shadow: 6px 6px 0 var(--tb-purple) !important;
+  border-radius: 50% !important;
+}
+
+/* Sidebar */
+.taco-mode {
+  .author__avatar img {
+    border: 4px solid var(--tb-pink) !important;
+    box-shadow: 4px 4px 0 var(--tb-purple);
+    border-radius: 50% !important;
+  }
+
+  .author__name {
+    font-family: var(--font-display) !important;
+    font-size: 16px !important;
+    color: var(--tb-blue) !important;
+    text-transform: uppercase;
+  }
+
+  .author__bio {
+    font-family: var(--font-body) !important;
+    font-size: 14px !important;
+    color: var(--text-primary) !important;
+    line-height: 1.6;
+  }
+
+  .author__urls-wrapper a {
+    font-family: var(--font-body) !important;
+    color: var(--tb-pink) !important;
+    font-size: 14px !important;
+
+    &:hover {
+      color: var(--tb-blue) !important;
+    }
+  }
+
+  .author__urls li {
+    font-size: 14px !important;
+  }
+
+  .sidebar .author__content,
+  .sidebar p,
+  .sidebar a {
+    font-family: var(--font-body) !important;
+  }
+}
+
+/* Blog Styles */
+.taco-mode .blog-content {
+  .blog-header h1 {
+    font-family: var(--font-display) !important;
+    font-size: 28px !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+  }
+
+  .filter-btn {
+    font-family: var(--font-body) !important;
+    font-size: 13px !important;
+    font-weight: 600;
+    padding: 8px 16px !important;
+    background: white !important;
+    border: 2px solid var(--tb-purple) !important;
+    color: var(--tb-dark) !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0 var(--tb-purple);
+    transition: all 0.15s ease;
+
+    &:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--tb-purple);
+      border-color: var(--tb-pink) !important;
+      color: var(--tb-pink) !important;
+    }
+
+    &.active {
+      background: var(--tb-pink) !important;
+      color: white !important;
+      border-color: var(--tb-dark) !important;
+      box-shadow: 3px 3px 0 var(--tb-dark);
+    }
+  }
+
+  .post-list .post-item {
+    border-bottom: 2px dashed var(--tb-purple) !important;
+    padding: 24px 0;
+
+    &::before {
+      background: linear-gradient(180deg, var(--tb-pink), var(--tb-yellow));
+      width: 4px;
+      border-radius: 2px;
+    }
+
+    .post-title {
+      font-family: var(--font-display) !important;
+      font-size: 18px !important;
+      color: var(--tb-dark) !important;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .post-excerpt {
+      font-family: var(--font-body) !important;
+      font-size: 15px !important;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .post-date {
+      font-family: var(--font-body) !important;
+      font-size: 13px !important;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .category-tag {
+      font-family: var(--font-body) !important;
+      font-size: 10px !important;
+      background: var(--tb-yellow) !important;
+      border: 2px solid var(--tb-dark) !important;
+      color: var(--tb-dark) !important;
+      padding: 3px 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+/* Recent Posts Section */
+.taco-mode .recent-work-section {
+  h2 {
+    font-family: var(--font-display) !important;
+    font-size: 24px !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--tb-pink), var(--tb-yellow), var(--tb-turquoise));
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  .view-all-link {
+    font-family: var(--font-display) !important;
+    font-size: 12px !important;
+    color: var(--tb-pink) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border: 2px solid var(--tb-pink);
+    border-radius: 4px;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--tb-pink) !important;
+      color: white !important;
+    }
+  }
+}
+
+/* Highlights Section */
+.taco-mode .highlights-section {
+  .highlight-card h3 {
+    color: var(--tb-pink) !important;
+  }
+}
+
+/* Code Blocks */
+.taco-mode {
+  pre, code {
+    font-family: 'JetBrains Mono', monospace !important;
+    border-radius: 6px !important;
+  }
+
+  pre {
+    background: var(--tb-dark) !important;
+    border: 3px solid var(--tb-purple) !important;
+    box-shadow: 4px 4px 0 var(--tb-purple);
+    padding: 16px !important;
+
+    code {
+      color: #f8f8f2 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none;
+    }
+  }
+
+  code {
+    background: rgba(167, 123, 202, 0.15) !important;
+    color: var(--tb-purple) !important;
+    border: 1px solid rgba(167, 123, 202, 0.3) !important;
+    padding: 2px 6px !important;
+    font-size: 0.9em;
+  }
+}
+
+/* Selection */
+.taco-mode ::selection {
+  background: var(--tb-pink);
+  color: white;
+}
+
+/* Images */
+.taco-mode img:not(.professional-portrait):not(.author__avatar img) {
+  border: 3px solid var(--tb-purple);
+  border-radius: 6px !important;
+  box-shadow: 4px 4px 0 var(--tb-pink);
+}
+
+/* Footer */
+.taco-mode .page__footer {
+  background: linear-gradient(135deg, var(--tb-blue) 0%, #4a45b5 100%) !important;
+  border-top: 5px solid var(--tb-pink) !important;
+  color: white !important;
+  position: relative;
+
+  /* Zigzag accent on top */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--tb-yellow) 0px,
+      var(--tb-yellow) 20px,
+      var(--tb-pink) 20px,
+      var(--tb-pink) 40px,
+      var(--tb-turquoise) 40px,
+      var(--tb-turquoise) 60px
+    );
+    z-index: 1;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 14px !important;
+
+    &:hover {
+      color: var(--tb-yellow) !important;
+    }
+  }
+
+  .page__footer-copyright {
+    font-family: var(--font-body) !important;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Footer Toggle - Styled state when active */
+.taco-mode .taco-toggle {
+  background: var(--tb-pink) !important;
+  color: white !important;
+  border: 3px solid var(--tb-yellow) !important;
+  font-family: var(--font-display) !important;
+  font-size: 18px !important;
+  padding: 4px 12px !important;
+  box-shadow: 3px 3px 0 var(--tb-dark);
+  border-radius: 4px !important;
+  transition: all 0.15s ease;
+  line-height: 1;
+
+  &:hover {
+    background: var(--tb-yellow) !important;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--tb-dark);
+  }
+}
+
+/* Animated taco wiggle */
+@keyframes tacoWiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.taco-spin {
+  display: inline-block;
+  animation: tacoWiggle 0.5s ease-in-out infinite;
+}
+
+/* Nostalgia toggle styling in taco mode */
+.taco-mode .nostalgia-toggle {
+  background: transparent !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+
+  &:hover {
+    border-color: white !important;
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  &::before {
+    display: none;
+  }
+}
+
+/* Page content overrides */
+.taco-mode .page__content {
+  h1, h2, h3 {
+    font-family: var(--font-display) !important;
+    color: var(--tb-dark) !important;
+    text-transform: uppercase;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-body) !important;
+    color: var(--tb-dark) !important;
+  }
+
+  p, li {
+    font-family: var(--font-body) !important;
+    color: var(--text-primary) !important;
+    line-height: 1.7;
+  }
+
+  strong {
+    color: var(--tb-dark);
+  }
+
+  blockquote {
+    border-left: 4px solid var(--tb-pink);
+    background: rgba(239, 24, 151, 0.05);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0 !important;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+}
+
+/* Archive pages */
+.taco-mode .archive {
+  .page__title {
+    font-family: var(--font-display) !important;
+    text-transform: uppercase;
+  }
+
+  .archive__item-title a {
+    font-family: var(--font-display) !important;
+    text-transform: uppercase;
+    font-size: 16px !important;
+  }
+
+  .archive__item-excerpt {
+    font-family: var(--font-body) !important;
+    color: var(--text-secondary);
+  }
+}
+
+/* Scrollbar */
+.taco-mode::-webkit-scrollbar {
+  width: 14px;
+  background: var(--bg-primary);
+}
+
+.taco-mode::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--tb-pink), var(--tb-purple));
+  border: 3px solid var(--bg-primary);
+  border-radius: 7px;
+}
+
+.taco-mode::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--tb-blue), var(--tb-pink));
 }

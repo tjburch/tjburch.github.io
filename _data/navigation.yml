@@ -10,5 +10,5 @@ main:
      url: /documents/resume.pdf
    - title: "Blog"
      url: /blog/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+   - title: "RSS"
+     url: /feed.xml

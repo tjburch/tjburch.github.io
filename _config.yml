@@ -72,5 +72,6 @@ footer:
 
 after_footer_scripts:
   - /assets/js/nostalgia-mode.js
+  - /assets/js/taco-mode.js
 
   

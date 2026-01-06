@@ -34,6 +34,46 @@
     } catch (e) {}
   }
 
+  function createPixelRunner() {
+    const container = document.createElement('div');
+    container.className = 'pixel-runner-container';
+
+    // Create pixel art character with CSS (scaled to 75%)
+    container.innerHTML = `
+      <div class="pixel-runner">
+        <!-- Hat -->
+        <div style="position:absolute;top:0;left:6px;width:15px;height:6px;background:#e60012;"></div>
+        <div style="position:absolute;top:3px;left:3px;width:18px;height:3px;background:#e60012;"></div>
+        <!-- Face -->
+        <div style="position:absolute;top:6px;left:6px;width:12px;height:6px;background:#ffccaa;"></div>
+        <!-- Hair/sideburns -->
+        <div style="position:absolute;top:6px;left:3px;width:3px;height:6px;background:#4a2800;"></div>
+        <!-- Body/Shirt -->
+        <div style="position:absolute;top:12px;left:6px;width:12px;height:6px;background:#e60012;"></div>
+        <!-- Arms -->
+        <div style="position:absolute;top:12px;left:3px;width:3px;height:6px;background:#e60012;animation:armSwing 0.15s steps(1) infinite;"></div>
+        <div style="position:absolute;top:12px;left:18px;width:3px;height:6px;background:#ffccaa;animation:armSwing 0.15s steps(1) infinite reverse;"></div>
+        <!-- Overalls -->
+        <div style="position:absolute;top:18px;left:6px;width:12px;height:9px;background:#0058f8;"></div>
+        <!-- Overall straps -->
+        <div style="position:absolute;top:13px;left:7px;width:3px;height:5px;background:#0058f8;"></div>
+        <div style="position:absolute;top:13px;left:14px;width:3px;height:5px;background:#0058f8;"></div>
+        <!-- Legs -->
+        <div style="position:absolute;top:27px;left:6px;width:5px;height:6px;background:#0058f8;animation:legRun 0.15s steps(1) infinite;"></div>
+        <div style="position:absolute;top:27px;left:13px;width:5px;height:6px;background:#0058f8;animation:legRun 0.15s steps(1) infinite reverse;"></div>
+        <!-- Shoes -->
+        <div style="position:absolute;top:33px;left:4px;width:6px;height:3px;background:#4a2800;animation:legRun 0.15s steps(1) infinite;"></div>
+        <div style="position:absolute;top:33px;left:14px;width:6px;height:3px;background:#4a2800;animation:legRun 0.15s steps(1) infinite reverse;"></div>
+      </div>
+    `;
+
+    document.documentElement.appendChild(container);
+
+    setTimeout(function() {
+      container.remove();
+    }, 3000);
+  }
+
   function playPowerOffSound() {
     try {
       var ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -54,9 +94,21 @@
   function enableNostalgia(withAnimation) {
     var html = document.documentElement;
 
+    // Disable taco mode if active
+    if (sessionStorage.getItem('tacoMode') === 'true') {
+      sessionStorage.setItem('tacoMode', 'false');
+      html.classList.remove('taco-mode');
+      var tacoToggle = document.getElementById('taco-toggle');
+      if (tacoToggle) {
+        tacoToggle.textContent = 'Taco Mode';
+        tacoToggle.setAttribute('aria-pressed', 'false');
+      }
+    }
+
     if (withAnimation) {
       html.classList.add('nostalgia-mode', 'crt-turning-on');
       playPowerOnSound();
+      createPixelRunner();
       setTimeout(function() {
         html.classList.remove('crt-turning-on');
       }, 600);

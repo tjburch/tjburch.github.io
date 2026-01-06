@@ -17,5 +17,8 @@
 
 <div class="page__footer-copyright">
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</span>
-  <button class="nostalgia-toggle" id="nostalgia-toggle" aria-label="Toggle retro NES mode" aria-pressed="false">Nostalgia Mode</button>
+  <div class="theme-toggles">
+    <button class="taco-toggle" id="taco-toggle" aria-label="Toggle 90s Taco Bell mode" aria-pressed="false">Taco Mode</button>
+    <button class="nostalgia-toggle" id="nostalgia-toggle" aria-label="Toggle retro NES mode" aria-pressed="false">Nostalgia Mode</button>
+  </div>
 </div>

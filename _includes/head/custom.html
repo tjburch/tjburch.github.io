@@ -9,4 +9,11 @@
   }
 </script>
 
+<!-- Taco Mode - Early initialization to prevent flash -->
+<script>
+  if (sessionStorage.getItem('tacoMode') === 'true') {
+    document.documentElement.classList.add('taco-mode');
+  }
+</script>
+
 <!-- end custom head snippets -->
