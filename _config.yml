@@ -13,7 +13,7 @@ teaser: /images/bosox.png
 og_image: /images/bosox.png
 
 
-plugins: [jekyll-include-cache, jekyll-sitemap, jekyll-assets, jekyll-seo-tag]
+plugins: [jekyll-include-cache, jekyll-sitemap, jekyll-assets, jekyll-seo-tag, jekyll-feed]
 remote_theme: mmistakes/minimal-mistakes@4.24.0
 markdown: kramdown
 highlighter: rouge
@@ -69,5 +69,8 @@ footer:
       url: "https://bsky.app/profile/tylerjamesburch.com"
     - label: "LinkedIn"
       url: "https://www.linkedin.com/in/tylerjburch/"
+
+after_footer_scripts:
+  - /assets/js/nostalgia-mode.js
 
   

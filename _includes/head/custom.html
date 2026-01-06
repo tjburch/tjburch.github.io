@@ -2,4 +2,11 @@
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 
+<!-- Nostalgia Mode - Early initialization to prevent flash -->
+<script>
+  if (sessionStorage.getItem('nostalgiaMode') === 'true') {
+    document.documentElement.classList.add('nostalgia-mode');
+  }
+</script>
+
 <!-- end custom head snippets -->
