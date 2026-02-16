@@ -11,7 +11,7 @@ header:
 
 # Background
 
-A little over a decade ago, toward the start of my Ph.D., I started programming for real work for the first time. I was doing data analysis in C++ using [ROOT](https://en.wikipedia.org/wiki/ROOT) (and yes, data analysis in C++ is as awful as it sounds). At the time, My advisor was the first person to introduce me to a terminal and to emacs. I'm pretty sure when I wasn't looking, he aliased  `emacs = emacs -nw` just so I could do all work through the terminal.
+A little over a decade ago, toward the start of my Ph.D., I started programming for real work for the first time. I was doing data analysis in C++ using [ROOT](https://en.wikipedia.org/wiki/ROOT) (and yes, data analysis in C++ is as awful as it sounds). At the time, My advisor was the first person to introduce me to a terminal and to emacs. I'm pretty sure when I wasn't looking, he aliased  `emacs = emacs -nw` just so I wouldn't even have to use the emacs GUI.
 
 In 2018, I switched to VSCode. The integrated terminal made it feel like a one-stop-shop - everything in one program, no context switching, plus a rich editing experience. But I've always missed parts of a terminal-only workflow, and lately I've been drifting back to it.
 

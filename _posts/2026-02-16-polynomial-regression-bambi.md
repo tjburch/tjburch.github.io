@@ -5,13 +5,16 @@ date: 2026-02-16
 categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
 excerpt: "A contributed example notebook on polynomial regression using Bambi, finally making it to my personal blog"
+header:
+  image: /blogimages/polynomial-regression/planet-trajectories.png
+  og_image: /blogimages/polynomial-regression/planet-trajectories.png
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 Back in 2024, I wrote a couple of example notebooks that got merged into the [Bambi](https://bambinos.github.io/bambi/) documentation. For those unfamiliar, Bambi is a library for fitting Bayesian regression models using a formulaic interface on top of PyMC (the closest thing in python to `brms`, in my opinion). I realized I never migrated the content here, so I thought it was time to do so.
 
-This first post covers polynomial regression. I'll update next week with a companion post digging into orthogonal polynomials. The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
+This first post covers polynomial regression. I'll update next week with a companion post digging deeper into orthogonal polynomials. The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
 
 What follows is the content from the notebook, lightly adapted for this blog format.
 
