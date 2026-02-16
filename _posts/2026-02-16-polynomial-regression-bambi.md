@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: "2024 Flashback - Polynomial Regression in Bambi"
+title: "2024 Rewind: Polynomial Regression in Bambi"
 date: 2026-02-16
 categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
@@ -9,9 +9,9 @@ excerpt: "A contributed example notebook on polynomial regression using Bambi, f
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-Back in 2024, I wrote a couple of example notebooks that got merged into the [Bambi](https://bambinos.github.io/bambi/) documentation. For those unfamiliar, Bambi is a really nice library for fitting Bayesian regression models using a formulaic interface on top of PyMC. I'd been wanting to get these onto my personal blog for a while, and since it's been sitting in my backlog for over a year now, I figured it was time to just do it.
+Back in 2024, I wrote a couple of example notebooks that got merged into the [Bambi](https://bambinos.github.io/bambi/) documentation. For those unfamiliar, Bambi is a library for fitting Bayesian regression models using a formulaic interface on top of PyMC (the closest thing in python to `brms`, in my opinion). I realized I never migrated the content here, so I thought it was time to do so.
 
-This first post covers polynomial regression. The companion post on orthogonal polynomials is [here](/blog/misc/orthogonal-polynomial-regression-bambi). The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
+This first post covers polynomial regression. I'll update next week with a companion post digging into orthogonal polynomials. The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
 
 What follows is the content from the notebook, lightly adapted for this blog format.
 
@@ -69,7 +69,11 @@ ax.legend();
 
 ![Falling ball data](/blogimages/polynomial-regression/falling-ball-data.png)
 
-Casting the equation $$x_f = \frac{1}{2} g t^2 + x_0$$ into a regression context, we let time ($$t$$) be the independent variable, and final location ($$x_f$$) be the response/dependent variable. This allows our coefficients to be proportional to $$g$$ and $$x_0$$. The intercept, $$\beta_0$$ corresponds exactly to $$x_0$$. Letting $$\beta_1 = \frac{1}{2} g$$ then gives $$g = 2\beta_1$$ when $$x_1 = t^2$$, meaning we're doing _polynomial regression_. We can put this into Bambi via the following, optionally including the `+ 1` to emphasize that we choose to include the coefficient.
+Casting the equation $$x_f = \frac{1}{2} g t^2 + x_0$$ into a regression context, fitting:
+
+$$x_f = \beta_0 + \beta_1 t^2$$
+
+We let time ($$t$$) be the independent variable, and final location ($$x_f$$) be the response/dependent variable. This allows our coefficients to be proportional to $$g$$ and $$x_0$$. The intercept, $$\beta_0$$ corresponds exactly to $$x_0$$, the initial height. Letting $$\beta_1 = \frac{1}{2} g$$ gives $$g = 2\beta_1$$ when $$x_1 = t^2$$, meaning we're doing _polynomial regression_. We can put this into Bambi via the following, optionally including the `+ 1` to emphasize that we choose to include the coefficient.
 
 ```python
 model_falling = bmb.Model("x ~ I(t**2) + 1", df_falling)
@@ -224,7 +228,7 @@ Acceleration: -10.16 to -9.27 meters per second squared (True: -9.81 m/s^2)
 
 We once again are able to recover all our input parameters.
 
-In addition to directly calculating all terms, to include all polynomial terms up to a given degree you can use the `poly` keyword. We don't do that in this notebook for two reasons. First, by default it orthogonalizes the terms making it ill-suited to this example since the coefficients have physical meaning. For more information on the orthogonalization, please see the [orthogonal polynomial post](/blog/misc/orthogonal-polynomial-regression-bambi). The orthogonalization process can be disabled by the `raw` argument of `poly`, but we still elect not to use it because in later examples we decide to use different effects on the $$t$$ term vs the $$t^2$$ term, and doing so is not easy when using `poly`. However, just to show that the results match when using the `raw = True` argument, we'll fit the same model as above.
+In addition to directly calculating all terms, to include all polynomial terms up to a given degree you can use the `poly` keyword. We don't do that in this notebook for two reasons. First, by default it orthogonalizes the terms making it ill-suited to this example since the coefficients have physical meaning (more information on this in an upcoming post). The orthogonalization process can be disabled by the `raw` argument of `poly`, but we still elect not to use `poly` here because in later examples we decide to use different effects on the $$t$$ term vs the $$t^2$$ term, and doing so is not easy when using `poly`. However, just to show that the results match when using the `raw = True` argument, we'll fit the same model as above.
 
 ```python
 model_poly_raw = bmb.Model("x ~ poly(t, 2, raw=True)", df_projectile)
@@ -374,7 +378,7 @@ The fit seems to work, more or less, but certainly could be improved.
 
 ### Adding a prior
 
-But, we can do better! We have a [very good idea of the acceleration due to gravity on Earth](https://en.wikipedia.org/wiki/Gravity_of_Earth) and [Mars](https://en.wikipedia.org/wiki/Gravity_of_Mars), so why not use that information? From an experimental standpoint, we can consider these throws from a calibration mindset, allowing us to get some information on the resolution of our detector, and our throwing apparatus. The model will spend considerably less time trying to pin down those parameters, and will better explore other parameters with already good values of the $$g$$ terms locked in.
+But, we can do better! We have a [very good idea of the acceleration due to gravity on Earth](https://en.wikipedia.org/wiki/Gravity_of_Earth) and [Mars](https://en.wikipedia.org/wiki/Gravity_of_Mars), so why not use that information? From an experimental standpoint, we can consider these throws from a calibration mindset, allowing us to get some information on the resolution of our detector, and our throwing apparatus. With informative priors constraining the Earth and Mars gravity parameters, the model can more precisely estimate the unknown PlanetX gravity, as there will be less uncertainty propagating from the calibration planets.
 
 For Earth, at the extremes, $$g$$ takes values as low as 9.78 $$m$$/$$s^2$$ (at the Equator) up to 9.83 (at the Poles). So we can add a very strong prior,
 
@@ -483,4 +487,4 @@ axs[1,2].set_title("PlanetX $g$ - Priors Used");
 
 ![Gravity posteriors comparison](/blogimages/polynomial-regression/gravity-posteriors-comparison.png)
 
-Adding the prior gives smaller uncertainties for Earth and Mars by design, however, we can see the estimate for PlanetX has also considerably improved by injecting our knowledge into the model.
+Adding the prior gives smaller uncertainties for Earth and Mars by design, however, we can see the estimate for PlanetX has also improved by injecting our knowledge into the model.
