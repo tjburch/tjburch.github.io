@@ -4,7 +4,7 @@ title: "2024 Rewind: Polynomial Regression in Bambi"
 date: 2026-02-16
 categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
-excerpt: "A contributed example notebook on polynomial regression using Bambi, finally making it to my personal blog"
+excerpt: "Overview of polynomial regression using Bambi, through projectile motion and fictitious planets"
 header:
   og_image: /blogimages/polynomial-regression/planet-trajectories.png
 ---
