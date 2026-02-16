@@ -6,7 +6,6 @@ categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
 excerpt: "A contributed example notebook on polynomial regression using Bambi, finally making it to my personal blog"
 header:
-  image: /blogimages/polynomial-regression/planet-trajectories.png
   og_image: /blogimages/polynomial-regression/planet-trajectories.png
 ---
 
