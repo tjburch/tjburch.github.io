@@ -65,6 +65,8 @@ plt.legend()
 plt.show()
 ```
 
+![Projectile motion data](/blogimages/orthogonal-polynomial-regression/projectile-motion-data.png)
+
 Putting this into Bambi, we set $$\beta_2 = \frac{g}{2}$$, $$\beta_1 = v_0$$, and $$\beta_0 = x_0$$, then perform the following regression:
 
 $$x_f = \beta_2 t^2 + \beta_1 t + \beta_0$$
@@ -384,6 +386,8 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 
+![Correlation heatmap](/blogimages/orthogonal-polynomial-regression/correlation-heatmap.png)
+
 We now see that the orthogonalized version of $$x$$ and $$x^2$$ are no longer correlated to each other. Next, we construct a response variable and plot against it.
 
 ```python
@@ -412,6 +416,8 @@ for ax, plot_data in zip(axs.flat, plots):
 plt.tight_layout()
 plt.show()
 ```
+
+![Orthogonalized scatter plots](/blogimages/orthogonal-polynomial-regression/orthogonalized-scatter.png)
 
 The top half shows the response variable against $$x$$ and $$x^2$$, this should look familiar.
 
@@ -444,6 +450,8 @@ plt.axhline(0, color='black', linestyle='--')
 plt.tight_layout()
 plt.show()
 ```
+
+![Residuals linear trend](/blogimages/orthogonal-polynomial-regression/residuals-linear-trend.png)
 
 And, in fact, the linear trend bears out when plotting the orthogonal $$x^2$$ vs the residuals.
 
@@ -485,6 +493,8 @@ for ax, plot_data in zip(axs.flat, plots):
 plt.tight_layout()
 plt.show()
 ```
+
+![Cubic scatter plots](/blogimages/orthogonal-polynomial-regression/cubic-scatter.png)
 
 At a cubic level, it's a bit more difficult to see the trends, however, the procedure is still the same. We can model each subsequent term against the residuals of the prior, and we can see that since this data was constructed from a cubic function, the $$x^3$$ plot against the residuals of the $$x^2$$ term is linear.
 
@@ -534,6 +544,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+![Cubic residuals](/blogimages/orthogonal-polynomial-regression/cubic-residuals.png)
+
 The main takeaway of this deep dive is the following: **The `poly` keyword when used in a formula creates orthogonal polynomials. This is well-suited for fitting statistical models, since it eliminates the risk of multicollinearity between terms.**
 
 This wasn't used in the other notebook since we were trying to recover parameters associated with each term. However, if you're building a statistical model, especially one in which prediction is the focus, they may be the appropriate approach.
@@ -579,6 +591,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+![MPG vs horsepower joint distribution](/blogimages/orthogonal-polynomial-regression/mpg-hp-joint.png)
+
 Immediately, we see that the linear fit doesn't seem to model this data perfectly, it exhibits some nonlinearity. We'll use a polynomial regression in order to see if we can improve that fit and capture the curvature. We will first fit a linear model as a benchmark.
 
 ```python
@@ -604,6 +618,8 @@ for p in [.68, .95]:
 sns.scatterplot(data=df_mpg, x="horsepower", y="mpg", color='blue', label='True Data');
 ```
 
+![Linear fit predictions](/blogimages/orthogonal-polynomial-regression/linear-fit-predictions.png)
+
 Looking at this plot with the 68% and 95% CIs shown, the fit looks _okay_. Most notably, at about 160 hp, the data diverge from the fit pretty drastically. The fit at low hp values isn't particularly good either, there's quite a bit that falls outside of our 95% CI. This can be accented pretty heavily by looking at the residuals from the mean of the model.
 
 ```python
@@ -614,6 +630,8 @@ plt.axhline(0, color='black', lw=2)
 plt.ylabel("Residuals")
 plt.title('Residuals for linear model')
 ```
+
+![Linear model residuals](/blogimages/orthogonal-polynomial-regression/linear-residuals.png)
 
 This is definitely not flat like we would ideally like it.
 
@@ -643,6 +661,8 @@ sns.scatterplot(data=df_mpg, x="horsepower", y="mpg", color='blue', label='True 
 plt.title("Quadratic Fit")
 ```
 
+![Quadratic fit predictions](/blogimages/orthogonal-polynomial-regression/quadratic-fit-predictions.png)
+
 Visually, this seems to look better. Particularly at high values, the model follows the pattern in the data much, much better, since we allow for curvature by including the polynomial term. Generating the same residual plot gives the following,
 
 ```python
@@ -653,6 +673,8 @@ plt.axhline(0, color='black', lw=2)
 plt.ylabel("Residuals")
 plt.title('Residuals for quadratic model')
 ```
+
+![Quadratic model residuals](/blogimages/orthogonal-polynomial-regression/quadratic-residuals.png)
 
 This is far closer to flat than before.
 
@@ -713,6 +735,8 @@ best_loo = cmp["elpd_loo"].iloc[0]
 ax.axvspan(best_loo-4, best_loo, color="C0", alpha=0.2);
 ```
 
+![ELPD comparison](/blogimages/orthogonal-polynomial-regression/elpd-comparison.png)
+
 We can see that `Poly6`, `Poly8`, `Poly5` and `Poly9` are all very similar (within a difference of 4 units). Even more, all models except `Poly1` have overlapping standard errors.
 
 Overall, this is telling us that there is no clear gain in predictive performance once we move beyond a quadratic model. If we want to pick a single model, then we need another criteria to decide. If we have no reason to prefer a more complex model, choosing the simpler one (`Poly2` in this example) is a good heuristic.
@@ -732,6 +756,8 @@ plt.ylabel("Residuals")
 plt.title('Residuals for degree 7 model');
 ```
 
+![Poly7 residuals](/blogimages/orthogonal-polynomial-regression/poly7-residuals.png)
+
 Hey, that looks pretty good, the residuals appear nice and flat. Before we go full steam ahead with this model, let's take a look at the posterior predictive distribution.
 
 ```python
@@ -749,6 +775,8 @@ for p in [.68, .95]:
 sns.scatterplot(data=df_mpg, x="horsepower", y="mpg", color='blue', label='True Data')
 plt.title("Best Fit Model: 7th Degree Polynomial");
 ```
+
+![Poly7 predictions](/blogimages/orthogonal-polynomial-regression/poly7-predictions.png)
 
 Uh-oh. You can see that while this gave the best elpd, and had a nice residual plot, it's obviously overfit, as expected given that we already showed that the difference with the quadratic model is small. Given our knowledge about how cars operate, we expect a decreasing trend of fuel efficiency at higher horsepower. The 7th degree polynomial absolutely is not consistent with that. First, looking at the low values, it increases before starting the decreasing trend. Second, it starts to go back up at the high end of the data, strongly latching onto a couple of points that are likely driven by noise.
 
@@ -779,6 +807,8 @@ plt.xlim(left=0, right=extrapolate_x_hp.max())
 plt.legend(frameon=False)
 ```
 
+![Quadratic extrapolation](/blogimages/orthogonal-polynomial-regression/quadratic-extrapolation.png)
+
 This is strictly untrue based on what we know about cars and what we've seen in the data, so you would _not_ want to use the model outside of the intended domain. If that is the goal, you would want to find a more appropriate specification. Something like an exponential or inverse fit may be appropriate, in order to make sure the fit approaches 0, while still forbidding predictions below 0.
 
 Extrapolation issues are not unique to polynomial regression, for example we run into forbidden values with linear regression when extrapolating too.
@@ -804,6 +834,8 @@ plt.ylim(bottom=mpg_hp_linear_fit.posterior["mu"].mean(("chain", "draw")).min())
 plt.legend(frameon=False);
 ```
 
+![Linear extrapolation](/blogimages/orthogonal-polynomial-regression/linear-extrapolation.png)
+
 However, it is highlighted in this notebook because, due to the nature of polynomial regression, it can be very sensitive outside the fitting domain. Just for fun to wrap this notebook up, we will take a look at what the 7th order "best model" does outside of where we fit the model.
 
 ```python
@@ -825,5 +857,7 @@ plt.xlim(left=0, right=extrapolate_x_hp.max())
 plt.ylim(bottom=best_fit.posterior["mu"].mean(("chain", "draw")).min())
 plt.legend(frameon=False);
 ```
+
+![Poly7 extrapolation](/blogimages/orthogonal-polynomial-regression/poly7-extrapolation.png)
 
 Yikes.

@@ -67,6 +67,8 @@ ax.set(xlabel="Time (s)", ylabel="Displacement (m)")
 ax.legend();
 ```
 
+![Falling ball data](/blogimages/polynomial-regression/falling-ball-data.png)
+
 Casting the equation $$x_f = \frac{1}{2} g t^2 + x_0$$ into a regression context, we let time ($$t$$) be the independent variable, and final location ($$x_f$$) be the response/dependent variable. This allows our coefficients to be proportional to $$g$$ and $$x_0$$. The intercept, $$\beta_0$$ corresponds exactly to $$x_0$$. Letting $$\beta_1 = \frac{1}{2} g$$ then gives $$g = 2\beta_1$$ when $$x_1 = t^2$$, meaning we're doing _polynomial regression_. We can put this into Bambi via the following, optionally including the `+ 1` to emphasize that we choose to include the coefficient.
 
 ```python
@@ -177,6 +179,8 @@ ax.set(xlabel="Time (s)", ylabel="Displacement (m)", ylim=(0, None))
 ax.legend();
 ```
 
+![Projectile motion data](/blogimages/polynomial-regression/projectile-motion-data.png)
+
 Modeling this using Bambi, we must include the linear term on time to capture the initial velocity. We'll do the following regression,
 
 $$x_f = \beta_0 + \beta_1 t + \beta_2 t^2$$
@@ -286,6 +290,8 @@ ax.set(
 ax.legend(title="Planet");
 ```
 
+![Planet trajectories](/blogimages/polynomial-regression/planet-trajectories.png)
+
 We now aim to model this data. We again use the following equation (calling displacement $$h$$ for height):
 
 $$h = \frac{1}{2} g_{p} t^2 + v_{0} t$$
@@ -361,6 +367,8 @@ axs[1].set_title("Posterior $g$ on Mars")
 az.plot_posterior(planetx_posterior, ref_val=6.0, ax=axs[2])
 axs[2].set_title("Posterior $g$ on PlanetX");
 ```
+
+![Gravity posteriors without prior](/blogimages/polynomial-regression/gravity-posteriors-no-prior.png)
 
 The fit seems to work, more or less, but certainly could be improved.
 
@@ -472,5 +480,7 @@ axs[1,1].set_title("Mars $g$ - Priors Used")
 az.plot_posterior(planetx_posterior_2, ref_val=6.0, ax=axs[1,2])
 axs[1,2].set_title("PlanetX $g$ - Priors Used");
 ```
+
+![Gravity posteriors comparison](/blogimages/polynomial-regression/gravity-posteriors-comparison.png)
 
 Adding the prior gives smaller uncertainties for Earth and Mars by design, however, we can see the estimate for PlanetX has also considerably improved by injecting our knowledge into the model.
