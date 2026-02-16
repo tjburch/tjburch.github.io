@@ -727,7 +727,25 @@ pre {
   code {
     background-color: transparent;
     color: #e6e6e6;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    display: block;
+
+    /* Remove leading newline/space from Rouge rendering */
+    &::before {
+      content: none;
+    }
+  }
+}
+
+/* Fix Rouge adding extra line at start of code blocks */
+.highlight pre code {
+  display: block;
+
+  > .lineno:first-child,
+  > span:first-child {
+    &::before {
+      content: none;
+    }
   }
 }
 
