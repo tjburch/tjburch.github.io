@@ -5,6 +5,8 @@ date: 2026-02-23
 categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
 excerpt: "A deep dive into what orthogonal polynomials actually do under the hood, contributed to Bambi's examples"
+header:
+  og_image: /blogimages/orthogonal-polynomial-regression/cubic-residuals.png
 ---
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
