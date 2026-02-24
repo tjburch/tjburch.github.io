@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: "2024 Flashback - Orthogonal Polynomial Regression in Bambi"
+title: "2024 Rewind: Orthogonal Polynomial Regression in Bambi"
 date: 2026-02-23
 categories: Misc
 tags: [python, bayesian, bambi, statistics, regression]
