@@ -13,7 +13,7 @@ header:
 
 Back in 2024, I wrote a couple of example notebooks that got merged into the [Bambi](https://bambinos.github.io/bambi/) documentation. For those unfamiliar, Bambi is a library for fitting Bayesian regression models using a formulaic interface on top of PyMC (the closest thing in python to `brms`, in my opinion). I realized I never migrated the content here, so I thought it was time to do so.
 
-This first post covers polynomial regression. I'll update next week with a companion post digging deeper into orthogonal polynomials. The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
+This post covers polynomial regression. The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/polynomial_regression.html).
 
 What follows is the content from the notebook, lightly adapted for this blog format.
 
@@ -230,7 +230,7 @@ Acceleration: -10.16 to -9.27 meters per second squared (True: -9.81 m/s^2)
 
 We once again are able to recover all our input parameters.
 
-In addition to directly calculating all terms, to include all polynomial terms up to a given degree you can use the `poly` keyword. We don't do that in this notebook for two reasons. First, by default it orthogonalizes the terms making it ill-suited to this example since the coefficients have physical meaning (more information on this in an upcoming post). The orthogonalization process can be disabled by the `raw` argument of `poly`, but we still elect not to use `poly` here because in later examples we decide to use different effects on the $$t$$ term vs the $$t^2$$ term, and doing so is not easy when using `poly`. However, just to show that the results match when using the `raw = True` argument, we'll fit the same model as above.
+In addition to directly calculating all terms, to include all polynomial terms up to a given degree you can use the `poly` keyword. We don't do that in this notebook for two reasons. First, by default it orthogonalizes the terms making it ill-suited to this example since the coefficients have physical meaning and we want to directly interpret them. The orthogonalization process can be disabled by the `raw` argument of `poly`, but we still elect not to use `poly` here because in later examples we decide to use different effects on the $$t$$ term vs the $$t^2$$ term, and doing so is not easy when using `poly`. However, just to show that the results match when using the `raw = True` argument, we'll fit the same model as above.
 
 ```python
 model_poly_raw = bmb.Model("x ~ poly(t, 2, raw=True)", df_projectile)

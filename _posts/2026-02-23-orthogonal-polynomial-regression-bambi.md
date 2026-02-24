@@ -9,7 +9,7 @@ excerpt: "A deep dive into what orthogonal polynomials actually do under the hoo
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-This is the second of two notebooks I wrote and contributed to [Bambi's](https://bambinos.github.io/bambi/) example documentation back in 2024. The first post, covering polynomial regression basics, is [here](/blog/misc/polynomial-regression-bambi). This one goes deeper into what happens when you use the `poly` keyword in a Bambi formula -- specifically, the orthogonalization that happens under the hood. This is something that I think is under-documented across basically every statistics library that implements it, so I spent a good amount of time going through the R source code to figure out what's actually going on and tried to make it more accessible.
+This is the second of two notebooks I wrote and contributed to [Bambi's](https://bambinos.github.io/bambi/) example documentation back in 2024. The first post, covering polynomial regression basics, is [here](/blog/misc/polynomial-regression-bambi). This one goes deeper into what happens when you use the `poly` keyword in a Bambi formula. Specifically, looking at the orthogonalization that happens under the hood.
 
 The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/orthogonal_polynomial_reg.html). What follows is the content, lightly adapted for this blog.
 
