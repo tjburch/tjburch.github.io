@@ -19,7 +19,7 @@ header:
 
   <div class="mm-header">
     <p class="mm-subtitle">
-      Bayesian Bradley-Terry bracket forecasts — updated daily throughout the tournament.
+      Bracket forecasts from a latent offense+defense skill hierarchical model fit with PyMC.
       <a href="/blog/misc/march-madness-2026">Read the methodology →</a>
     </p>
   </div>
