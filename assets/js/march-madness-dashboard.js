@@ -37,6 +37,15 @@
     availableDates: [],
   };
 
+  // ─── Formatting ─────────────────────────────────────────────────
+
+  function fmtPct(val) {
+    if (val >= 0.999) return ">99.9%";
+    if (val <= 0.001 && val > 0) return "<0.1%";
+    if (val <= 0) return "0.0%";
+    return (val * 100).toFixed(1) + "%";
+  }
+
   // ─── Initialization ───────────────────────────────────────────────
 
   document.addEventListener("DOMContentLoaded", init);
@@ -82,7 +91,6 @@
         await loadSnapshot();
       });
     });
-    // Set initial active state
     document.querySelectorAll(".mm-toggle-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.gender === state.gender);
     });
@@ -134,10 +142,10 @@
       const timeline = await resp.json();
       state.availableDates = timeline.dates || [];
     } catch (e) {
-      state.availableDates = ["2026-03-16"];
+      state.availableDates = ["2026-03-17"];
     }
     if (!state.date || !state.availableDates.includes(state.date)) {
-      state.date = state.availableDates[state.availableDates.length - 1] || "2026-03-16";
+      state.date = state.availableDates[state.availableDates.length - 1] || "2026-03-17";
     }
     setupDateSelector();
   }
@@ -158,7 +166,6 @@
       return;
     }
 
-    // Load timeline if not cached
     if (!state.timeline) {
       try {
         const resp = await fetch(`${DATA_BASE}/${genderDir}/odds_timeline.json`);
@@ -204,11 +211,7 @@
       .sort((a, b) => b.odds - a.odds)
       .slice(0, 20);
 
-    const teamNames = sorted.map((d) => {
-      const t = d.team;
-      return `(${t.seed_num}) ${t.name}`;
-    }).reverse();
-
+    const teamNames = sorted.map((d) => `(${d.team.seed_num}) ${d.team.name}`).reverse();
     const odds = sorted.map((d) => d.odds).reverse();
 
     const colors = sorted.map((d) => {
@@ -217,10 +220,7 @@
       return b && b.primary_color ? b.primary_color : "#f0a500";
     }).reverse();
 
-    const hoverText = sorted.map((d) => {
-      const pct = (d.odds * 100).toFixed(1);
-      return `${d.team.name}: ${pct}%`;
-    }).reverse();
+    const hoverText = sorted.map((d) => `${d.team.name}: ${fmtPct(d.odds)}`).reverse();
 
     const trace = {
       type: "bar",
@@ -233,7 +233,7 @@
       },
       hovertext: hoverText,
       hoverinfo: "text",
-      texttemplate: "%{x:.1%}",
+      text: sorted.map((d) => fmtPct(d.odds)).reverse(),
       textposition: "outside",
       textfont: { size: 11, color: "#f4f4f4" },
     };
@@ -243,7 +243,7 @@
       ...PLOTLY_LAYOUT_BASE,
       height: Math.max(500, sorted.length * 32),
       xaxis: {
-        tickformat: ".0%",
+        tickformat: ".1%",
         gridcolor: "rgba(255,255,255,0.06)",
         zeroline: false,
         range: [0, Math.min(maxOdds * 1.35, 1)],
@@ -252,12 +252,11 @@
         tickfont: { size: 12 },
         automargin: true,
       },
-      margin: { l: 160, r: 60, t: 10, b: 40 },
+      margin: { l: 160, r: 70, t: 10, b: 40 },
     };
 
     Plotly.newPlot("championship-chart", [trace], layout, PLOTLY_CONFIG);
 
-    // Click handler for team detail
     document.getElementById("championship-chart").on("plotly_click", (data) => {
       const idx = sorted.length - 1 - data.points[0].pointIndex;
       showTeamDetail(sorted[idx].tid);
@@ -277,7 +276,7 @@
       .sort((a, b) => b.odds - a.odds)
       .slice(0, topN);
 
-    const roundCols = ROUND_NAMES.slice(1); // Skip "Round of 64" (always 1.0)
+    const roundCols = ROUND_NAMES.slice(1);
     const teamLabels = sorted.map((d) => `(${d.team.seed_num}) ${d.team.name}`).reverse();
 
     const z = [];
@@ -294,10 +293,10 @@
           annotations.push({
             x: roundCols[col],
             y: teamLabels[row],
-            text: val >= 0.01 ? (val * 100).toFixed(0) + "%" : "<1%",
+            text: fmtPct(val),
             showarrow: false,
             font: {
-              size: 9,
+              size: 8,
               color: val > 0.65 ? "#1a1a1a" : "#e0e0e0",
             },
           });
@@ -392,9 +391,8 @@
 
       roundKeys.forEach((rk) => {
         const val = adv[rk] || 0;
-        const pct = val >= 0.01 ? (val * 100).toFixed(0) + "%" : val > 0 ? "<1%" : "—";
         const bg = probColor(val);
-        html += `<td class="mm-prob-cell" style="background:${bg}">${pct}</td>`;
+        html += `<td class="mm-prob-cell" style="background:${bg}">${val > 0 ? fmtPct(val) : "—"}</td>`;
       });
 
       html += "</tr>";
@@ -402,7 +400,7 @@
 
     html += "</tbody></table>";
 
-    // R1 matchups with win probabilities
+    // R1 matchups
     html += '<div class="mm-matchups"><h3>First Round Matchups</h3><div class="mm-matchups-grid">';
     const r1Slots = Object.entries(snap.bracket)
       .filter(([slot]) => slot.startsWith("R1" + regionCode))
@@ -428,13 +426,13 @@
       html += `<div class="mm-matchup-team" style="border-left: 3px solid ${colorA}">`;
       html += `<span class="mm-matchup-seed">${game.team_a.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_a.name}</span>`;
-      html += `<span class="mm-matchup-prob">${(pA * 100).toFixed(0)}%</span>`;
+      html += `<span class="mm-matchup-prob">${fmtPct(pA)}</span>`;
       html += `</div>`;
       html += `<div class="mm-prob-bar"><div class="mm-prob-bar-fill" style="width:${(pA * 100).toFixed(0)}%;background:${colorA}"></div></div>`;
       html += `<div class="mm-matchup-team" style="border-left: 3px solid ${colorB}">`;
       html += `<span class="mm-matchup-seed">${game.team_b.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_b.name}</span>`;
-      html += `<span class="mm-matchup-prob">${(pB * 100).toFixed(0)}%</span>`;
+      html += `<span class="mm-matchup-prob">${fmtPct(pB)}</span>`;
       html += `</div>`;
       if (resultBadge) html += resultBadge;
       html += `</div>`;
@@ -443,7 +441,6 @@
 
     container.innerHTML = html;
 
-    // Attach click handlers
     container.querySelectorAll(".mm-bracket-row").forEach((row) => {
       row.addEventListener("click", () => showTeamDetail(row.dataset.tid));
     });
@@ -477,12 +474,20 @@
 
     document.getElementById("team-detail-title").textContent = team.name;
 
+    // Build strength description based on model type
+    let strengthLine;
+    if (team.off_mean !== undefined) {
+      strengthLine = `Off: ${team.off_mean.toFixed(1)} · Def: ${team.def_mean.toFixed(1)} · Overall: ${team.overall_mean.toFixed(1)}`;
+    } else {
+      strengthLine = `θ = ${team.theta_mean.toFixed(1)} ± ${team.theta_std.toFixed(1)}`;
+    }
+
     let headerHtml = `
       <div class="mm-detail-info">
         ${logo}
         <div>
           <h3 style="color:${color}">${team.name}</h3>
-          <p>${team.seed} seed (${team.region} region) · θ = ${team.theta_mean.toFixed(1)} ± ${team.theta_std.toFixed(1)}</p>
+          <p>${team.seed} seed (${REGION_NAMES[team.region] || team.region} region) · ${strengthLine}</p>
           ${team.eliminated ? '<p class="mm-eliminated-badge">Eliminated</p>' : ""}
         </div>
       </div>
@@ -503,7 +508,7 @@
             x: rounds,
             y: probs,
             marker: { color: color, opacity: 0.85 },
-            texttemplate: "%{y:.1%}",
+            text: probs.map((p) => fmtPct(p)),
             textposition: "outside",
             textfont: { size: 11, color: "#f4f4f4" },
             hovertemplate: "%{x}: %{y:.1%}<extra></extra>",
@@ -520,7 +525,7 @@
       );
     }
 
-    // Odds over time (from timeline)
+    // Odds over time
     if (state.timeline && state.timeline.teams[tid]) {
       const tl = state.timeline.teams[tid];
       const dates = Object.keys(tl.odds).sort();
@@ -543,7 +548,7 @@
           ...PLOTLY_LAYOUT_BASE,
           height: 250,
           yaxis: {
-            tickformat: ".0%",
+            tickformat: ".1%",
             title: { text: "Championship Odds", font: { size: 11 } },
             gridcolor: "rgba(255,255,255,0.06)",
           },
@@ -601,13 +606,7 @@
         result.winner === game.team_a.id ? game.team_b.name : game.team_a.name;
 
       if (pWinner < 0.4) {
-        surprises.push({
-          slot,
-          winner: winnerName,
-          loser: loserName,
-          pWinner,
-          score: result.score,
-        });
+        surprises.push({ slot, winner: winnerName, loser: loserName, pWinner, score: result.score });
       }
     });
 
@@ -615,7 +614,7 @@
       <div class="mm-accuracy">
         <div class="mm-accuracy-stat">
           <span class="mm-stat-num">${correct}/${total}</span>
-          <span class="mm-stat-label">correct predictions (${total > 0 ? ((correct / total) * 100).toFixed(0) : 0}%)</span>
+          <span class="mm-stat-label">correct predictions (${fmtPct(total > 0 ? correct / total : 0)})</span>
         </div>
       </div>
     `;
@@ -626,7 +625,7 @@
         .sort((a, b) => a.pWinner - b.pWinner)
         .forEach((s) => {
           html += `<div class="mm-surprise">
-            <span class="mm-surprise-prob">${(s.pWinner * 100).toFixed(0)}%</span>
+            <span class="mm-surprise-prob">${fmtPct(s.pWinner)}</span>
             <span>${s.winner} over ${s.loser}${s.score ? " (" + s.score + ")" : ""}</span>
           </div>`;
         });
