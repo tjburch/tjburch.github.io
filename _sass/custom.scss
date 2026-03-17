@@ -1,4 +1,28 @@
 /* ==========================================================================
+   TOC sidebar: scrollable when content is taller than viewport
+   ========================================================================== */
+
+.sidebar__right.sticky .toc {
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.toc .nav__title {
+  background: #1a1a1a;
+  color: var(--accent-primary);
+}
+
+.sidebar__right .bmc-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar__right .bmc-btn {
+  transform: scale(0.85);
+  transform-origin: center;
+}
+
+/* ==========================================================================
    Custom styles for Tyler James Burch website
    Consolidated from previous custom CSS files
    ========================================================================== */

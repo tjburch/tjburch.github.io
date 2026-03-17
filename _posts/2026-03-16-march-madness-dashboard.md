@@ -82,3 +82,7 @@ header:
 
 <script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
 <script src="/assets/js/march-madness-dashboard.js"></script>
+
+<div style="text-align: center; margin-top: 2em; padding-top: 1em; border-top: 1px solid #e0e0e0;">
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="tylerjamesburch" data-color="#f0a400" data-emoji=""  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#FFDD00" ></script>
+</div>

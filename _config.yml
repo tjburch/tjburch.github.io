@@ -32,6 +32,7 @@ defaults:
       comments: true
       share: true
       related: true
+      buymeacoffee: true
 
   # _pages
   - scope:
