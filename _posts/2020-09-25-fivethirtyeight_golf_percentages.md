@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Golf Percentages"
 date: 2020-09-25
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_golf_percentages
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "An analytical solution plus some plots in R (yes, you read that right, R)"
 ---

@@ -2,7 +2,8 @@
 layout: posts
 title: "A hierarchical model for hockey scoring"
 date: 2022-11-26
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/hockey-bayes
 tags: [hockey, sports]
 excerpt: "Just how lucky have the 18-3 Bruins gotten?"
 ---

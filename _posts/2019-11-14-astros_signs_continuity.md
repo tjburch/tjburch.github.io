@@ -5,6 +5,7 @@ date: 2019-11-14
 categories: Baseball
 tags: [baseball]
 excerpt: "Perhaps we're being a bit hyperbolic"
+published: false
 ---
 
 This week, major news broke about the Astros stealing signs at home in 2017, and relaying this information to their players via hitting a trash can in their dugout. There's been a lot of mixed reporting on how much this actually affected their play. Some have argued there wasn't significant impact, citing that they performed comparably, or even better, on the road. Others, such as [this study](https://www.reddit.com/r/baseball/comments/dw9wnd/the_astros_home_k_dropped_from_244_in_2016_to_166/) by a Reddit user claim that it dramatically helped them, referencing their year-to-year K%.

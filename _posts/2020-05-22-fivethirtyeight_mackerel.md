@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Can You Find The Fish In State Names?"
 date: 2020-05-22
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_mackerel
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "Or, 'how I learned the word pneumonoultramicroscopicsilicovolcanoconiosis'"
 ---

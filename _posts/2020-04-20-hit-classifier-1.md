@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 1: Model Selection"
 date: 2020-04-21
-categories: Baseball
+categories: [Baseball, Statistics]
+redirect_from: /blog/baseball/hit-classifier-1
 tags: [baseball, statistics]
 excerpt: "Can we classify the outcome of a baseball hit based on the hit kinematics?"
 ---

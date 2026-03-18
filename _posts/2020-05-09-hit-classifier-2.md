@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 2: Optimization"
 date: 2020-05-09
-categories: Baseball
+categories: [Baseball, Statistics]
+redirect_from: /blog/baseball/hit-classifier-2
 tags: [baseball, statistics]
 excerpt: "Amping up the hit outcome model with feature engineering and hyperparameter optimization"
 ---

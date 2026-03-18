@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: How Low Can You Roll?"
 date: 2019-11-15
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_roll
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "Busting out the trusty random number generator"
 ---

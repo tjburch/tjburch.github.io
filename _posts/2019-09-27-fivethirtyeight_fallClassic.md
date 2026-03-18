@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Which Baseball Team Will Win The Riddler Fall Classic?"
 date: 2019-09-27
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_fallClassic
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "Revisiting more fake-baseball for 538"
 ---
@@ -37,7 +38,7 @@ The full Jupyter notebook for this solution can be found [here](https://github.c
 
 ### Solution:
 
-The solution to this took a bit more involved simulation. What I did was reprise my simulation for the [baseball yahtzee](https://tjburch.github.io/blog/misc/fivethirtyeight_yahtzee) puzzle earlier this year, gut it out a little bit and adapt it to this specific problem, with the given actions and likelihoods.
+The solution to this took a bit more involved simulation. What I did was reprise my simulation for the [baseball yahtzee](https://tjburch.github.io/blog/statistics/fivethirtyeight_yahtzee) puzzle earlier this year, gut it out a little bit and adapt it to this specific problem, with the given actions and likelihoods.
 
 The Jupyter notebook found [here](https://github.com/tjburch/puzzles/blob/master/riddler538_2019_Sept27/notebooks/classic.ipynb) shows the complete game definition in the various classes as the top, and the simulation indicated. This simulation was a lot more intensive, I ended up doing each matchup 500,000 times for a total of 1,500,000 games.
 

@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 3: Studying Re-sampling Methods"
 date: 2020-07-12
-categories: Baseball
+categories: [Baseball, Statistics]
+redirect_from: /blog/baseball/hit-classifier-3
 tags: [baseball, statistics]
 excerpt: "Diving into resampling to sort out a very imbalanced class problem"
 ---

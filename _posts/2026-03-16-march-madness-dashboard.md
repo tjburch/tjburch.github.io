@@ -3,7 +3,7 @@ layout: single
 title: "March Madness 2026 — Interactive Forecast Dashboard"
 date: 2026-03-16
 permalink: /march-madness-2026/
-categories: misc
+categories: Statistics
 tags: [bayesian, interactive, march-madness]
 classes: wide
 author_profile: false
@@ -20,7 +20,7 @@ header:
   <div class="mm-header">
     <p class="mm-subtitle">
       Bracket forecasts from a latent offense+defense skill hierarchical model fit with PyMC.
-      <a href="/blog/misc/march-madness-2026">Read the methodology →</a>
+      <a href="/blog/statistics/march-madness-2026">Read the methodology →</a>
     </p>
   </div>
 

@@ -2,7 +2,8 @@
 layout: posts
 title: "2023 NHL Playoff Predictions"
 date: 2023-04-30
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/nhl-predictions
 tags: [hockey, sports]
 excerpt: "Who will win this year's cup?"
 ---
@@ -12,7 +13,7 @@ excerpt: "Who will win this year's cup?"
 
 ## Background
 
-Earlier this NHL season, I posted [a Bayesian hierarchical model for NHL scoring](http://tylerjamesburch.com/blog/misc/hockey-bayes) in an aim to understand the skill of the Bruins based on the first 21 games (in which they went 18-3). This model has been expanded to better model NHL games (specifically the overtime structure), fit on all of 2022-2023 data to get the goal creation and suppression parameters for each team, and then used to project the remainder of the playoffs, which can be found [here](http://nhl-projections.tylerjamesburch.com).
+Earlier this NHL season, I posted [a Bayesian hierarchical model for NHL scoring](http://tylerjamesburch.com/blog/statistics/hockey-bayes) in an aim to understand the skill of the Bruins based on the first 21 games (in which they went 18-3). This model has been expanded to better model NHL games (specifically the overtime structure), fit on all of 2022-2023 data to get the goal creation and suppression parameters for each team, and then used to project the remainder of the playoffs, which can be found [here](http://nhl-projections.tylerjamesburch.com).
 
 ## Methodology
 

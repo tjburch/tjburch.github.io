@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Can The Riddler Bros. Beat Joe DiMaggio’s Hitting Streak?"
 date: 2019-05-12
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_dimaggio
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "How do theoretical players stack up against Joe Dimaggio?"
 ---

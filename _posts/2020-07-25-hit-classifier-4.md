@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 4: Application and Reflection"
 date: 2020-07-25
-categories: Baseball
+categories: [Baseball, Statistics]
+redirect_from: /blog/baseball/hit-classifier-4
 tags: [baseball, statistics]
 excerpt: "Creating a practical application for the hit classifier (along with some reflections on the model development)"
 ---

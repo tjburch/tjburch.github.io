@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Can You Turn America’s Pastime Into A Game Of Yahtzee?"
 date: 2019-03-29
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/fivethirtyeight_yahtzee
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "If baseball isn't random enough, let's make it into a dice game"
 ---

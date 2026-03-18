@@ -2,7 +2,8 @@
 layout: posts
 title: "2024 Rewind: Orthogonal Polynomial Regression in Bambi"
 date: 2026-02-23
-categories: Misc
+categories: Statistics
+redirect_from: /blog/misc/orthogonal-polynomial-regression-bambi
 tags: [python, bayesian, bambi, statistics, regression]
 excerpt: "A deep dive into what orthogonal polynomials actually do under the hood, contributed to Bambi's examples"
 header:
@@ -11,7 +12,7 @@ header:
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-This is the second of two notebooks I wrote and contributed to [Bambi's](https://bambinos.github.io/bambi/) example documentation back in 2024. The first post, covering polynomial regression basics, is [here](/blog/misc/polynomial-regression-bambi). This one goes deeper into what happens when you use the `poly` keyword in a Bambi formula. Specifically, looking at the orthogonalization that happens under the hood.
+This is the second of two notebooks I wrote and contributed to [Bambi's](https://bambinos.github.io/bambi/) example documentation back in 2024. The first post, covering polynomial regression basics, is [here](/blog/statistics/polynomial-regression-bambi). This one goes deeper into what happens when you use the `poly` keyword in a Bambi formula. Specifically, looking at the orthogonalization that happens under the hood.
 
 The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi/notebooks/orthogonal_polynomial_reg.html). What follows is the content, lightly adapted for this blog.
 
@@ -19,7 +20,7 @@ The original notebook lives in the [Bambi docs](https://bambinos.github.io/bambi
 
 # Orthogonal Polynomial Regression
 
-While the content here can stand alone, it is a companion to the [polynomial regression post](/blog/misc/polynomial-regression-bambi), which contains additional useful examples.
+While the content here can stand alone, it is a companion to the [polynomial regression post](/blog/statistics/polynomial-regression-bambi), which contains additional useful examples.
 
 ```python
 import warnings
@@ -41,7 +42,7 @@ warnings.filterwarnings("ignore")
 
 ## Revisiting Polynomial Regression
 
-To start, we'll recreate the projectile motion data defined in the [polynomial regression post](/blog/misc/polynomial-regression-bambi) with $$x_0 = 1.5$$ $$m$$ and $$v_0 = 7$$ $$m$$/$$s$$. This will follow:
+To start, we'll recreate the projectile motion data defined in the [polynomial regression post](/blog/statistics/polynomial-regression-bambi) with $$x_0 = 1.5$$ $$m$$ and $$v_0 = 7$$ $$m$$/$$s$$. This will follow:
 
 $$x_f = \frac{1}{2} g t^2 + v_0 t + x_0$$
 

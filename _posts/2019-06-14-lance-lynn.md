@@ -2,7 +2,8 @@
 layout: posts
 title: "Evaluating Lance Lynn's Unexpected 2019"
 date: 2019-06-14
-categories: Baseball
+categories: [Baseball, Statistics]
+redirect_from: /blog/baseball/lance-lynn
 tags: [baseball, fangraphs]
 excerpt: "A deep-dive into Lance Lynn's recent dominance"
 ---
