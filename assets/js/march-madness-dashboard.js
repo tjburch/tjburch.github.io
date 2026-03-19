@@ -277,7 +277,10 @@
       .slice(0, topN);
 
     const roundCols = ROUND_NAMES.slice(1);
-    const teamLabels = sorted.map((d) => `(${d.team.seed_num}) ${d.team.name}`).reverse();
+    const teamLabels = sorted.map((d) => {
+      const label = `(${d.team.seed_num}) ${d.team.name}`;
+      return d.team.eliminated ? `${label}  ✗` : label;
+    }).reverse();
 
     const z = [];
     for (let i = sorted.length - 1; i >= 0; i--) {
@@ -416,25 +419,33 @@
       const colorA = brandA && brandA.primary_color ? brandA.primary_color : "#666";
       const colorB = brandB && brandB.primary_color ? brandB.primary_color : "#666";
 
-      let resultBadge = "";
-      if (result && result.winner) {
-        const winnerName = result.winner === game.team_a.id ? game.team_a.name : game.team_b.name;
-        resultBadge = `<span class="mm-result-badge">${winnerName} ${result.score || ""}</span>`;
+      const hasResult = result && result.winner;
+      const aIsWinner = hasResult && result.winner === game.team_a.id;
+      const bIsWinner = hasResult && result.winner === game.team_b.id;
+      let scoreStr = "";
+      if (hasResult && result.winner_score != null) {
+        scoreStr = `${result.winner_score}–${result.loser_score}`;
       }
 
-      html += `<div class="mm-matchup">`;
-      html += `<div class="mm-matchup-team" style="border-left: 3px solid ${colorA}">`;
+      const elimA = hasResult && !aIsWinner ? " mm-matchup-loser" : "";
+      const elimB = hasResult && !bIsWinner ? " mm-matchup-loser" : "";
+
+      html += `<div class="mm-matchup${hasResult ? " mm-matchup-decided" : ""}">`;
+      html += `<div class="mm-matchup-team${elimA}" style="border-left: 3px solid ${colorA}">`;
       html += `<span class="mm-matchup-seed">${game.team_a.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_a.name}</span>`;
       html += `<span class="mm-matchup-prob">${fmtPct(pA)}</span>`;
       html += `</div>`;
       html += `<div class="mm-prob-bar"><div class="mm-prob-bar-fill" style="width:${(pA * 100).toFixed(0)}%;background:${colorA}"></div></div>`;
-      html += `<div class="mm-matchup-team" style="border-left: 3px solid ${colorB}">`;
+      html += `<div class="mm-matchup-team${elimB}" style="border-left: 3px solid ${colorB}">`;
       html += `<span class="mm-matchup-seed">${game.team_b.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_b.name}</span>`;
       html += `<span class="mm-matchup-prob">${fmtPct(pB)}</span>`;
       html += `</div>`;
-      if (resultBadge) html += resultBadge;
+      if (hasResult) {
+        const winnerName = aIsWinner ? game.team_a.name : game.team_b.name;
+        html += `<span class="mm-result-badge">${winnerName}${scoreStr ? " " + scoreStr : ""}</span>`;
+      }
       html += `</div>`;
     });
     html += "</div></div>";
@@ -606,7 +617,8 @@
         result.winner === game.team_a.id ? game.team_b.name : game.team_a.name;
 
       if (pWinner < 0.4) {
-        surprises.push({ slot, winner: winnerName, loser: loserName, pWinner, score: result.score });
+        const score = result.winner_score != null ? `${result.winner_score}–${result.loser_score}` : "";
+        surprises.push({ slot, winner: winnerName, loser: loserName, pWinner, score });
       }
     });
 

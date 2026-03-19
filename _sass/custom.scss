@@ -2851,6 +2851,14 @@ code {
   transition: width 0.3s ease;
 }
 
+.mm-matchup-loser {
+  opacity: 0.35;
+
+  .mm-matchup-name {
+    text-decoration: line-through;
+  }
+}
+
 .mm-result-badge {
   display: block;
   padding: 0.25rem 0.75rem;
