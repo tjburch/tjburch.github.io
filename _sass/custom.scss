@@ -2970,3 +2970,112 @@ code {
   font-style: italic;
   padding: 2rem 0;
 }
+
+.mm-brier-n {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.mm-brier-explainer {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.mm-brier-grid {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.mm-brier-card {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mm-brier-highlight {
+  border: 1px solid var(--accent-primary);
+}
+
+.mm-brier-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.mm-brier-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.mm-brier-best {
+  color: #27ae60;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  vertical-align: super;
+}
+
+.mm-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+
+  th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  td {
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+  }
+
+  tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.mm-upset-row td {
+  color: #e74c3c;
+}
+
+.mm-result-seed {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.mm-result-score {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.mm-result-prob {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}

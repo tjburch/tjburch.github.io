@@ -186,11 +186,11 @@
 
   // ─── Rendering ────────────────────────────────────────────────────
 
-  function renderAll() {
+  async function renderAll() {
     renderChampionshipChart();
     renderAdvancementHeatmap();
     renderRegionBracket(getActiveRegion());
-    renderPredictions();
+    await renderPredictions();
     hideTeamDetail();
   }
 
@@ -584,13 +584,49 @@
 
   // ─── Predictions vs Reality ───────────────────────────────────────
 
-  function renderPredictions() {
+  // Historical higher-seed win rates (1985–2024 men's NCAA tournament)
+  const HIST_SEED_WIN_RATE = {
+    "1_16": 0.99, "2_15": 0.94, "3_14": 0.85, "4_13": 0.79,
+    "5_12": 0.64, "6_11": 0.62, "7_10": 0.61, "8_9": 0.51,
+  };
+
+  function chalkProb(seedA, seedB) {
+    return seedA < seedB ? 1.0 : 0.0;
+  }
+
+  function historicalProb(seedA, seedB) {
+    const lo = Math.min(seedA, seedB);
+    const hi = Math.max(seedA, seedB);
+    const key = `${lo}_${hi}`;
+    const p = HIST_SEED_WIN_RATE[key];
+    if (p == null) return 0.5;
+    return seedA < seedB ? p : 1 - p;
+  }
+
+  function brier(pWinner) {
+    return (1 - pWinner) ** 2;
+  }
+
+  async function renderPredictions() {
     const snap = state.snapshot;
     if (!snap) return;
 
     const container = document.getElementById("predictions-content");
     const results = snap.actual_results || {};
     const played = Object.entries(results).filter(([, r]) => r && r.winner);
+
+    // Load the pre-tournament snapshot for original predictions (before lock-in)
+    let preSnap = snap;
+    if (state.availableDates.length > 1) {
+      const firstDate = state.availableDates[0];
+      if (firstDate !== state.date) {
+        const genderDir = state.gender === "M" ? "mens" : "womens";
+        try {
+          const resp = await fetch(`${DATA_BASE}/${genderDir}/snapshots/${firstDate}.json`);
+          if (resp.ok) preSnap = await resp.json();
+        } catch (e) { /* fall back to current snapshot */ }
+      }
+    }
 
     if (played.length === 0) {
       container.innerHTML =
@@ -599,7 +635,13 @@
     }
 
     let correct = 0;
+    let chalkCorrect = 0;
     let total = 0;
+    let scored = 0;
+    let brierSum = 0;
+    let brierChalk = 0;
+    let brierHist = 0;
+    let games = [];
     let surprises = [];
 
     played.forEach(([slot, result]) => {
@@ -607,29 +649,98 @@
       if (!game || !game.team_a) return;
 
       total++;
-      const pWinner =
-        result.winner === game.team_a.id ? game.p_a_wins : 1 - game.p_a_wins;
+      const aWon = result.winner === game.team_a.id;
+
+      // Use pre-tournament prediction if available (avoids lock-in bias)
+      const preGame = preSnap.bracket[slot];
+      const hasPrediction = preGame && preGame.p_a_wins != null && preGame.p_a_wins > 0 && preGame.p_a_wins < 1;
+      const pA = hasPrediction ? preGame.p_a_wins : game.p_a_wins;
+      const pWinner = aWon ? pA : 1 - pA;
       if (pWinner >= 0.5) correct++;
 
-      const winnerName =
-        result.winner === game.team_a.id ? game.team_a.name : game.team_b.name;
-      const loserName =
-        result.winner === game.team_a.id ? game.team_b.name : game.team_a.name;
+      const chalkP = chalkProb(game.team_a.seed_num, game.team_b.seed_num);
+      const chalkPWinner = aWon ? chalkP : 1 - chalkP;
+      if (chalkPWinner >= 0.5) chalkCorrect++;
+
+      const histP = historicalProb(game.team_a.seed_num, game.team_b.seed_num);
+      const histPWinner = aWon ? histP : 1 - histP;
+
+      // Only include in Brier score if we had a genuine pre-game prediction
+      if (hasPrediction) {
+        scored++;
+        brierSum += brier(pWinner);
+        brierChalk += brier(chalkPWinner);
+        brierHist += brier(histPWinner);
+      }
+
+      const winnerName = aWon ? game.team_a.name : game.team_b.name;
+      const loserName = aWon ? game.team_b.name : game.team_a.name;
+      const winnerSeed = aWon ? game.team_a.seed_num : game.team_b.seed_num;
+      const loserSeed = aWon ? game.team_b.seed_num : game.team_a.seed_num;
+      const score = result.winner_score != null ? `${result.winner_score}–${result.loser_score}` : "";
+
+      games.push({ slot, winnerName, loserName, winnerSeed, loserSeed, pWinner, score, hasPrediction });
 
       if (pWinner < 0.4) {
-        const score = result.winner_score != null ? `${result.winner_score}–${result.loser_score}` : "";
         surprises.push({ slot, winner: winnerName, loser: loserName, pWinner, score });
       }
     });
+
+    const avgBrier = scored > 0 ? brierSum / scored : 0;
+    const avgBrierChalk = scored > 0 ? brierChalk / scored : 0;
+    const avgBrierHist = scored > 0 ? brierHist / scored : 0;
 
     let html = `
       <div class="mm-accuracy">
         <div class="mm-accuracy-stat">
           <span class="mm-stat-num">${correct}/${total}</span>
-          <span class="mm-stat-label">correct predictions (${fmtPct(total > 0 ? correct / total : 0)})</span>
+          <span class="mm-stat-label">correct picks (${fmtPct(total > 0 ? correct / total : 0)})</span>
         </div>
       </div>
     `;
+
+    // Brier score comparison (only when we have scored games)
+    if (scored > 0) {
+      html += `<h3>Brier Score Comparison <span class="mm-brier-n">(${scored} game${scored > 1 ? "s" : ""})</span></h3>`;
+      html += '<p class="mm-brier-explainer">Lower is better. Brier score measures calibration — how close predicted probabilities are to outcomes (0 = perfect, 1 = worst).</p>';
+      html += '<div class="mm-brier-grid">';
+
+      const brierEntries = [
+        { label: "This model", value: avgBrier, highlight: true },
+        { label: "Hist. seed avg", value: avgBrierHist, highlight: false },
+        { label: "Chalk (always higher seed)", value: avgBrierChalk, highlight: false },
+      ].sort((a, b) => a.value - b.value);
+
+      brierEntries.forEach((entry, i) => {
+        const cls = entry.highlight ? " mm-brier-highlight" : "";
+        const rank = i === 0 ? ' <span class="mm-brier-best">best</span>' : "";
+        html += `<div class="mm-brier-card${cls}">
+          <span class="mm-brier-value">${entry.value.toFixed(3)}</span>
+          <span class="mm-brier-label">${entry.label}${rank}</span>
+        </div>`;
+      });
+      html += "</div>";
+    }
+
+    // Game-by-game results: scored games first (sorted by surprise), then unscored
+    const scoredGames = games.filter((g) => g.hasPrediction).sort((a, b) => a.pWinner - b.pWinner);
+    const unscoredGames = games.filter((g) => !g.hasPrediction);
+    const orderedGames = [...scoredGames, ...unscoredGames];
+
+    html += '<h3>Game Results</h3>';
+    html += '<table class="mm-results-table"><thead><tr>';
+    html += '<th>Result</th><th>Score</th><th>Model P(winner)</th>';
+    html += '</tr></thead><tbody>';
+    orderedGames.forEach((g) => {
+      const upset = g.hasPrediction && g.pWinner < 0.5;
+      const rowCls = upset ? ' class="mm-upset-row"' : "";
+      html += `<tr${rowCls}>`;
+      html += `<td><span class="mm-result-seed">${g.winnerSeed}</span> ${g.winnerName} over <span class="mm-result-seed">${g.loserSeed}</span> ${g.loserName}</td>`;
+      html += `<td class="mm-result-score">${g.score}</td>`;
+      html += `<td class="mm-result-prob">${g.hasPrediction ? fmtPct(g.pWinner) : "—"}</td>`;
+      html += `</tr>`;
+    });
+    html += '</tbody></table>';
 
     if (surprises.length > 0) {
       html += '<h3>Biggest Surprises</h3><div class="mm-surprises">';
