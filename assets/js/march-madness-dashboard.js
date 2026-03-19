@@ -637,7 +637,6 @@
     let correct = 0;
     let chalkCorrect = 0;
     let total = 0;
-    let scored = 0;
     let brierSum = 0;
     let brierChalk = 0;
     let brierHist = 0;
@@ -648,13 +647,15 @@
       const game = snap.bracket[slot];
       if (!game || !game.team_a) return;
 
+      // Skip play-in games (same seed, no meaningful prediction)
+      if (game.play_in) return;
+
+      // Use pre-tournament prediction to avoid lock-in bias
+      const preGame = preSnap.bracket[slot];
+      const pA = preGame ? preGame.p_a_wins : game.p_a_wins;
+
       total++;
       const aWon = result.winner === game.team_a.id;
-
-      // Use pre-tournament prediction if available (avoids lock-in bias)
-      const preGame = preSnap.bracket[slot];
-      const hasPrediction = preGame && preGame.p_a_wins != null && preGame.p_a_wins > 0 && preGame.p_a_wins < 1;
-      const pA = hasPrediction ? preGame.p_a_wins : game.p_a_wins;
       const pWinner = aWon ? pA : 1 - pA;
       if (pWinner >= 0.5) correct++;
 
@@ -665,13 +666,9 @@
       const histP = historicalProb(game.team_a.seed_num, game.team_b.seed_num);
       const histPWinner = aWon ? histP : 1 - histP;
 
-      // Only include in Brier score if we had a genuine pre-game prediction
-      if (hasPrediction) {
-        scored++;
-        brierSum += brier(pWinner);
-        brierChalk += brier(chalkPWinner);
-        brierHist += brier(histPWinner);
-      }
+      brierSum += brier(pWinner);
+      brierChalk += brier(chalkPWinner);
+      brierHist += brier(histPWinner);
 
       const winnerName = aWon ? game.team_a.name : game.team_b.name;
       const loserName = aWon ? game.team_b.name : game.team_a.name;
@@ -679,65 +676,68 @@
       const loserSeed = aWon ? game.team_b.seed_num : game.team_a.seed_num;
       const score = result.winner_score != null ? `${result.winner_score}–${result.loser_score}` : "";
 
-      games.push({ slot, winnerName, loserName, winnerSeed, loserSeed, pWinner, score, hasPrediction });
+      games.push({ slot, winnerName, loserName, winnerSeed, loserSeed, pWinner, score });
 
       if (pWinner < 0.4) {
         surprises.push({ slot, winner: winnerName, loser: loserName, pWinner, score });
       }
     });
 
-    const avgBrier = scored > 0 ? brierSum / scored : 0;
-    const avgBrierChalk = scored > 0 ? brierChalk / scored : 0;
-    const avgBrierHist = scored > 0 ? brierHist / scored : 0;
+    if (total === 0) {
+      const playInCount = played.length;
+      const msg = playInCount > 0
+        ? "No main-draw games played yet — play-in games are omitted (same-seed matchups). Check back after the first round!"
+        : "No tournament games played yet. Check back after the first round!";
+      container.innerHTML = `<p class="mm-no-data">${msg}</p>`;
+      return;
+    }
+
+    const avgBrier = brierSum / total;
+    const avgBrierChalk = brierChalk / total;
+    const avgBrierHist = brierHist / total;
 
     let html = `
       <div class="mm-accuracy">
         <div class="mm-accuracy-stat">
           <span class="mm-stat-num">${correct}/${total}</span>
-          <span class="mm-stat-label">correct picks (${fmtPct(total > 0 ? correct / total : 0)})</span>
+          <span class="mm-stat-label">correct picks (${fmtPct(correct / total)})</span>
         </div>
       </div>
     `;
 
-    // Brier score comparison (only when we have scored games)
-    if (scored > 0) {
-      html += `<h3>Brier Score Comparison <span class="mm-brier-n">(${scored} game${scored > 1 ? "s" : ""})</span></h3>`;
-      html += '<p class="mm-brier-explainer">Lower is better. Brier score measures calibration — how close predicted probabilities are to outcomes (0 = perfect, 1 = worst).</p>';
-      html += '<div class="mm-brier-grid">';
+    // Brier score comparison
+    html += `<h3>Brier Score Comparison <span class="mm-brier-n">(${total} game${total > 1 ? "s" : ""})</span></h3>`;
+    html += '<p class="mm-brier-explainer">Lower is better. Brier score measures calibration — how close predicted probabilities are to outcomes (0 = perfect, 1 = worst).</p>';
+    html += '<div class="mm-brier-grid">';
 
-      const brierEntries = [
-        { label: "This model", value: avgBrier, highlight: true },
-        { label: "Hist. seed avg", value: avgBrierHist, highlight: false },
-        { label: "Chalk (always higher seed)", value: avgBrierChalk, highlight: false },
-      ].sort((a, b) => a.value - b.value);
+    const brierEntries = [
+      { label: "This model", value: avgBrier, highlight: true },
+      { label: "Hist. seed avg", value: avgBrierHist, highlight: false },
+      { label: "Chalk (always higher seed)", value: avgBrierChalk, highlight: false },
+    ].sort((a, b) => a.value - b.value);
 
-      brierEntries.forEach((entry, i) => {
-        const cls = entry.highlight ? " mm-brier-highlight" : "";
-        const rank = i === 0 ? ' <span class="mm-brier-best">best</span>' : "";
-        html += `<div class="mm-brier-card${cls}">
-          <span class="mm-brier-value">${entry.value.toFixed(3)}</span>
-          <span class="mm-brier-label">${entry.label}${rank}</span>
-        </div>`;
-      });
-      html += "</div>";
-    }
+    brierEntries.forEach((entry, i) => {
+      const cls = entry.highlight ? " mm-brier-highlight" : "";
+      const rank = i === 0 ? ' <span class="mm-brier-best">best</span>' : "";
+      html += `<div class="mm-brier-card${cls}">
+        <span class="mm-brier-value">${entry.value.toFixed(3)}</span>
+        <span class="mm-brier-label">${entry.label}${rank}</span>
+      </div>`;
+    });
+    html += "</div>";
 
-    // Game-by-game results: scored games first (sorted by surprise), then unscored
-    const scoredGames = games.filter((g) => g.hasPrediction).sort((a, b) => a.pWinner - b.pWinner);
-    const unscoredGames = games.filter((g) => !g.hasPrediction);
-    const orderedGames = [...scoredGames, ...unscoredGames];
-
+    // Game-by-game results sorted by surprise factor
+    games.sort((a, b) => a.pWinner - b.pWinner);
     html += '<h3>Game Results</h3>';
     html += '<table class="mm-results-table"><thead><tr>';
     html += '<th>Result</th><th>Score</th><th>Model P(winner)</th>';
     html += '</tr></thead><tbody>';
-    orderedGames.forEach((g) => {
-      const upset = g.hasPrediction && g.pWinner < 0.5;
-      const rowCls = upset ? ' class="mm-upset-row"' : "";
+    games.forEach((g) => {
+      const rowCls = g.pWinner < 0.5 ? ' class="mm-upset-row"' : "";
       html += `<tr${rowCls}>`;
       html += `<td><span class="mm-result-seed">${g.winnerSeed}</span> ${g.winnerName} over <span class="mm-result-seed">${g.loserSeed}</span> ${g.loserName}</td>`;
       html += `<td class="mm-result-score">${g.score}</td>`;
-      html += `<td class="mm-result-prob">${g.hasPrediction ? fmtPct(g.pWinner) : "—"}</td>`;
+      html += `<td class="mm-result-prob">${fmtPct(g.pWinner)}</td>`;
       html += `</tr>`;
     });
     html += '</tbody></table>';
@@ -755,6 +755,7 @@
       html += "</div>";
     }
 
+    html += '<p class="mm-predictions-footnote">Play-in games omitted (same-seed matchups).</p>';
     container.innerHTML = html;
   }
 
