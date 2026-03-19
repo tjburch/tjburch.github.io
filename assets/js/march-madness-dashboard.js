@@ -175,7 +175,7 @@
       }
     }
 
-    renderAll();
+    await renderAll();
     showLoading(false);
   }
 
