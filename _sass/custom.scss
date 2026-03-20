@@ -728,6 +728,121 @@ button:focus-visible,
         }
       }
     }
+
+    .series-group {
+      margin-bottom: 0;
+      padding: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+      details {
+        summary {
+          list-style: none;
+          cursor: pointer;
+          padding: 1.5rem 0;
+          transition: all 0.25s ease;
+
+          &::-webkit-details-marker {
+            display: none;
+          }
+
+          .series-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+          }
+
+          .series-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+          }
+
+          .series-title {
+            font-family: var(--font-body);
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+          }
+
+          .series-count {
+            display: inline-block;
+            background: rgba(61, 140, 156, 0.15);
+            color: var(--accent-secondary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            border: 1px solid rgba(61, 140, 156, 0.25);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+          }
+
+          .series-right {
+            flex-shrink: 0;
+          }
+
+          .series-date-range {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+          }
+
+          &:hover .series-title {
+            color: var(--accent-primary);
+          }
+        }
+
+        .series-posts {
+          padding: 0 0 1rem 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.04);
+
+          .series-post-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0 0.6rem 1rem;
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            border-left: 2px solid rgba(255, 255, 255, 0.06);
+
+            &:hover {
+              color: var(--accent-primary);
+              border-left-color: var(--accent-primary);
+            }
+          }
+
+          .series-post-date {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        details summary {
+          .series-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+          }
+
+          .series-right {
+            text-align: left;
+          }
+        }
+
+        details .series-posts .series-post-link {
+          font-size: 0.85rem;
+        }
+      }
+    }
   }
 }
 
