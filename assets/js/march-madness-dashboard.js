@@ -305,11 +305,11 @@
           annotations.push({
             x: roundCols[col],
             y: teamLabels[row],
-            text: fmtPct(val),
+            text: val === 1 ? "✓" : fmtPct(val),
             showarrow: false,
             font: {
-              size: 8,
-              color: val > 0.65 ? "#1a1a1a" : "#e0e0e0",
+              size: val === 1 ? 10 : 8,
+              color: val === 1 ? "#27ae60" : val > 0.65 ? "#1a1a1a" : "#e0e0e0",
             },
           });
         }
@@ -403,8 +403,12 @@
 
       roundKeys.forEach((rk) => {
         const val = adv[rk] || 0;
-        const bg = probColor(val);
-        html += `<td class="mm-prob-cell" style="background:${bg}">${val > 0 ? fmtPct(val) : "—"}</td>`;
+        if (val === 1) {
+          html += `<td class="mm-prob-cell mm-prob-locked">✓</td>`;
+        } else {
+          const bg = probColor(val);
+          html += `<td class="mm-prob-cell" style="background:${bg}">${val > 0 ? fmtPct(val) : "—"}</td>`;
+        }
       });
 
       html += "</tr>";
@@ -443,13 +447,13 @@
       html += `<div class="mm-matchup-team${elimA}" style="border-left: 3px solid ${colorA}">`;
       html += `<span class="mm-matchup-seed">${game.team_a.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_a.name}</span>`;
-      html += `<span class="mm-matchup-prob">${fmtPct(pA)}</span>`;
+      html += `<span class="mm-matchup-prob">${aIsWinner ? '<span class="mm-prob-check">✓</span>' : hasResult ? "" : fmtPct(pA)}</span>`;
       html += `</div>`;
       html += `<div class="mm-prob-bar"><div class="mm-prob-bar-fill" style="width:${(pA * 100).toFixed(0)}%;background:${colorA}"></div></div>`;
       html += `<div class="mm-matchup-team${elimB}" style="border-left: 3px solid ${colorB}">`;
       html += `<span class="mm-matchup-seed">${game.team_b.seed_num}</span>`;
       html += `<span class="mm-matchup-name">${game.team_b.name}</span>`;
-      html += `<span class="mm-matchup-prob">${fmtPct(pB)}</span>`;
+      html += `<span class="mm-matchup-prob">${bIsWinner ? '<span class="mm-prob-check">✓</span>' : hasResult ? "" : fmtPct(pB)}</span>`;
       html += `</div>`;
       if (hasResult) {
         const winnerName = aIsWinner ? game.team_a.name : game.team_b.name;
