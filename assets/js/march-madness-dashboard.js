@@ -68,7 +68,7 @@
   function updateUrl() {
     const params = new URLSearchParams();
     if (state.gender !== "M") params.set("gender", state.gender);
-    if (state.date && state.date !== state.availableDates[state.availableDates.length - 1]) {
+    if (state.date && state.date !== "latest") {
       params.set("date", state.date);
     }
     const qs = params.toString();
@@ -99,6 +99,12 @@
   function setupDateSelector() {
     const sel = document.getElementById("snapshot-date");
     sel.innerHTML = "";
+    // "Latest" option — always first, loads latest.json
+    const latestOpt = document.createElement("option");
+    latestOpt.value = "latest";
+    latestOpt.textContent = "Latest";
+    if (state.date === "latest") latestOpt.selected = true;
+    sel.appendChild(latestOpt);
     state.availableDates.forEach((d) => {
       const opt = document.createElement("option");
       opt.value = d;
@@ -144,8 +150,8 @@
     } catch (e) {
       state.availableDates = ["2026-03-17"];
     }
-    if (!state.date || !state.availableDates.includes(state.date)) {
-      state.date = state.availableDates[state.availableDates.length - 1] || "2026-03-17";
+    if (!state.date || (state.date !== "latest" && !state.availableDates.includes(state.date))) {
+      state.date = "latest";
     }
     setupDateSelector();
   }
@@ -154,7 +160,10 @@
     showLoading(true);
     const genderDir = state.gender === "M" ? "mens" : "womens";
     try {
-      const resp = await fetch(`${DATA_BASE}/${genderDir}/snapshots/${state.date}.json`);
+      const url = state.date === "latest"
+        ? `${DATA_BASE}/${genderDir}/latest.json`
+        : `${DATA_BASE}/${genderDir}/snapshots/${state.date}.json`;
+      const resp = await fetch(url);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       state.snapshot = await resp.json();
     } catch (e) {
