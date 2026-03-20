@@ -22,6 +22,7 @@ header:
   <div class="mm-header">
     <p class="mm-subtitle">
       Bracket forecasts from a latent offense+defense skill hierarchical model fit with PyMC.
+      <br>
       <a href="/blog/statistics/march-madness-2026">Read the methodology →</a>
     </p>
   </div>

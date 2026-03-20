@@ -720,7 +720,7 @@
 
     // Brier score comparison
     html += `<h3>Brier Score Comparison <span class="mm-brier-n">(${total} game${total > 1 ? "s" : ""})</span></h3>`;
-    html += '<p class="mm-brier-explainer">Lower is better. Brier score measures calibration — how close predicted probabilities are to outcomes (0 = perfect, 1 = worst).</p>';
+    html += '<p class="mm-brier-explainer">Lower is better (0 = perfect, 1 = worst).</p>';
     html += '<div class="mm-brier-grid">';
 
     const brierEntries = [
@@ -768,7 +768,7 @@
       html += "</div>";
     }
 
-    html += '<p class="mm-predictions-footnote">Play-in games omitted (same-seed matchups).</p>';
+    html += '<p class="mm-predictions-footnote">(Play-in games omitted)</p>';
     container.innerHTML = html;
   }
 
