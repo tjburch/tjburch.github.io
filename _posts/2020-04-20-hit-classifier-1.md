@@ -5,6 +5,8 @@ date: 2020-04-21
 categories: [Baseball, Statistics]
 redirect_from: /blog/baseball/hit-classifier-1
 tags: [baseball, statistics]
+series: hit-classifier
+series_title: "Classifying MLB Hit Outcomes"
 excerpt: "Can we classify the outcome of a baseball hit based on the hit kinematics?"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>

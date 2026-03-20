@@ -5,6 +5,8 @@ date: 2020-05-09
 categories: [Baseball, Statistics]
 redirect_from: /blog/baseball/hit-classifier-2
 tags: [baseball, statistics]
+series: hit-classifier
+series_title: "Classifying MLB Hit Outcomes"
 excerpt: "Amping up the hit outcome model with feature engineering and hyperparameter optimization"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>

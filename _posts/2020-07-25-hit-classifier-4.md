@@ -5,6 +5,8 @@ date: 2020-07-25
 categories: [Baseball, Statistics]
 redirect_from: /blog/baseball/hit-classifier-4
 tags: [baseball, statistics]
+series: hit-classifier
+series_title: "Classifying MLB Hit Outcomes"
 excerpt: "Creating a practical application for the hit classifier (along with some reflections on the model development)"
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>

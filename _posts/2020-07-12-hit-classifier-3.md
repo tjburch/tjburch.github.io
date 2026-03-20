@@ -5,6 +5,8 @@ date: 2020-07-12
 categories: [Baseball, Statistics]
 redirect_from: /blog/baseball/hit-classifier-3
 tags: [baseball, statistics]
+series: hit-classifier
+series_title: "Classifying MLB Hit Outcomes"
 excerpt: "Diving into resampling to sort out a very imbalanced class problem"
 ---
 

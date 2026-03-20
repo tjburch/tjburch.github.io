@@ -70,6 +70,7 @@ excerpt: "Technical posts on baseball analytics, data science, and physics resea
                 <summary class="series-summary">
                   <div class="series-header">
                     <div class="series-left">
+                      <span class="series-chevron">▶</span>
                       <span class="series-title">{{ series_title }}</span>
                       <span class="series-count">{{ this_series_posts.size }} posts</span>
                     </div>
