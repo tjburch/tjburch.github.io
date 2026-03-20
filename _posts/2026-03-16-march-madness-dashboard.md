@@ -43,6 +43,7 @@ header:
       <label for="snapshot-date">Snapshot:</label>
       <select id="snapshot-date"></select>
     </div>
+    <span class="mm-last-updated" id="last-updated"></span>
   </div>
 
   <div class="mm-loading" id="loading-indicator">

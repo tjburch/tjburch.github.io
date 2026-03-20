@@ -2794,6 +2794,12 @@ code {
   }
 }
 
+.mm-last-updated {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
 /* Loading spinner */
 .mm-loading {
   display: flex;

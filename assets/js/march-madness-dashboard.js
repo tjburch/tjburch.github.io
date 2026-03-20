@@ -219,6 +219,7 @@
   // ─── Rendering ────────────────────────────────────────────────────
 
   async function renderAll() {
+    renderLastUpdated();
     renderChampionshipChart();
     renderAdvancementHeatmap();
     renderRegionBracket(getActiveRegion());
@@ -247,6 +248,17 @@
     const scoreStr = entry.score != null ? ` · Brier: ${entry.score.toFixed(4)}` : "";
     statsEl.textContent = rankStr + pctStr + scoreStr;
     card.style.display = "block";
+  }
+
+  function renderLastUpdated() {
+    const el = document.getElementById("last-updated");
+    if (!state.snapshot || !state.snapshot.model_fit_timestamp) {
+      el.textContent = "";
+      return;
+    }
+    const dt = new Date(state.snapshot.model_fit_timestamp);
+    const opts = { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" };
+    el.textContent = "Updated " + dt.toLocaleString(undefined, opts);
   }
 
   function getActiveRegion() {
