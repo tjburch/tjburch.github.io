@@ -5,6 +5,8 @@ date: 2026-03-16
 permalink: /march-madness-2026/
 categories: Statistics
 tags: [bayesian, interactive, march-madness]
+series: march-madness-2026
+series_title: "March Madness 2026"
 classes: wide
 author_profile: false
 toc: false
