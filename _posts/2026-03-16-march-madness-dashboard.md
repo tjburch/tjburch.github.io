@@ -45,6 +45,13 @@ header:
 
   <div class="mm-content" id="dashboard-content" style="display:none;">
 
+    <div class="mm-kaggle-card" id="kaggle-card" style="display:none;">
+      <a href="https://www.kaggle.com/competitions/march-machine-learning-mania-2026/leaderboard" target="_blank" rel="noopener" id="kaggle-link">
+        <span class="mm-kaggle-label">Kaggle Leaderboard</span>
+        <span class="mm-kaggle-stats" id="kaggle-stats"></span>
+      </a>
+    </div>
+
     <section class="mm-section" id="section-championship">
       <h2>Championship Odds</h2>
       <div id="championship-chart"></div>

@@ -2818,6 +2818,44 @@ code {
   to { transform: rotate(360deg); }
 }
 
+/* Kaggle leaderboard card */
+.mm-kaggle-card {
+  display: flex;
+  margin-bottom: 2rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--accent-primary);
+    }
+  }
+}
+
+.mm-kaggle-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.mm-kaggle-stats {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Sections */
 .mm-section {
   margin-bottom: 3rem;

@@ -27,6 +27,8 @@
     displayModeBar: false,
   };
 
+  const KAGGLE_URL = "https://www.kaggle.com/competitions/march-machine-learning-mania-2026/leaderboard";
+
   // State
   let state = {
     gender: "M",
@@ -34,6 +36,8 @@
     snapshot: null,
     branding: null,
     timeline: null,
+    kaggle: null,
+    marketOdds: null,
     availableDates: [],
   };
 
@@ -55,6 +59,7 @@
     setupGenderToggle();
     setupRegionTabs();
     await loadBranding();
+    await loadKaggle();
     await loadAvailableDates();
     await loadSnapshot();
   }
@@ -86,6 +91,7 @@
         state.gender = btn.dataset.gender;
         state.date = null;
         state.timeline = null;
+        state.marketOdds = null;
         updateUrl();
         await loadAvailableDates();
         await loadSnapshot();
@@ -141,6 +147,15 @@
     }
   }
 
+  async function loadKaggle() {
+    try {
+      const resp = await fetch(`${DATA_BASE}/kaggle_leaderboard.json`);
+      state.kaggle = await resp.json();
+    } catch (e) {
+      state.kaggle = null;
+    }
+  }
+
   async function loadAvailableDates() {
     const genderDir = state.gender === "M" ? "mens" : "womens";
     try {
@@ -184,6 +199,13 @@
       }
     }
 
+    try {
+      const resp = await fetch(`${DATA_BASE}/${genderDir}/market_odds.json`);
+      if (resp.ok) state.marketOdds = await resp.json();
+    } catch (e) {
+      state.marketOdds = null;
+    }
+
     await renderAll();
     showLoading(false);
   }
@@ -196,11 +218,43 @@
   // ─── Rendering ────────────────────────────────────────────────────
 
   async function renderAll() {
+    renderKaggleCard();
     renderChampionshipChart();
     renderAdvancementHeatmap();
     renderRegionBracket(getActiveRegion());
     await renderPredictions();
     hideTeamDetail();
+  }
+
+  function renderKaggleCard() {
+    const card = document.getElementById("kaggle-card");
+    const statsEl = document.getElementById("kaggle-stats");
+    if (!state.kaggle || !state.kaggle.length) {
+      card.style.display = "none";
+      return;
+    }
+
+    // Find the most recent entry at or before the selected snapshot date
+    const snapshotDate = state.snapshot && state.snapshot.date ? state.snapshot.date : null;
+    let entry = null;
+    if (snapshotDate) {
+      const candidates = state.kaggle.filter((e) => e.date <= snapshotDate && e.rank != null);
+      if (candidates.length) entry = candidates[candidates.length - 1];
+    }
+    if (!entry) {
+      const valid = state.kaggle.filter((e) => e.rank != null);
+      entry = valid.length ? valid[valid.length - 1] : null;
+    }
+
+    if (!entry || entry.rank == null) {
+      card.style.display = "none";
+      return;
+    }
+
+    const rankStr = `Rank ${entry.rank}` + (entry.total_entries ? ` / ${entry.total_entries.toLocaleString()}` : "");
+    const scoreStr = entry.score != null ? ` · Brier: ${entry.score.toFixed(4)}` : "";
+    statsEl.textContent = rankStr + scoreStr;
+    card.style.display = "flex";
   }
 
   function getActiveRegion() {
@@ -647,12 +701,16 @@
       return;
     }
 
+    const marketGames = state.marketOdds ? state.marketOdds.games || {} : {};
+
     let correct = 0;
     let chalkCorrect = 0;
     let total = 0;
     let brierSum = 0;
     let brierChalk = 0;
     let brierHist = 0;
+    let brierMarket = 0;
+    let marketTotal = 0;
     let games = [];
     let surprises = [];
 
@@ -683,6 +741,17 @@
       brierChalk += brier(chalkPWinner);
       brierHist += brier(histPWinner);
 
+      // Market odds (if available for this slot)
+      const mkt = marketGames[slot];
+      if (mkt) {
+        // For R2+ contender slots, market odds store their own team_a_id
+        const mktAId = mkt.team_a_id || game.team_a.id;
+        const mktAWon = result.winner === mktAId;
+        const mktPWinner = mktAWon ? mkt.p_a_wins : 1 - mkt.p_a_wins;
+        brierMarket += brier(mktPWinner);
+        marketTotal++;
+      }
+
       const winnerName = aWon ? game.team_a.name : game.team_b.name;
       const loserName = aWon ? game.team_b.name : game.team_a.name;
       const winnerSeed = aWon ? game.team_a.seed_num : game.team_b.seed_num;
@@ -708,6 +777,7 @@
     const avgBrier = brierSum / total;
     const avgBrierChalk = brierChalk / total;
     const avgBrierHist = brierHist / total;
+    const avgBrierMarket = marketTotal > 0 ? brierMarket / marketTotal : null;
 
     let html = `
       <div class="mm-accuracy">
@@ -727,7 +797,11 @@
       { label: "This model", value: avgBrier, highlight: true },
       { label: "Hist. seed avg", value: avgBrierHist, highlight: false },
       { label: "Chalk (always higher seed)", value: avgBrierChalk, highlight: false },
-    ].sort((a, b) => a.value - b.value);
+    ];
+    if (avgBrierMarket != null) {
+      brierEntries.push({ label: "Market (DraftKings)", value: avgBrierMarket, highlight: false });
+    }
+    brierEntries.sort((a, b) => a.value - b.value);
 
     brierEntries.forEach((entry, i) => {
       const cls = entry.highlight ? " mm-brier-highlight" : "";
