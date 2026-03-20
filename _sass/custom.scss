@@ -731,6 +731,27 @@ button:focus-visible,
   }
 }
 
+/* Tournament banner - temporary, remove after tournament */
+.tournament-banner {
+  background: linear-gradient(90deg, #1e3a5f, #2a4a7f);
+  text-align: center;
+  padding: 0.45rem 1rem;
+
+  .tournament-banner-link {
+    color: #8ab4f8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
 /* Math rendering improvements */
 .katex {
   font-size: 1em !important;
