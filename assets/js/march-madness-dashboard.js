@@ -60,6 +60,7 @@
     setupRegionTabs();
     await loadBranding();
     await loadKaggle();
+    renderKaggleCard();
     await loadAvailableDates();
     await loadSnapshot();
   }
@@ -218,7 +219,6 @@
   // ─── Rendering ────────────────────────────────────────────────────
 
   async function renderAll() {
-    renderKaggleCard();
     renderChampionshipChart();
     renderAdvancementHeatmap();
     renderRegionBracket(getActiveRegion());
@@ -234,27 +234,19 @@
       return;
     }
 
-    // Find the most recent entry at or before the selected snapshot date
-    const snapshotDate = state.snapshot && state.snapshot.date ? state.snapshot.date : null;
-    let entry = null;
-    if (snapshotDate) {
-      const candidates = state.kaggle.filter((e) => e.date <= snapshotDate && e.rank != null);
-      if (candidates.length) entry = candidates[candidates.length - 1];
-    }
-    if (!entry) {
-      const valid = state.kaggle.filter((e) => e.rank != null);
-      entry = valid.length ? valid[valid.length - 1] : null;
-    }
+    const valid = state.kaggle.filter((e) => e.rank != null);
+    const entry = valid.length ? valid[valid.length - 1] : null;
 
     if (!entry || entry.rank == null) {
       card.style.display = "none";
       return;
     }
 
-    const rankStr = `Rank ${entry.rank}` + (entry.total_entries ? ` / ${entry.total_entries.toLocaleString()}` : "");
+    const rankStr = `Rank ${entry.rank.toLocaleString()} / ${entry.total_entries ? entry.total_entries.toLocaleString() : "?"}`;
+    const pctStr = entry.total_entries ? ` (Top ${Math.ceil((entry.rank / entry.total_entries) * 100)}%)` : "";
     const scoreStr = entry.score != null ? ` · Brier: ${entry.score.toFixed(4)}` : "";
-    statsEl.textContent = rankStr + scoreStr;
-    card.style.display = "flex";
+    statsEl.textContent = rankStr + pctStr + scoreStr;
+    card.style.display = "block";
   }
 
   function getActiveRegion() {

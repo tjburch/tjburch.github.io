@@ -23,7 +23,14 @@ header:
     <p class="mm-subtitle">
       Bracket forecasts from a latent offense+defense skill hierarchical model fit with PyMC.
       <br>
-      <a href="/blog/statistics/march-madness-2026">Read the methodology →</a>
+      <a href="/blog/statistics/march-madness-2026">Read the methodology</a>
+    </p>
+    <p class="mm-kaggle-line" id="kaggle-card" style="display:none;">
+      <a href="https://www.kaggle.com/competitions/march-machine-learning-mania-2026/leaderboard" target="_blank" rel="noopener">Kaggle Leaderboard</a>
+      <span class="mm-kaggle-sep">—</span>
+      <span class="mm-kaggle-stats" id="kaggle-stats"></span>
+      <br>
+      <span class="mm-kaggle-note">Public leaderboard; will differ from per-game Brier</span>
     </p>
   </div>
 
@@ -44,13 +51,6 @@ header:
   </div>
 
   <div class="mm-content" id="dashboard-content" style="display:none;">
-
-    <div class="mm-kaggle-card" id="kaggle-card" style="display:none;">
-      <a href="https://www.kaggle.com/competitions/march-machine-learning-mania-2026/leaderboard" target="_blank" rel="noopener" id="kaggle-link">
-        <span class="mm-kaggle-label">Kaggle Leaderboard</span>
-        <span class="mm-kaggle-stats" id="kaggle-stats"></span>
-      </a>
-    </div>
 
     <section class="mm-section" id="section-championship">
       <h2>Championship Odds</h2>
