@@ -1,0 +1,34 @@
+name: Update Kaggle Leaderboard
+
+on:
+  schedule:
+    # 11am ET = 3pm UTC (after daily score refresh)
+    - cron: '0 15 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install kaggle CLI
+        run: pip install kaggle
+
+      - name: Fetch leaderboard and update JSON
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: python scripts/update_kaggle_leaderboard.py
+
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Kaggle leaderboard ranking"
+          file_pattern: "assets/data/march-madness-2026/kaggle_leaderboard.json"
