@@ -1,0 +1,29 @@
+name: Capture Market Odds
+
+on:
+  schedule:
+    # 10am ET = 2pm UTC (before games typically start at noon ET)
+    - cron: '0 14 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  capture-odds:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Capture odds from ESPN
+        run: python scripts/capture_odds.py
+
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update market odds snapshot"
+          file_pattern: "assets/data/march-madness-2026/*/market_odds.json"
