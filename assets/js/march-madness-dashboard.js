@@ -720,26 +720,54 @@
 
     played.forEach(([slot, result]) => {
       const game = snap.bracket[slot];
-      if (!game || !game.team_a) return;
+      if (!game) return;
 
       // Skip play-in games (same seed, no meaningful prediction)
       if (game.play_in) return;
 
-      // Use pre-tournament prediction to avoid lock-in bias
-      const preGame = preSnap.bracket[slot];
-      const pA = preGame ? preGame.p_a_wins : game.p_a_wins;
+      let pWinner, winnerName, loserName, winnerSeed, loserSeed, chalkPWinner, histPWinner;
+
+      if (game.team_a) {
+        // R1-style slot with team_a / team_b / p_a_wins
+        const preGame = preSnap.bracket[slot];
+        const pA = preGame ? preGame.p_a_wins : game.p_a_wins;
+        const aWon = result.winner === game.team_a.id;
+        pWinner = aWon ? pA : 1 - pA;
+        winnerName = aWon ? game.team_a.name : game.team_b.name;
+        loserName = aWon ? game.team_b.name : game.team_a.name;
+        winnerSeed = aWon ? game.team_a.seed_num : game.team_b.seed_num;
+        loserSeed = aWon ? game.team_b.seed_num : game.team_a.seed_num;
+        const chalkP = chalkProb(game.team_a.seed_num, game.team_b.seed_num);
+        chalkPWinner = aWon ? chalkP : 1 - chalkP;
+        const histP = historicalProb(game.team_a.seed_num, game.team_b.seed_num);
+        histPWinner = aWon ? histP : 1 - histP;
+      } else if (game.contenders) {
+        // R2+ contender-style slot — use pre-tournament contenders for unbiased prediction
+        const preGame = preSnap.bracket[slot];
+        const contenders = (preGame && preGame.contenders) || game.contenders;
+        const winnerId = result.winner;
+        const loserId = result.loser;
+        const winnerC = contenders.find(c => c.id === winnerId);
+        const loserC = contenders.find(c => c.id === loserId);
+        if (!winnerC || !loserC) return;
+        // Normalize to head-to-head probability between the two teams that played
+        const pSum = winnerC.p + loserC.p;
+        pWinner = pSum > 0 ? winnerC.p / pSum : 0.5;
+        const winnerTeam = snap.teams[String(winnerId)];
+        const loserTeam = snap.teams[String(loserId)];
+        winnerName = winnerC.name;
+        loserName = loserC.name;
+        winnerSeed = winnerTeam ? winnerTeam.seed_num : 0;
+        loserSeed = loserTeam ? loserTeam.seed_num : 0;
+        chalkPWinner = chalkProb(winnerSeed, loserSeed);
+        histPWinner = historicalProb(winnerSeed, loserSeed);
+      } else {
+        return;
+      }
 
       total++;
-      const aWon = result.winner === game.team_a.id;
-      const pWinner = aWon ? pA : 1 - pA;
       if (pWinner >= 0.5) correct++;
-
-      const chalkP = chalkProb(game.team_a.seed_num, game.team_b.seed_num);
-      const chalkPWinner = aWon ? chalkP : 1 - chalkP;
       if (chalkPWinner >= 0.5) chalkCorrect++;
-
-      const histP = historicalProb(game.team_a.seed_num, game.team_b.seed_num);
-      const histPWinner = aWon ? histP : 1 - histP;
 
       brierSum += brier(pWinner);
       brierChalk += brier(chalkPWinner);
@@ -748,20 +776,16 @@
       // Market odds (if available for this slot)
       const mkt = marketGames[slot];
       if (mkt) {
-        // For R2+ contender slots, market odds store their own team_a_id
-        const mktAId = mkt.team_a_id || game.team_a.id;
-        const mktAWon = result.winner === mktAId;
-        const mktPWinner = mktAWon ? mkt.p_a_wins : 1 - mkt.p_a_wins;
-        brierMarket += brier(mktPWinner);
-        marketTotal++;
+        const mktAId = mkt.team_a_id || (game.team_a ? game.team_a.id : null);
+        if (mktAId) {
+          const mktAWon = result.winner === mktAId;
+          const mktPWinner = mktAWon ? mkt.p_a_wins : 1 - mkt.p_a_wins;
+          brierMarket += brier(mktPWinner);
+          marketTotal++;
+        }
       }
 
-      const winnerName = aWon ? game.team_a.name : game.team_b.name;
-      const loserName = aWon ? game.team_b.name : game.team_a.name;
-      const winnerSeed = aWon ? game.team_a.seed_num : game.team_b.seed_num;
-      const loserSeed = aWon ? game.team_b.seed_num : game.team_a.seed_num;
       const score = result.winner_score != null ? `${result.winner_score}–${result.loser_score}` : "";
-
       games.push({ slot, winnerName, loserName, winnerSeed, loserSeed, pWinner, score });
 
       if (pWinner < 0.4) {
