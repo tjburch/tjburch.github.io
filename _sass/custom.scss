@@ -3281,8 +3281,15 @@ code {
   padding-top: 1em;
   border-top: 1px solid $border-color;
 
-  .page__cite-title {
+  .page__cite-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.5em;
+  }
+
+  .page__cite-title {
+    margin-bottom: 0;
     font-size: $type-size-6;
     text-transform: uppercase;
   }
