@@ -9,10 +9,11 @@
 }{% endcapture %}
 
 <section class="page__cite">
-  <div class="page__cite-header">
-    <h4 class="page__cite-title">Cite This Post</h4>
-    <button type="button" class="btn btn--primary btn--small" onclick="(function(btn){
-      var text = btn.closest('.page__cite').querySelector('code').textContent;
+  <h4 class="page__cite-title">Cite This Post</h4>
+  <div class="page__cite-block">
+    <pre><code>{{ bibtex }}</code></pre>
+    <button type="button" class="btn btn--primary btn--small page__cite-copy" onclick="(function(btn){
+      var text = btn.previousElementSibling.querySelector('code').textContent;
       navigator.clipboard.writeText(text).then(function(){
         btn.textContent = 'Copied!';
         setTimeout(function(){ btn.textContent = 'Copy'; }, 2000);
@@ -22,5 +23,4 @@
       });
     })(this)">Copy</button>
   </div>
-  <pre><code>{{ bibtex }}</code></pre>
 </section>

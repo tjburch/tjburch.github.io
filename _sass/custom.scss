@@ -3281,17 +3281,20 @@ code {
   padding-top: 1em;
   border-top: 1px solid $border-color;
 
-  .page__cite-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5em;
-  }
-
   .page__cite-title {
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
     font-size: $type-size-6;
     text-transform: uppercase;
+  }
+
+  .page__cite-block {
+    position: relative;
+  }
+
+  .page__cite-copy {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   pre {
