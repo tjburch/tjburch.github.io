@@ -11,7 +11,7 @@
 <section class="page__cite">
   <h4 class="page__cite-title">Cite This Post</h4>
   <pre><code>{{ bibtex }}</code></pre>
-  <button type="button" onclick="(function(btn){
+  <button type="button" class="btn btn--primary btn--small" onclick="(function(btn){
     var text = btn.previousElementSibling.querySelector('code').textContent;
     navigator.clipboard.writeText(text).then(function(){
       btn.textContent = 'Copied!';
