@@ -60,6 +60,7 @@ layout: default
       </footer>
 
       {% if page.share %}{% include social-share.html %}{% endif %}
+      {% if page.cite != false and page.date %}{% include cite-this-post.html %}{% endif %}
 
       {% include post_pagination.html %}
     </div>

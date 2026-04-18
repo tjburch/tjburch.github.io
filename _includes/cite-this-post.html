@@ -1,10 +1,10 @@
 {% capture cite_key %}burch{{ page.date | date: "%Y" }}{{ page.url | split: "/" | last }}{% endcapture %}
-{% capture bibtex %}@misc{{{ cite_key }},
-  author       = {{{ site.author.name }}},
-  title        = {{{ page.title }}},
-  year         = {{{ page.date | date: "%Y" }}},
-  month        = {{{ page.date | date: "%B" }}},
-  howpublished = {\url{{{ page.url | absolute_url }}}},
+{% capture bibtex %}@misc{{ "{" }}{{ cite_key }},
+  author       = {{ "{" }}{{ site.author.name }}},
+  title        = {{ "{" }}{{ page.title }}},
+  year         = {{ "{" }}{{ page.date | date: "%Y" }}},
+  month        = {{ "{" }}{{ page.date | date: "%B" }}},
+  howpublished = {\url{{ "{" }}{{ page.url | absolute_url }}}},
 }{% endcapture %}
 
 <section class="page__cite">

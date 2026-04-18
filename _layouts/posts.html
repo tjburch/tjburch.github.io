@@ -3,6 +3,7 @@ layout: archive
 ---
 
 {{ content }}
+{% if page.cite != false and page.date %}{% include cite-this-post.html %}{% endif %}
 
 <ul class="taxonomy__index">
   {% assign postsInYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}
