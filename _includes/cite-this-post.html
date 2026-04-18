@@ -1,0 +1,23 @@
+{% capture cite_key %}burch{{ page.date | date: "%Y" }}{{ page.url | split: "/" | last }}{% endcapture %}
+{% capture bibtex %}@misc{{{ cite_key }},
+  author       = {{{ site.author.name }}},
+  title        = {{{ page.title }}},
+  year         = {{{ page.date | date: "%Y" }}},
+  month        = {{{ page.date | date: "%B" }}},
+  howpublished = {\url{{{ page.url | absolute_url }}}},
+}{% endcapture %}
+
+<section class="page__cite">
+  <h4 class="page__cite-title">Cite This Post</h4>
+  <pre><code>{{ bibtex }}</code></pre>
+  <button type="button" onclick="(function(btn){
+    var text = btn.previousElementSibling.querySelector('code').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = 'Copy'; }, 2000);
+    }).catch(function(){
+      btn.textContent = 'Failed';
+      setTimeout(function(){ btn.textContent = 'Copy'; }, 2000);
+    });
+  })(this)">Copy</button>
+</section>
