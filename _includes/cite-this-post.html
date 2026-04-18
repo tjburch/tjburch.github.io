@@ -1,4 +1,5 @@
 {% capture cite_key %}burch{{ page.date | date: "%Y" }}{{ page.url | split: "/" | last }}{% endcapture %}
+{%- comment -%}{{ "{" }} outputs a literal { inside capture blocks; bare } is fine as-is{%- endcomment -%}
 {% capture bibtex %}@misc{{ "{" }}{{ cite_key }},
   author       = {{ "{" }}{{ site.author.name }}},
   title        = {{ "{" }}{{ page.title }}},
