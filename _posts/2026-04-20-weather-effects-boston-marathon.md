@@ -202,11 +202,11 @@ The figure shows each model's full posterior density side-by-side. The model ide
 
 | Place | Runner | Actual time | Counterfactual time |
 |---|---|---|---|
-| 1 | Jack Fultz | 2:20:19 | 2:14:32 |
-| 2 | Mario Cuevas | 2:21:13 | 2:14:32 |
-| 3 | Jose DeJesus | 2:22:10 | 2:14:32 |
+| 1 | Jack Fultz | 2:20:19 | 2:14:47 |
+| 2 | Mario Cuevas | 2:21:13 | 2:14:47 |
+| 3 | Jose DeJesus | 2:22:10 | 2:14:47 |
 
-Observed top-3 mean: **2:21:14**; the model's 50°F counterfactual top-3 mean is **2:14:32**. (The 6:42 gap between observed and counterfactual is slightly larger than the headline 6:27 heat cost because the heat cost is a model-vs-model contrast — the random walk explains some of the 1976 slowdown via baseline year effects, leaving a bit less for weather.)
+Observed top-3 mean: **2:21:14**; the model's 50°F counterfactual top-3 mean is **2:14:47**, a 6:27 gap matching the headline heat cost.
 
 
 ### 2026 prediction
