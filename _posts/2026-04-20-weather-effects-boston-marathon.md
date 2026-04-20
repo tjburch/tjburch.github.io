@@ -111,7 +111,7 @@ The ribbon is the posterior 95% credible interval. The slope above 15°C comes o
 
 [^ci-note]: All "95% CI" values in this post are 95% Bayesian credible intervals (the central 95% of the posterior), not frequentist confidence intervals. I'll abbreviate as "95% CI" in tables for compactness.
 
-The curve is exactly flat below 59°F because the model says it has to be: there's no below-knot coefficient. That's the cost of the strong functional-form commitment — the model is structurally unable to express anything happening in the cool tail, even if the data wanted it to. The other two models are unconstrained below the knot and we'll see them bend a little there.
+The curve is exactly flat below 59°F because the model says it has to be: there's no below-knot coefficient. By design, this model only makes claims above the hinge. The other two models allow for varying behavior for cold weather too.
 
 ### The Physiology model — quadratic hinge
 
@@ -119,7 +119,7 @@ Next we do a Physiology-based model, which assumes temperature response is quadr
 
 $$\log(\text{seconds}) \sim \ell_{\text{year}} + \beta_1 \max(k - T, 0) + \beta_2 \max(T - k, 0)^2 + \beta_3 \cdot \text{precip}$$
 
-This approach is motivated by [Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018), a cycling study which found an inverted-U relationship, with performance peaking at ~10.5°C and declining non-linearly above it. That acceleration is exactly what the quadratic term captures.
+This approach is motivated by [Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018), a cycling study which found an inverted-U relationship with performance peaking at ~10.5°C. We shift the knot to 15°C to align with Wang's runner-based study, but keep the quadratic functional form on both sides of it.
 
 ```r
 bf(
@@ -162,7 +162,7 @@ The Spline model agrees with the other two below ~80°F where the data is dense.
 
 ## So What's the Answer?
 
-So we've got three different formulations to answer our question. However, we want one final answer, not three. Often, modelers will just select a "best" model. If we go by that heuristic, the Spline model wins through [LOO cross-validation](https://mc-stan.org/loo/), a measure of how well the model predicts held-out observations. The "LOO Δ vs best (in SE)" shown below is the gap to the best model expressed in standard errors of that gap. Spline wins individual leave-one-out: Physiology is modestly worse (~2 SE), Wang-replication is clearly worse (~6 SE).
+So we've got three different formulations to answer our question. However, we want one final answer, not three. Often, modelers will just select a "best" model. If we go by that heuristic, the Spline model wins through [Leave One Out (LOO) cross-validation](https://mc-stan.org/loo/), a measure of how well the model predicts held-out observations. The "LOO Δ vs best (in SE)" shown below is the gap to the best model expressed in standard errors of that gap. Spline wins individual leave-one-out: Physiology is modestly worse (~2 SE), Wang-replication is clearly worse (~6 SE).
 
 | Model | LOO Δ vs best (in SE) |
 |---|---|
@@ -170,7 +170,7 @@ So we've got three different formulations to answer our question. However, we wa
 | Physiology (quadratic hinge) | −2.1 |
 | Wang-replication (linear hinge) | −5.9 |
 
-However, I wanted to be a bit careful here. Notably, we're in the area of outliers and extrapolation, dangerous waters for statistical models. In this, a conservative approach can be smart. There is plenty of literature that shows a many-models approach often beats a single, highly predictive model. That is what I chose to do here: build a weighted mixture where each model's weight is chosen to maximize the predictive performance of the combined model, following [Yao, Vehtari, Simpson & Gelman (2018)](https://doi.org/10.1214/17-BA1091).
+However, I wanted to be a bit careful here. Notably, we're in the area of outliers and extrapolation, dangerous waters for statistical models. In this regime, I err on conservatism where possible. There is plenty of literature that shows a many-models approach often beats a single, highly predictive model. That is what I chose to do here, known as Model Stacking: build a weighted mixture where each model's weight is chosen to maximize the predictive performance of the combined model, following [Yao, Vehtari, Simpson & Gelman (2018)](https://doi.org/10.1214/17-BA1091).
 
 | Model | Stacking weight (95% bootstrap CI, B=200) |
 |---|---|
@@ -178,12 +178,10 @@ However, I wanted to be a bit careful here. Notably, we're in the area of outlie
 | Physiology (quadratic hinge) | 0.55 [0.50, 0.65] |
 | Wang-replication (linear hinge) | 0.27 [0.17, 0.31] |
 
-Stacking can favor a model that isn't the best individual predictor, and we see that here — the largest contributor to the blend is the quadratic Physiology model, not the Spline. Stacking asks "if I'm allowed to combine the three models into one weighted prediction, what weights minimize the *combined* prediction error?" A model can be a slightly worse solo predictor and still earn high mixture weight if it makes its mistakes in *different places* than the others. Uncorrelated errors cancel out when blended. The Physiology model brings a structural commitment (the quadratic acceleration above the knot) that the Spline doesn't have, and the mixture wants that piece even though the Spline is sharper as a standalone. In short: the Physiology model is *complementary* to the Spline rather than redundant with it.
+Stacking can favor a model that isn't the best individual predictor, and we see that here — the largest contributor to the blend is the quadratic Physiology model, not the Spline. Stacking asks "if I'm allowed to combine the three models into one weighted prediction, what weights minimize the *combined* prediction error?" A model can be a slightly worse solo predictor and still earn high mixture weight if it makes its mistakes in *different places* than the others. Uncorrelated errors cancel out when blended. The Physiology model is more aggressive at the tails, predicting a higher heat penalty than the other two. The Spline and linear hinge models make similar predictions to each other, so they contribute redundant information. The Physiology model's distinct behavior is what earns it a higher weight in the blend.
 
-That being said, **stacking weights are fit to the data-rich region but applied to a 92°F extrapolation** — a regularity assumption, not a theorem. The mixture's weights reflect predictive accuracy in mild conditions, and we're assuming that accuracy carries to the heat tail, which may not be a perfect assumption. (There are also some technical reasons LOO is unusually noisy for state-space models like this one — discussed in the [technical details](#technical-details) — so I'm leaning on stacking here as a sensible *regularizer* across the three model shapes rather than as an optimal-prediction procedure.)
-
-For the rest of this post I report the **stacked mixture** as the headline. The Spline is the natural single-model starting point (it's the best individual predictor), but for an extrapolation question with a single anchoring data point at 92°F, leaning on a blend that incorporates the mechanism-committed Physiology and Wang-replication models is the more defensible read. Where I report a single per-model number for context, I'll call it out explicitly.
-
+That being said, the data-rich region appropriately is the most impactful in fitting the models, but we assume it cleanly extrapolates to a less saturated region. The mixture's weights reflect predictive accuracy in mild conditions, and we're assuming that accuracy carries to the heat tail, which may not be a perfect assumption.
+For the rest of this post I report the **stacked mixture** as the headline. The Spline is the natural single-model starting point (it's the best individual predictor), but for an extrapolation question with a single anchoring data point at 92°F, leaning on a blend that incorporates the mechanism-committed Physiology and Wang-replication models is the more defensible read.
 ### Effect of Weather on Final Race Times
 
 {% include figure image_path="/blogimages/boston-marathon-1976/year_by_year_effect.png" alt="Stacked year-by-year weather effect" caption="Stacked mixture's weather-only contribution to each year's top-3 mean finish time. 1976 and 2017 stand clearly above the pack; 2018's effect is driven by cold rather than heat." %}
