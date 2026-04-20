@@ -170,7 +170,7 @@ So we've got three different formulations to answer our question. However, we wa
 | Physiology (quadratic hinge) | −2.1 |
 | Wang-replication (linear hinge) | −5.9 |
 
-However, I wanted to be a bit careful here. Notably, we're in the area of outliers and extrapolation, dangerous waters for statistical models. In this, a conservative approach can be smart. There is plenty of literature that shows a many-models approach often beats a single, highly predictive model. That is what I chose to do here: build a weighted mixture where each model's weight is chosen to maximize the predictive performance of the combined model, following [Yao, Vehtari, Simpson & Gelman (2018)](https://doi.org/10.1214/17-BA1091).
+However, I wanted to be a bit careful here. Notably, we're in the area of outliers and extrapolation, dangerous waters for statistical models. In this regime, I err on conservatism where possible. There is plenty of literature that shows a many-models approach often beats a single, highly predictive model. That is what I chose to do here: build a weighted mixture where each model's weight is chosen to maximize the predictive performance of the combined model, following [Yao, Vehtari, Simpson & Gelman (2018)](https://doi.org/10.1214/17-BA1091).
 
 | Model | Stacking weight (95% bootstrap CI, B=200) |
 |---|---|
