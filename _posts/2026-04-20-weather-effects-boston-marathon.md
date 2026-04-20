@@ -45,7 +45,7 @@ This is hardly a novel problem. There has been plenty of work done on this topic
 
 These studies give a great groundwork, but I wanted to dig in a bit deeper. Specifically a few questions:
 
-- Both the linear and quadratic models from the literature have a knot at 15°C. However, by the time you extend that out to 92°F, there's a pretty dramatic gap in the model predictions.
+- The literature suggests both linear and quadratic models, which can [vary wildly as you get to extreme values](/blog/statistics/polynomial-regression-bambi). I was curious what this looked like, and what a less constrained fit would look like.
 - Both have pretty strongly constrained functional forms. I was interested in a more data-driven approach, namely fitting the weather effect via a spline based model. 
 
 So I fit three Bayesian models, each on log-finishing-time. To control for athletic performance, each use a random walk, and each control for precipitation. The models differ in how race-day temperature enters:
