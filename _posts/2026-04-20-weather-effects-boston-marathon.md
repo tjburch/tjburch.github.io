@@ -360,19 +360,6 @@ The Physiology model's CI doesn't overlap the other two, identifying it as the p
 </details>
 
 <details markdown="1">
-<summary><strong>Decomposition: panel switch vs year-structure switch</strong></summary>
-
-The corrective pass that produced this post made two structural changes from earlier drafts: panel size (top-10 → top-3) and year structure (spline → state-space RW level). The decomposition table isolates the contribution of each:
-
-| Cell | Panel | Year structure | 1976 heat cost (min) | 95% CI |
-|---|---|---|---|---|
-| a | top-10 | spline | 15.92 | [11.11, 21.46] |
-| b | top-3 | spline | 8.14 | [5.19, 11.11] |
-| d | top-3 | state-space | 7.35 | [3.14, 11.43] |
-
-</details>
-
-<details markdown="1">
 <summary><strong>Knot sensitivity</strong></summary>
 
 The Physiology and Wang-replication models both fix the hinge knot at 59°F (15°C) by physiology. Sensitivity sweep at 55/57/61/63°F (Physiology model heat-cost shown):
