@@ -19,7 +19,7 @@ toc_sticky: true
 
 Every year I make the short trek one block from Fenway to Kenmore Square to watch exhausted runners grinding through the final mile, occasionally with a cowbell in hand. While I love watching the marathon, I also love running myself, though my longest race to date is just a half marathon. And, unlike most runners, I actually have a small preference for warm-weather running. 70-75°F is my sweet spot. Research, however, does not back me here - most published literature seems to indicate [about 50°F is optimum running conditions](https://doi.org/10.1097/00005768-199709000-00018).
 
-This year marks the fiftieth anniversary of the 1976 Boston Marathon, which peaked at 91.9°F, even too hot for me. It earned the name "Run for the Hoses." In this race, Jack Fultz won in 2:20:19, which was **nine minutes slower** than the course record at the time. Bill Rodgers, who'd run 2:09:55 the year before, dropped out. Tom Fleming, third in 1975, dropped out.
+This year marks the fiftieth anniversary of the 1976 Boston Marathon, which peaked at 91.9°F, even too hot for me. It earned the name "Run for the Hoses." In this race, Jack Fultz won in 2:20:19, which was **nine minutes slower** than the course record at the time. Bill Rodgers, who'd run 2:09:55 the year before, dropped out, as well as Tom Fleming, who placed third in 1975.
 
 
 ## Thermal Fluctuations
