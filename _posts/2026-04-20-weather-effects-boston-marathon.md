@@ -119,7 +119,7 @@ Next we do a Physiology-based model, which assumes temperature response is quadr
 
 $$\log(\text{seconds}) \sim \ell_{\text{year}} + \beta_1 \max(k - T, 0) + \beta_2 \max(T - k, 0)^2 + \beta_3 \cdot \text{precip}$$
 
-This approach is motivated by [Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018), a cycling study which found an inverted-U relationship, with performance peaking at ~10.5°C and declining non-linearly above it. That acceleration is exactly what the quadratic term captures.
+This approach is motivated by [Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018), a cycling study which found an inverted-U relationship with performance peaking at ~10.5°C. We shift the knot to 15°C to align with Wang's runner-based study, but keep the quadratic functional form on both sides of it.
 
 ```r
 bf(
