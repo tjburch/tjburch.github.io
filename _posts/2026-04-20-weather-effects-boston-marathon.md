@@ -111,7 +111,7 @@ The ribbon is the posterior 95% credible interval. The slope above 15°C comes o
 
 [^ci-note]: All "95% CI" values in this post are 95% Bayesian credible intervals (the central 95% of the posterior), not frequentist confidence intervals. I'll abbreviate as "95% CI" in tables for compactness.
 
-The curve is exactly flat below 59°F because the model says it has to be: there's no below-knot coefficient. By design, this model only makes claims above the hinge point — a deliberate choice to focus on heat effects. The other two models allow for varying behavior in cold weather too, and we'll see them bend a little there.
+The curve is exactly flat below 59°F because the model says it has to be: there's no below-knot coefficient. By design, this model only makes claims above the hinge. The other two models allow for varying behavior for cold weather too.
 
 ### The Physiology model — quadratic hinge
 
