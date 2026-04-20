@@ -28,7 +28,7 @@ Below is the average race time of the top 3 Boston Marathon runners over time.
 
 {% include figure image_path="/blogimages/boston-marathon-1976/top3_timeline.png" alt="Top-3 timeline with LOWESS" caption="Top-3 mean finishing time by year, with LOWESS trend. 1976 visible as the outlier near center." %}
 
-This confirms that runners have been getting better over time, however non-linearly. Between 1950 and the turn of the century, gains were substantial. Around the turn of the century, the rate of improvement flattened. However, there's considerable year-over-year variation, which makes a ton of sense. Conditions vary widely. In fact, that 1976 race sticks out like a sore thumb in the middle of the plot.
+This confirms that runners have been getting better over time, though non-linearly. Between 1950 and the turn of the century, gains were substantial. Around the turn of the century, the rate of improvement flattened. However, there's considerable year-over-year variation, which makes a ton of sense. Conditions vary widely. In fact, that 1976 race sticks out like a sore thumb in the middle of the plot.
 
 This made me curious, how much of that variation can be attributed to weather conditions on race day, which I'll dive into in this post.
 
@@ -38,7 +38,7 @@ This is hardly a novel problem. There has been plenty of work done on this topic
 
 - **[Ely, Cheuvront, Roberts & Montain (2007)](https://doi.org/10.1249/mss.0b013e31802d3aba)** — pools seven major marathons (including Boston) and divides race-day conditions into WBGT quartiles. For elite men (top-3 finishers), slowdowns go 1.7% → 2.5% → 3.3% → 4.5% as you move from cool to hot. This is the closest thing the literature has to a canonical "how much does heat cost" table.
 - **[Wang et al. (2024)](https://doi.org/10.1038/s41612-024-00637-x)** — the world's top-96 individual marathon athletes (top 16 per continent) followed across events. Models a linear performance degradation above 15°C with slope ~0.39 min/°C for men, 0.71 min/°C for women. This is the first model I attempt to replicate.
-- **[Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018)** — not a marathon study, actually. Eight cyclists rode to exhaustion at four temperatures in a lab. Peak endurance came at 10.5°C (~51°F); by 30°C performance had collapsed. That inverted-U curve is the physiological basis for the 15°C knot used in marathon heat models — it's roughly where the performance curve starts bending downward. See also [Maughan, Watson & Shirreffs (2007)](https://doi.org/10.2165/00007256-200737040-00032) for the thermoregulation review that carries the same physiology over to distance running. This inspires the second model I attempt to replicate.
+- **[Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018)** — not a marathon study, actually. Eight cyclists rode to exhaustion at four temperatures in a lab. Peak endurance came at 10.5°C (~51°F); by 30°C performance had collapsed. That inverted-U curve motivates the quadratic functional form. I retain Wang's 15°C as the knot location based on running literature but apply the quadratic shape from Galloway. See also [Maughan, Watson & Shirreffs (2007)](https://doi.org/10.2165/00007256-200737040-00032) for the thermoregulation review that carries the same physiology over to distance running. This inspires the second model I attempt to replicate.
 
 
 ## My research
