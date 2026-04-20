@@ -339,6 +339,8 @@ Posterior predictive checks for all three models. Per-model PPCs:
 <details markdown="1">
 <summary><strong>LOO comparison and stacking weight bootstrap</strong></summary>
 
+Values this large are the expected signature of the Pareto-k > 0.7 degeneracy described below; only the ratio is meaningful.
+
 | Model | ELPD-diff | SE-diff |
 |---|---|---|
 | Spline | 0.0 | 0.0 |
