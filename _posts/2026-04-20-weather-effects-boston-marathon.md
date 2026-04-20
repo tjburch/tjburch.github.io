@@ -28,7 +28,7 @@ Below is the average race time of the top 3 Boston Marathon runners over time.
 
 {% include figure image_path="/blogimages/boston-marathon-1976/top3_timeline.png" alt="Top-3 timeline with LOWESS" caption="Top-3 mean finishing time by year, with LOWESS trend. 1976 visible as the outlier near center." %}
 
-This confirms that runners have been getting better over time, however non-linearly. Between 1950 and the turn of the century, gains were substantial. Around the turn of the century, the rate of improvement flattened. However, there's considerable year-over-year variation, which makes a ton of sense. Conditions vary widely. In fact, that 1976 race sticks out like a sore thumb in the middle of the plot.
+This confirms that runners have been getting better over time, though non-linearly. Between 1950 and the turn of the century, gains were substantial. Around the turn of the century, the rate of improvement flattened. However, there's considerable year-over-year variation, which makes a ton of sense. Conditions vary widely. In fact, that 1976 race sticks out like a sore thumb in the middle of the plot.
 
 This made me curious, how much of that variation can be attributed to weather conditions on race day, which I'll dive into in this post.
 
@@ -38,7 +38,7 @@ This is hardly a novel problem. There has been plenty of work done on this topic
 
 - **[Ely, Cheuvront, Roberts & Montain (2007)](https://doi.org/10.1249/mss.0b013e31802d3aba)** — pools seven major marathons (including Boston) and divides race-day conditions into WBGT quartiles. For elite men (top-3 finishers), slowdowns go 1.7% → 2.5% → 3.3% → 4.5% as you move from cool to hot. This is the closest thing the literature has to a canonical "how much does heat cost" table.
 - **[Wang et al. (2024)](https://doi.org/10.1038/s41612-024-00637-x)** — the world's top-96 individual marathon athletes (top 16 per continent) followed across events. Models a linear performance degradation above 15°C with slope ~0.39 min/°C for men, 0.71 min/°C for women. This is the first model I attempt to replicate.
-- **[Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018)** — not a marathon study, actually. Eight cyclists rode to exhaustion at four temperatures in a lab. Peak endurance came at 10.5°C (~51°F); by 30°C performance had collapsed. That inverted-U curve is the physiological basis for the 15°C knot used in marathon heat models — it's roughly where the performance curve starts bending downward. See also [Maughan, Watson & Shirreffs (2007)](https://doi.org/10.2165/00007256-200737040-00032) for the thermoregulation review that carries the same physiology over to distance running. This inspires the second model I attempt to replicate.
+- **[Galloway & Maughan (1997)](https://doi.org/10.1097/00005768-199709000-00018)** — not a marathon study, actually. Eight cyclists rode to exhaustion at four temperatures in a lab. Peak endurance came at 10.5°C (~51°F); by 30°C performance had collapsed. This study models the performance degradation as a quadratic function, which I replicate in the second model. See also [Maughan, Watson & Shirreffs (2007)](https://doi.org/10.2165/00007256-200737040-00032) for the thermoregulation review that carries the same physiology over to distance running.
 
 
 ## My research
@@ -202,16 +202,15 @@ The figure shows each model's full posterior density side-by-side. The model ide
 
 | Place | Runner | Actual time | Counterfactual time |
 |---|---|---|---|
-| 1 | Jack Fultz | 2:20:19 | 2:14:32 |
-| 2 | Mario Cuevas | 2:21:13 | 2:14:32 |
-| 3 | Jose DeJesus | 2:22:10 | 2:14:32 |
+| 1 | Jack Fultz | 2:20:19 | 2:13:52 |
+| 2 | Mario Cuevas | 2:21:13 | 2:14:46 |
+| 3 | Jose DeJesus | 2:22:10 | 2:15:43 |
 
-Observed top-3 mean: **2:21:14**; the model's 50°F counterfactual top-3 mean is **2:14:32**. (The 6:42 gap between observed and counterfactual is slightly larger than the headline 6:27 heat cost because the heat cost is a model-vs-model contrast — the random walk explains some of the 1976 slowdown via baseline year effects, leaving a bit less for weather.)
-
+Observed top-3 mean: **2:21:14**; the model's 50°F counterfactual top-3 mean is **2:14:47**.
 
 ### 2026 prediction
 
-I still have 40 minutes until I'm technically allowed to burn the midnight oil, but I did do my last data pull as I wrapped up this piece at 23:20 EDT April 19, the night before the race. The NWS forecast for Hopkinton is 48°F, near perfect conditions. Under that weather, the stacked mixture predicts basically no temperature-related penalty and a top-3 mean of **2:05:10** with a 95% posterior predictive interval of 1:57:54–2:12:29. Obviously this is an incredibly wide interval. It would be remarkable to beat the world record of 2:00:35 on Boston's famously difficult course, and 11% of our posterior probability claims the average of the top-3 finishers would be below that. However, that is to be expected given we formulated this as a weather model, not a performance forecasting model.
+I still have 40 minutes until I'm technically allowed to burn the midnight oil, but I did do my last data pull as I wrapped up this piece at 11:20 pm in Boston, the night before the race. The NWS forecast for Hopkinton is 48°F, near perfect conditions. Under that weather, the stacked mixture predicts basically no temperature-related penalty and a top-3 mean of **2:05:10** with a 95% posterior predictive interval of 1:57:54–2:12:29. Obviously this is an incredibly wide interval. It would be remarkable to beat the world record of 2:00:35 on Boston's famously difficult course, and 11% of our posterior probability claims the average of the top-3 finishers would be below that. However, that is to be expected given we formulated this as a weather model, not a performance forecasting model.
 
 {% include figure image_path="/blogimages/boston-marathon-1976/predict_2026_kde.png" alt="2026 KDE overlay" caption="Posterior predictive densities for 2026 top-3 mean, by model. All three bunch tightly given the near-perfect 48°F forecast." %}
 
@@ -339,6 +338,8 @@ Posterior predictive checks for all three models. Per-model PPCs:
 <details markdown="1">
 <summary><strong>LOO comparison and stacking weight bootstrap</strong></summary>
 
+Values this large are the expected signature of the Pareto-k > 0.7 degeneracy described below; only the ratio is meaningful.
+
 | Model | ELPD-diff | SE-diff |
 |---|---|---|
 | Spline | 0.0 | 0.0 |
@@ -360,22 +361,9 @@ The Physiology model's CI doesn't overlap the other two, identifying it as the p
 </details>
 
 <details markdown="1">
-<summary><strong>Decomposition: panel switch vs year-structure switch</strong></summary>
-
-The corrective pass that produced this post made two structural changes from earlier drafts: panel size (top-10 → top-3) and year structure (spline → state-space RW level). The decomposition table isolates the contribution of each:
-
-| Cell | Panel | Year structure | 1976 heat cost (min) | 95% CI |
-|---|---|---|---|---|
-| a | top-10 | spline | 15.92 | [11.11, 21.46] |
-| b | top-3 | spline | 8.14 | [5.19, 11.11] |
-| d | top-3 | state-space | 7.35 | [3.14, 11.43] |
-
-</details>
-
-<details markdown="1">
 <summary><strong>Knot sensitivity</strong></summary>
 
-The Physiology and Wang-replication models both fix the hinge knot at 59°F (15°C) by physiology. Sensitivity sweep at 55/57/61/63°F (Physiology model heat-cost shown):
+The Physiology and Wang-replication models both fix the hinge knot at 59°F (15°C) a priori from Galloway/Wang; the sensitivity sweep below is reported for transparency, not for slope selection. Sweep at 55/57/61/63°F (Physiology model heat-cost shown):
 
 | Knot (°F) | 1976 top-3 mean heat cost (min) | 95% CI |
 |---|---|---|
