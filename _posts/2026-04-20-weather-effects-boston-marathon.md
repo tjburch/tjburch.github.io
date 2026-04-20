@@ -364,7 +364,7 @@ The Physiology model's CI doesn't overlap the other two, identifying it as the p
 <details markdown="1">
 <summary><strong>Knot sensitivity</strong></summary>
 
-The Physiology and Wang-replication models both fix the hinge knot at 59°F (15°C) by physiology. Sensitivity sweep at 55/57/61/63°F (Physiology model heat-cost shown):
+The Physiology and Wang-replication models both fix the hinge knot at 59°F (15°C) a priori from Galloway/Wang; the sensitivity sweep below is reported for transparency, not for slope selection. Sweep at 55/57/61/63°F (Physiology model heat-cost shown):
 
 | Knot (°F) | 1976 top-3 mean heat cost (min) | 95% CI |
 |---|---|---|
