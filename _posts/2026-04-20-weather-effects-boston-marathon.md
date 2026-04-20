@@ -162,7 +162,7 @@ The Spline model agrees with the other two below ~80°F where the data is dense.
 
 ## So What's the Answer?
 
-So we've got three different formulations to answer our question. However, we want one final answer, not three. Often, modelers will just select a "best" model. If we go by that heuristic, the Spline model wins through [LOO cross-validation](https://mc-stan.org/loo/), a measure of how well the model predicts held-out observations. The "LOO Δ vs best (in SE)" shown below is the gap to the best model expressed in standard errors of that gap. Spline wins individual leave-one-out: Physiology is modestly worse (~2 SE), Wang-replication is clearly worse (~6 SE).
+So we've got three different formulations to answer our question. However, we want one final answer, not three. Often, modelers will just select a "best" model. If we go by that heuristic, the Spline model wins through [Leave One Out (LOO) cross-validation](https://mc-stan.org/loo/), a measure of how well the model predicts held-out observations. The "LOO Δ vs best (in SE)" shown below is the gap to the best model expressed in standard errors of that gap. Spline wins individual leave-one-out: Physiology is modestly worse (~2 SE), Wang-replication is clearly worse (~6 SE).
 
 | Model | LOO Δ vs best (in SE) |
 |---|---|
