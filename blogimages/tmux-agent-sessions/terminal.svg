@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="Menlo, Monaco, monospace">
+  <rect width="1200" height="675" fill="#fafafa"/>
+
+  <!-- window -->
+  <rect x="60" y="45" width="1080" height="585" rx="14" fill="#1a202c"/>
+  <!-- title bar -->
+  <path d="M 60 59 a 14 14 0 0 1 14 -14 h 1052 a 14 14 0 0 1 14 14 v 26 h -1080 z" fill="#2d3748"/>
+  <circle cx="90" cy="65" r="7" fill="#fc8181"/>
+  <circle cx="114" cy="65" r="7" fill="#f6e05e"/>
+  <circle cx="138" cy="65" r="7" fill="#68d391"/>
+  <text x="600" y="72" text-anchor="middle" font-size="17" fill="#a0aec0">tmux</text>
+
+  <!-- pane divider -->
+  <line x1="600" y1="85" x2="600" y2="592" stroke="#4a5568" stroke-width="2"/>
+
+  <!-- left pane: agent -->
+  <text x="92" y="130" font-size="19" fill="#a0aec0">&#9679; agent</text>
+  <text x="92" y="178" font-size="19" fill="#e2e8f0">Running fit.R in your live</text>
+  <text x="92" y="206" font-size="19" fill="#e2e8f0">session&#8230;</text>
+  <text x="92" y="262" font-size="19" fill="#68d391">$ tmux send-keys -t rtell \</text>
+  <text x="92" y="290" font-size="19" fill="#68d391">    -l "sink('/tmp/out');</text>
+  <text x="92" y="318" font-size="19" fill="#68d391">    source('fit.R'); sink();</text>
+  <text x="92" y="346" font-size="19" fill="#68d391">    cat('&lt;&lt;&lt;DONE&gt;&gt;&gt;')"</text>
+  <text x="92" y="374" font-size="19" fill="#68d391">$ tmux send-keys -t rtell Enter</text>
+  <text x="92" y="430" font-size="19" fill="#f6e05e">&#8987; waiting for &lt;&lt;&lt;DONE&gt;&gt;&gt; in</text>
+  <text x="92" y="458" font-size="19" fill="#f6e05e">   /tmp/out&#8230;</text>
+
+  <!-- right pane: R session -->
+  <text x="632" y="130" font-size="19" fill="#a0aec0">&#9679; R</text>
+  <text x="632" y="178" font-size="19" fill="#63b3ed">&gt; source('fit.R')</text>
+  <text x="632" y="218" font-size="19" fill="#e2e8f0">fit &lt;- brm(time ~ temp +</text>
+  <text x="632" y="246" font-size="19" fill="#e2e8f0">    (1 | year), data = d)</text>
+  <text x="632" y="294" font-size="19" fill="#e2e8f0">Chain 1: 2000/2000 [100%]</text>
+  <text x="632" y="322" font-size="19" fill="#e2e8f0">Chain 2: 2000/2000 [100%]</text>
+  <text x="632" y="350" font-size="19" fill="#e2e8f0">Chain 3: 2000/2000 [100%]</text>
+  <text x="632" y="378" font-size="19" fill="#e2e8f0">Chain 4: 2000/2000 [100%]</text>
+  <text x="632" y="430" font-size="19" fill="#c05621" font-weight="bold">&lt;&lt;&lt;DONE&gt;&gt;&gt;</text>
+  <text x="632" y="470" font-size="19" fill="#63b3ed">&gt; _</text>
+
+  <!-- tmux status bar -->
+  <path d="M 60 592 h 1080 v 24 a 14 14 0 0 1 -14 14 h -1052 a 14 14 0 0 1 -14 -14 z" fill="#68d391"/>
+  <text x="84" y="614" font-size="16" fill="#1a202c">[rtell] 0:R*</text>
+  <text x="1116" y="614" text-anchor="end" font-size="16" fill="#1a202c">14:07 14-Jul-26</text>
+</svg>
