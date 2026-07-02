@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="#fafafa"/>
+
+  <!-- Agent box -->
+  <rect x="80" y="235" width="260" height="160" rx="12" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+  <text x="210" y="300" text-anchor="middle" font-size="30" font-weight="bold" fill="#2d3748">Agent</text>
+  <text x="210" y="340" text-anchor="middle" font-size="19" fill="#718096">local machine</text>
+
+  <!-- tmux session box -->
+  <rect x="680" y="70" width="440" height="190" rx="12" fill="#1a202c" stroke="#1a202c" stroke-width="2.5"/>
+  <rect x="680" y="70" width="440" height="36" rx="12" fill="#2d3748"/>
+  <rect x="680" y="94" width="440" height="12" fill="#2d3748"/>
+  <circle cx="704" cy="88" r="6" fill="#fc8181"/>
+  <circle cx="726" cy="88" r="6" fill="#f6e05e"/>
+  <circle cx="748" cy="88" r="6" fill="#68d391"/>
+  <text x="900" y="94" text-anchor="middle" font-size="16" fill="#a0aec0" font-family="Menlo, monospace">tmux session: rtell</text>
+  <text x="704" y="140" font-size="18" fill="#68d391" font-family="Menlo, monospace">&gt; source('fit.R', echo=TRUE)</text>
+  <text x="704" y="172" font-size="18" fill="#e2e8f0" font-family="Menlo, monospace">Chain 1: 2000/2000 [100%]</text>
+  <text x="704" y="204" font-size="18" fill="#e2e8f0" font-family="Menlo, monospace">Chain 2: 2000/2000 [100%]</text>
+  <text x="704" y="236" font-size="18" fill="#68d391" font-family="Menlo, monospace">&gt; _</text>
+
+  <!-- Output file box -->
+  <rect x="680" y="390" width="440" height="170" rx="12" fill="#ffffff" stroke="#2d3748" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="704" y="428" font-size="18" fill="#718096" font-family="Menlo, monospace">/tmp/rtell.out</text>
+  <line x1="680" y1="444" x2="1120" y2="444" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="704" y="480" font-size="18" fill="#4a5568" font-family="Menlo, monospace">...model output...</text>
+  <text x="704" y="512" font-size="18" fill="#4a5568" font-family="Menlo, monospace">...str(fit)...</text>
+  <text x="704" y="544" font-size="18" fill="#c05621" font-weight="bold" font-family="Menlo, monospace">&lt;&lt;&lt;DONE&gt;&gt;&gt;</text>
+
+  <!-- Arrow: Agent -> tmux -->
+  <path d="M 340 270 C 460 220, 550 185, 672 165" fill="none" stroke="#4a5568" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="490" y="165" text-anchor="middle" font-size="19" fill="#2b6cb0" font-family="Menlo, monospace">tmux send-keys -l "..."</text>
+
+  <!-- Arrow: tmux -> file -->
+  <path d="M 900 260 L 900 382" fill="none" stroke="#4a5568" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="920" y="316" font-size="19" fill="#2b6cb0" font-family="Menlo, monospace">sink() output,</text>
+  <text x="920" y="342" font-size="19" fill="#2b6cb0" font-family="Menlo, monospace">then a done marker</text>
+
+  <!-- Arrow: file -> Agent -->
+  <path d="M 672 490 C 540 500, 420 460, 348 385" fill="none" stroke="#4a5568" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="495" y="530" text-anchor="middle" font-size="19" fill="#2b6cb0" font-family="Menlo, monospace">reads file when the</text>
+  <text x="495" y="556" text-anchor="middle" font-size="19" fill="#2b6cb0" font-family="Menlo, monospace">marker appears</text>
+</svg>
