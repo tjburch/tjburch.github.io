@@ -34,9 +34,10 @@
   }
 }
 
-/* Posts without a TOC: unobtrusive link at the top of the content */
+/* Posts without a TOC: unobtrusive link centered at the top of the content */
 .bmc-link--inline {
   margin: 0 0 1.75rem;
+  text-align: center;
 }
 
 /* Within the TOC sidebar: sits under the table of contents */
