@@ -34,20 +34,22 @@ layout: default
       {% endunless %}
 
       <section class="page__content e-content" itemprop="text">
-        {% if page.toc or page.buymeacoffee %}
+        {% if page.toc %}
           <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            {% if page.toc %}
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
               {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
             </nav>
-            {% endif %}
             {% if page.buymeacoffee %}
-            <div style="text-align: center; {% if page.toc %}margin-top: 1.5em; padding-top: 1em; border-top: 1px solid #e0e0e0;{% endif %}">
-              <a href="https://www.buymeacoffee.com/tylerjamesburch" target="_blank" style="display: inline-block; padding: 0.5em 1em; background: #f0a500; color: #000; font-weight: bold; font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 0.85em; border-radius: 5px; text-decoration: none; border: 1px solid #000;">☕ Buy me a coffee</a>
-            </div>
+            <p class="bmc-link bmc-link--toc">
+              <a href="https://www.buymeacoffee.com/tylerjamesburch" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+            </p>
             {% endif %}
           </aside>
+        {% elsif page.buymeacoffee %}
+          <p class="bmc-link bmc-link--inline">
+            <a href="https://www.buymeacoffee.com/tylerjamesburch" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+          </p>
         {% endif %}
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
