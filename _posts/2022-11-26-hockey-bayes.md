@@ -8,7 +8,6 @@ tags: [hockey, sports]
 excerpt: "Just how lucky have the 18-3 Bruins gotten?"
 ---
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 ## Background
 

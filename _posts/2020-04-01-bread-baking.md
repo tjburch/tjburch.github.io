@@ -14,21 +14,30 @@ I've recently developed an interest in bread baking in my (always copious) spare
 This is absolutely my favorite recipe to make, found [here](https://www.kingarthurflour.com/recipes/asiago-ciabatta-recipe). I follow it almost to the letter, using sprinkle parmesan, along with extra asiago to top it. Also, I like to top it with cream cheese while serving.
 
 
-<img src="/blogimages/bread/asiago_parm.png" class="center" style="width:40%;">
+<picture>
+  <source srcset="/blogimages/bread/asiago_parm.webp" type="image/webp">
+  <img src="/blogimages/bread/asiago_parm.png" class="center" style="width:40%;" alt="Asiago parmesan ciabatta loaf" loading="lazy">
+</picture>
 
 ## Bagels
 
 This bagel recipe I got from a [great video by Joshua Weissman](https://www.youtube.com/watch?v=W8j-ZUp7KD0). This recipe is awesome, and I highly recommend it. I like to top with Everything but the Bagel seasoning from Trader Joe's, rather than going through the stress of making it myself.
 
 
-<img src="/blogimages/bread/bagels.png" class="center" style="width:30%;">
+<picture>
+  <source srcset="/blogimages/bread/bagels.webp" type="image/webp">
+  <img src="/blogimages/bread/bagels.png" class="center" style="width:30%;" alt="Homemade bagels topped with everything seasoning" loading="lazy">
+</picture>
 
 
 ## Sourdough Pretzels
 
 I use the [King Arthur recipe](https://www.kingarthurflour.com/recipes/sourdough-pretzels-recipe) here, but don't do the recommended malt coating. Instead I boil water and add baking soda, then let each pretzel boil in it for 2 minutes, flipping halfway through. Here, again, I top with Everything but the Bagel.
 
-<img src="/blogimages/bread/pretzels.png" class="center" style="width:40%;">
+<picture>
+  <source srcset="/blogimages/bread/pretzels.webp" type="image/webp">
+  <img src="/blogimages/bread/pretzels.png" class="center" style="width:40%;" alt="Sourdough pretzels" loading="lazy">
+</picture>
 
 ## Cinnamon Rolls
 
@@ -43,9 +52,15 @@ Last, here's a couple images of the sourdough loaves I've made. Generally, I try
 
 ### Overnight Blonde:
 
-<img src="/blogimages/bread/overnight_blonde.png" class="center" style="width:40%;">
+<picture>
+  <source srcset="/blogimages/bread/overnight_blonde.webp" type="image/webp">
+  <img src="/blogimages/bread/overnight_blonde.png" class="center" style="width:40%;" alt="Overnight blonde sourdough loaf" loading="lazy">
+</picture>
 
 ### Cranberry Walnut Loaf:
 
 
-<img src="/blogimages/bread/cranberry_walnut.png" class="center" style="width:40%;">
+<picture>
+  <source srcset="/blogimages/bread/cranberry_walnut.webp" type="image/webp">
+  <img src="/blogimages/bread/cranberry_walnut.png" class="center" style="width:40%;" alt="Cranberry walnut sourdough loaf" loading="lazy">
+</picture>

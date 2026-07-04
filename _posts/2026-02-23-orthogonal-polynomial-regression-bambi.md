@@ -10,7 +10,6 @@ header:
   og_image: /blogimages/orthogonal-polynomial-regression/cubic-residuals.png
 ---
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 This is the second of two notebooks I wrote and contributed to [Bambi's](https://bambinos.github.io/bambi/) example documentation back in 2024. The first post, covering polynomial regression basics, is [here](/blog/statistics/polynomial-regression-bambi). This one goes deeper into what happens when you use the `poly` keyword in a Bambi formula. Specifically, looking at the orthogonalization that happens under the hood.
 

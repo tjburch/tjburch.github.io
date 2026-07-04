@@ -6,9 +6,8 @@ categories: Misc
 tags: [fivethiryeight, puzzles, riddler, julia, turing, bayesian]
 excerpt: "okay... I made a small mistake"
 ---
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-This year I've been trying to learn more about probabilistic programming and Bayesian inference. Additionally, I've been playing around with some other programming languages, R and Julia. This week's [Riddler question at FiveThirtyEight](https://fivethirtyeight.com/features/can-you-corral-your-hamster/) seemed like a good opportunity to utilize these things - I did this solution in Julia, using the [Turing.jl](https://turing.ml/dev/) probabilistic programming library. The code for this solution can be found on [my GitHub](https://github.com/tjburch/puzzles/tree/master/riddler538_2020_Aug21).
+This year I've been trying to learn more about probabilistic programming and Bayesian inference. Additionally, I've been playing around with some other programming languages, R and Julia. This week's [Riddler question at FiveThirtyEight](https://fivethirtyeight.com/features/can-you-corral-your-hamster/) seemed like a good opportunity to utilize these things - I did this solution in Julia, using the [Turing.jl](https://turinglang.org/) probabilistic programming library. The code for this solution can be found on [my GitHub](https://github.com/tjburch/puzzles/tree/master/riddler538_2020_Aug21).
 
 This solution mentioned in the featured solutions - see [here](https://fivethirtyeight.com/features/can-you-cover-the-globe/).
 
@@ -58,7 +57,7 @@ The flat prior, $$\text{Uniform}(0,1)$$, does provide information to the model i
 
 ### Fitting the model
 
-The [Turing.jl](https://turing.ml/) library is used to construct this model. 9,000 posterior samples are run on 4 chains after 1,000 sample warm-up. This is definitely overkill, but nothing else is running on my computer overnight.
+The [Turing.jl](https://turinglang.org/) library is used to construct this model. 9,000 posterior samples are run on 4 chains after 1,000 sample warm-up. This is definitely overkill, but nothing else is running on my computer overnight.
 
 The output after fitting gives a mean of 0.358 for both $$p_i$$ values, with a standard deviation of 0.006. There's no reason the model ought to prefer one $$p$$ over another, so it makes sense their mean and standard deviations are the same. The 95% credible intervals are from 0.349 to 0.368, a bit narrower than I would have expected. This means that to see the pattern we've gotten with two sources, both must have a probability of around 0.358 of emitting per sampling period.
 

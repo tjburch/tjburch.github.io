@@ -9,7 +9,6 @@ series: hit-classifier
 series_title: "Classifying MLB Hit Outcomes"
 excerpt: "Creating a practical application for the hit classifier (along with some reflections on the model development)"
 ---
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 
 Over the last 3 posts, I've shown the construction of a model to predict hit outcomes based on kinematics such as the launch angle, exit velocity, and spray angle, as well as additional properties such as sprint speed and park factors. In this post, I'll look at an application of it, and do some final reflections on the utility of this model.
@@ -98,7 +97,7 @@ I also encountered some model building insights, that aren't necessarily insight
 
 - **Simple questions can lead to useful projects** - The launch angle vs launch speed plot color coded by hit outcome was a plot I made quite some time ago, late 2018, because I was curious how to interpret those parameters. That plot sat for about a year, until I was thinking about projects I could use clustering on, and remembered what that distribution looked like, which inspired this project.
 
-- **Sometimes your gut model isn't the right one** - I approached this problem thinking it'd be a neat way to employ k-Nearest Neighbors clustering. However, one of the first things I discovered in [post 1](http://tylerjamesburch.com/blog/baseball/hit-classifier-1) is that tree based methods do better than k-NN - keeping an open mind to alternative models is good, test as much as you can. This calls back to the "fox vs hedgehog" metaphor to approaching forecasting, popularized by [Tetlock](https://conceptually.org/fox-vs-hedgehog) - hedgehogs develop fixated on one model, where foxes consider different angles, which usually leads to more accurate predictions.
+- **Sometimes your gut model isn't the right one** - I approached this problem thinking it'd be a neat way to employ k-Nearest Neighbors clustering. However, one of the first things I discovered in [post 1](http://tylerjamesburch.com/blog/baseball/hit-classifier-1) is that tree based methods do better than k-NN - keeping an open mind to alternative models is good, test as much as you can. This calls back to the "fox vs hedgehog" metaphor to approaching forecasting, popularized by [Tetlock](https://web.archive.org/web/20201101115622/https://conceptually.org/fox-vs-hedgehog) - hedgehogs develop fixated on one model, where foxes consider different angles, which usually leads to more accurate predictions.
 
 
 I've spent quite some time fleshing out this model, and I think I'm putting it to rest (at least for now) to work on other projects, I hope that these posts have been useful, interesting, or informative! Thanks for reading. 
