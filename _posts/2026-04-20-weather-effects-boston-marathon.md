@@ -13,7 +13,6 @@ toc_label: "Contents"
 toc_sticky: true
 ---
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 ## The Boston Marathon - So Hot Right Now
 

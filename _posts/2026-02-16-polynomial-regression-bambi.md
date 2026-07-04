@@ -10,7 +10,6 @@ header:
   og_image: /blogimages/polynomial-regression/planet-trajectories.png
 ---
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 Back in 2024, I wrote a couple of example notebooks that got merged into the [Bambi](https://bambinos.github.io/bambi/) documentation. For those unfamiliar, Bambi is a library for fitting Bayesian regression models using a formulaic interface on top of PyMC (the closest thing in python to `brms`, in my opinion). I realized I never migrated the content here, so I thought it was time to do so.
 

@@ -16,4 +16,24 @@
   }
 </script>
 
+<!-- MathJax v3 -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Lazy-load post-body images -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.page__content img').forEach(function (img) {
+      if (!img.loading) img.loading = 'lazy';
+    });
+  });
+</script>
+
 <!-- end custom head snippets -->
