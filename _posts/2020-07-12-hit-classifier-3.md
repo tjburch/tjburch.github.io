@@ -109,4 +109,4 @@ At this point, I'm satisfied with the state of this model. I've explored and ext
 
 [2] To emphasize - the re-sampling is performed _only_ on the training data. Testing data is left with the standard population imbalance, because we want to understand accuracy representative of what is encountered when applying to future data.
 
-[3] The raw re-sampling methods were performed with [scikit-learn's resample methods](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html). All others were performed with the exceptional [imbalanced-learn](https://imbalanced-learn.readthedocs.io/en/stable/) package.
+[3] The raw re-sampling methods were performed with [scikit-learn's resample methods](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html). All others were performed with the exceptional [imbalanced-learn](https://imbalanced-learn.org/stable/) package.
