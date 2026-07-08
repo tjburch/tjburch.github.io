@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="13" fill="#1a1a1a"/>
+  <path d="M13 9 V 51 H 55" fill="none" stroke="#f0a500" stroke-width="3.0" stroke-linecap="round" opacity="0.42"/>
+  <g stroke="#f0a500" stroke-width="2.6" stroke-linecap="round" opacity="0.42">
+    <line x1="28" y1="51" x2="28" y2="54.5"/><line x1="42" y1="51" x2="42" y2="54.5"/>
+    <line x1="9.5" y1="23" x2="13" y2="23"/><line x1="9.5" y1="37" x2="13" y2="37"/>
+  </g>
+  <g fill="#f0a500"><g transform="translate(10.842465753424658 45.0) scale(0.0410958904109589 -0.0410958904109589)"><path d="M251 0V640H53V730H547V640H350V0Z"/></g><g transform="translate(35.5 45.0) scale(0.0410958904109589 -0.0410958904109589)"><path d="M89 0V730H300Q401 730 459.5 679.5Q518 629 518 541Q518 484 482.5 439.5Q447 395 391 385V382Q433 377 465.5 352.0Q498 327 516.5 288.5Q535 250 535 204Q535 110 475.5 55.0Q416 0 314 0ZM186 422H299Q355 422 387.0 451.5Q419 481 419 532Q419 584 387.0 613.5Q355 643 300 643H186ZM186 87H305Q366 87 401.0 119.5Q436 152 436 208Q436 266 401.0 302.0Q366 338 305 338H186Z"/></g></g>
+</svg>
