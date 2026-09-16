@@ -10,6 +10,9 @@ categories: Software
 tags: [open-source]
 toc: false
 excerpt: "My open source contributions in 2026."
+header:
+  teaser: /blogimages/oss-contributions-2026/cover.png
+  og_image: /blogimages/oss-contributions-2026/cover.png
 ---
 
 Below are changes merged in 2026 and active pull requests I've submitted to open-source projects this year. Dates show when merged changes landed or when active contributions were submitted.
