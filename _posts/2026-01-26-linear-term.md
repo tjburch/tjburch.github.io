@@ -2,7 +2,8 @@
 layout: posts
 title: "linear-term - a TUI for Linear"
 date: 2026-01-26
-categories: Misc
+permalink: /blog/misc/linear-term
+categories: Software
 tags: [python, tools, cli, terminal]
 excerpt: "A terminal user interface for Linear project management"
 header:

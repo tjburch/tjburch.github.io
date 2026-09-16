@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 1: Model Selection"
 date: 2020-04-21
-categories: [Baseball, Statistics]
+permalink: /blog/baseball/statistics/hit-classifier-1
+categories: [Sports, Statistics]
 redirect_from: /blog/baseball/hit-classifier-1
 tags: [baseball, statistics]
 series: hit-classifier

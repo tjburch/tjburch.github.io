@@ -2,7 +2,8 @@
 layout: posts
 title: "Tyler Burch, Baseball Analyst"
 date: 2021-01-25
-categories: Baseball
+permalink: /blog/baseball/analyst-hiring
+categories: Sports
 tags: [baseball]
 excerpt: "I got a job!"
 ---

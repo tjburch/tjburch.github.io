@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Astrophysical Signals"
 date: 2020-08-21
-categories: Misc
+permalink: /blog/misc/fivethirtyeight-astrophysics
+categories: Statistics
 tags: [fivethiryeight, puzzles, riddler, julia, turing, bayesian]
 excerpt: "okay... I made a small mistake"
 ---
@@ -114,4 +115,3 @@ This back-of-the-envelope check isn't 100% correct though - it's ignoring the fa
 Here, the blue histogram shows the expected central value given the parameter values from sampling our posterior. The green shading around the top indicates the 2σ band (95% coverage), and the black is the original data, with Poisson errors.
 
 Given this, I should cycle back to my answer. This model would need a 23.4σ deviation in order to cover the data proportions we observe, this gives us incredible certainty that it isn't generating our data. Reminder that 5σ equates to 99.99994% confidence, so 23.4σ is effectively "not likely to happen by the inevitable heat death of the universe" territory, so maybe, in this case, you shouldn't be as trusting of your advisor as I originally thought.
-

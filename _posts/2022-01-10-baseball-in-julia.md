@@ -2,7 +2,8 @@
 layout: posts
 title: "Accessing Public Baseball Data in Julia"
 date: 2022-01-13
-categories: Baseball
+permalink: /blog/baseball/baseball-in-julia
+categories: Sports
 tags: [baseball, julia]
 excerpt: "Interoperability is the name of the game"
 ---

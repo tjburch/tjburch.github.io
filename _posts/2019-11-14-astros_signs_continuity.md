@@ -2,7 +2,8 @@
 layout: posts
 title: "Astros 2017 K% Change"
 date: 2019-11-14
-categories: Baseball
+permalink: /blog/baseball/astros_signs_continuity
+categories: Sports
 tags: [baseball]
 excerpt: "Perhaps we're being a bit hyperbolic"
 published: false

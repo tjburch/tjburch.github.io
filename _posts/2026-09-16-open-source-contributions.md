@@ -3,9 +3,10 @@ layout: single
 classes: wide
 title: "Open Source Contributions in 2026"
 date: 2026-09-16
+permalink: /blog/open-source/open-source-contributions
 last_modified_at: 2026-09-16
 living: true
-categories: Open-Source
+categories: Software
 tags: [open-source]
 toc: false
 excerpt: "My open source contributions in 2026."

@@ -2,7 +2,8 @@
 layout: posts
 title: "Applying to Work in MLB Front Offices - My Experience"
 date: 2020-01-27
-categories: Baseball
+permalink: /blog/baseball/interview-experience
+categories: Sports
 tags: [baseball, jobs]
 excerpt: "A summary of my experience applying to work in MLB Front Offices over the 2019-2020 offseason"
 ---

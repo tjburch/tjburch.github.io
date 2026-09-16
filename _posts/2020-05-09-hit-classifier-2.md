@@ -2,7 +2,8 @@
 layout: posts
 title: "Classifying MLB Hit Outcomes - Part 2: Optimization"
 date: 2020-05-09
-categories: [Baseball, Statistics]
+permalink: /blog/baseball/statistics/hit-classifier-2
+categories: [Sports, Statistics]
 redirect_from: /blog/baseball/hit-classifier-2
 tags: [baseball, statistics]
 series: hit-classifier

@@ -3,7 +3,7 @@ layout: single
 title: "March Madness 2026 — Interactive Forecast Dashboard"
 date: 2026-03-16
 permalink: /march-madness-2026/
-categories: Statistics
+categories: [Sports, Statistics]
 tags: [bayesian, interactive, march-madness]
 series: march-madness-2026
 series_title: "March Madness 2026"

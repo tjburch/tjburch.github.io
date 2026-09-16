@@ -2,7 +2,8 @@
 layout: single
 title: "Letting Agents Drive Your Interactive Sessions with tmux"
 date: 2026-07-01
-categories: Tooling
+permalink: /blog/tooling/tmux-agent-sessions
+categories: Software
 tags: [agents, data-science, tmux, workflow]
 toc: false
 excerpt: "A workflow I've been using lately - pointing agents at a live REPL through tmux, with a file-redirect trick that makes it reliable."

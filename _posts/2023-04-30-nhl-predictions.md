@@ -2,7 +2,8 @@
 layout: posts
 title: "2023 NHL Playoff Predictions"
 date: 2023-04-30
-categories: Statistics
+permalink: /blog/statistics/nhl-predictions
+categories: [Sports, Statistics]
 redirect_from: /blog/misc/nhl-predictions
 tags: [hockey, sports]
 excerpt: "Who will win this year's cup?"

@@ -2,7 +2,8 @@
 layout: posts
 title: "A hierarchical model for hockey scoring"
 date: 2022-11-26
-categories: Statistics
+permalink: /blog/statistics/hockey-bayes
+categories: [Sports, Statistics]
 redirect_from: /blog/misc/hockey-bayes
 tags: [hockey, sports]
 excerpt: "Just how lucky have the 18-3 Bruins gotten?"
@@ -168,4 +169,3 @@ with pm.Model(coords=coords) as model:
 2.
 
 ![center](/blogimages/hierarchical_hockey/trace.png)
-

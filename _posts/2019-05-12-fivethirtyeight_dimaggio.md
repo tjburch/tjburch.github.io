@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Can The Riddler Bros. Beat Joe DiMaggio’s Hitting Streak?"
 date: 2019-05-12
-categories: Statistics
+permalink: /blog/statistics/fivethirtyeight_dimaggio
+categories: [Sports, Statistics]
 redirect_from: /blog/misc/fivethirtyeight_dimaggio
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "How do theoretical players stack up against Joe Dimaggio?"
@@ -46,5 +47,3 @@ The likelihood of a player beating DiMaggio's record can be thought of as how fr
 For simulation validation, the final simulated BA of each player was plotted, and ensured that it did, in fact line up with the BA in the problem statement. It did, with a coefficient of variation (std/mean) of between 0.01 and 0.02.
 
 ![center](https://github.com/tjburch/puzzles/raw/master/riddler538_2019_May10/plots/simulated_ba.png)
-
-

@@ -2,7 +2,8 @@
 layout: single
 title: "Weather Effects on Boston Marathon Times"
 date: 2026-04-20
-categories: Statistics
+permalink: /blog/statistics/weather-effects-boston-marathon
+categories: [Sports, Statistics]
 tags: [bayesian, brms, sports, running, weather]
 excerpt: "How much did the 1976 'Run for the Hoses' actually slow the field?"
 header:

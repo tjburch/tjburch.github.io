@@ -2,7 +2,8 @@
 layout: posts
 title: "Is Tommy Pham Fixed?"
 date: 2017-07-07
-categories: Baseball
+permalink: /blog/baseball/tommy-pham
+categories: Sports
 tags: [baseball, cardinals, fangraphs]
 excerpt: "A 2017 player analysis of Tommy Pham"
 ---
@@ -55,4 +56,3 @@ The answer here was a bit surprising. Logically, I would expect more patience wo
 
  
 So far, Pham’s newfound patience is working out for him, but I think it’s possible pitchers are still expecting the 2015 and 2016 Tommy Pham, who is more willing to swing out of the zone. It should be interesting to see how this evolves as the season continues and pitchers adjust to his new approach.
-

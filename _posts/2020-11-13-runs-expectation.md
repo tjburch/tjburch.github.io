@@ -2,7 +2,8 @@
 layout: posts
 title: "Box Score Thoughts: Tempering Run Expectations from Hits"
 date: 2020-11-13
-categories: [Baseball, Statistics]
+permalink: /blog/baseball/statistics/runs-expectation
+categories: [Sports, Statistics]
 redirect_from: /blog/baseball/runs-expectation
 tags: [baseball]
 excerpt: "Revisiting some old work, and handling some heteroscadasticity"

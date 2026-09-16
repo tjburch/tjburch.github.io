@@ -2,7 +2,8 @@
 layout: posts
 title: "Fivethirtyeight Riddler: Which Baseball Team Will Win The Riddler Fall Classic?"
 date: 2019-09-27
-categories: Statistics
+permalink: /blog/statistics/fivethirtyeight_fallClassic
+categories: [Sports, Statistics]
 redirect_from: /blog/misc/fivethirtyeight_fallClassic
 tags: [fivethiryeight, puzzles, riddler]
 excerpt: "Revisiting more fake-baseball for 538"
