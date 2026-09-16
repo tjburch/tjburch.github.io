@@ -1,0 +1,45 @@
+name: Update Open Source Contribution Statuses
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "17 13 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: update-oss-statuses
+  cancel-in-progress: true
+
+jobs:
+  update-statuses:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Update pull request statuses
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update_oss_statuses.py
+
+      - name: Commit if changed
+        id: auto-commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update open source contribution statuses"
+          file_pattern: "_posts/*-open-source-contributions.md"
+
+      - name: Rebuild GitHub Pages
+        if: steps.auto-commit.outputs.changes_detected == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds"

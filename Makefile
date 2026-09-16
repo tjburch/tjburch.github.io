@@ -1,4 +1,4 @@
-.PHONY: serve build update-kaggle optimize-images check-links
+.PHONY: serve build update-kaggle update-oss-statuses optimize-images check-links
 
 serve:
 	bundle exec jekyll serve
@@ -11,6 +11,9 @@ update-kaggle:
 	git add assets/data/march-madness-2026/kaggle_leaderboard.json
 	git commit -m "Update Kaggle leaderboard ranking"
 	git push
+
+update-oss-statuses:
+	python3 scripts/update_oss_statuses.py
 
 optimize-images:
 	python scripts/optimize_images.py

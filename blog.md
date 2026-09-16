@@ -102,7 +102,13 @@ excerpt: "Technical posts on baseball analytics, data science, and physics resea
                 {% if post.excerpt %}<div class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</div>{% endif %}
               </div>
               <div class="post-right">
-                <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+                {% if post.living and post.last_modified_at %}
+                  <div class="post-date post-date--living">
+                    <span>Living list</span> · Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}
+                  </div>
+                {% else %}
+                  <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+                {% endif %}
                 <div class="post-categories">
                   {% for category in post.categories %}
                     <span class="category-tag">{{ category }}</span>
