@@ -15,7 +15,7 @@ excerpt: "My open source contributions in 2026."
 Below are changes merged in 2026 and active pull requests I've submitted to open-source projects this year. Dates show when merged changes landed or when active contributions were submitted.
 
 <div class="contribution-summary" aria-label="Contribution summary">
-  <strong>5 contributions</strong>
+  <strong>6 contributions</strong>
   <span>Last updated <time datetime="2026-09-16">September 16, 2026</time></span>
 </div>
 
@@ -46,18 +46,6 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
 
   <li class="contribution-ledger__entry">
     <div class="contribution-ledger__event">
-      <time datetime="2026-09-05">Sep 5</time>
-      <span class="contribution-status contribution-status--open">Open</span>
-    </div>
-    <div class="contribution-ledger__content">
-      <h2 id="arviz-stats-bivariate-histograms"><code>arviz-stats</code> — Add bivariate histogram and hexbin statistics</h2>
-      <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-stats/pull/438">PR #438</a>
-      <p>Added public <code>histogram2d()</code> and <code>hexbin()</code> functions with support for NumPy, xarray, batched computation, weights, density normalization, explicit extents, and nonfinite samples. This gives every ArviZ plotting backend the same binning logic and the edges or centers needed to draw matching binned 2D distributions.</p>
-    </div>
-  </li>
-
-  <li class="contribution-ledger__entry">
-    <div class="contribution-ledger__event">
       <time datetime="2026-09-06">Sep 6</time>
       <span class="contribution-status contribution-status--open">Open</span>
     </div>
@@ -77,6 +65,30 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="bambi-nonlinear-formulas"><code>bambi</code> — Add nonlinear formulas</h2>
       <a class="contribution-ledger__pr" href="https://github.com/bambinos/bambi/pull/1006">PR #1006</a>
       <p>Added nonlinear expressions for likelihood parent parameters while retaining ordinary Bambi formulas for each named parameter, including common, group-specific, and offset terms. This brings nonlinear models into Bambi's existing formula, prior, prediction, and link machinery, enabling a new class of models. One example is the classic Gelman golf model, which I reproduced end to end.</p>
+    </div>
+  </li>
+
+  <li class="contribution-ledger__entry">
+    <div class="contribution-ledger__event">
+      <time datetime="2026-09-16">Sep 16</time>
+      <span class="contribution-status contribution-status--merged">Merged</span>
+    </div>
+    <div class="contribution-ledger__content">
+      <h2 id="arviz-stats-bivariate-histograms"><code>arviz-stats</code> — Add bivariate histogram and hexbin statistics</h2>
+      <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-stats/pull/438">PR #438</a>
+      <p>Added public <code>histogram2d()</code> and <code>hexbin()</code> functions with support for NumPy, xarray, batched computation, weights, density normalization, explicit extents, and nonfinite samples. This gives every ArviZ plotting backend the same binning logic and the edges or centers needed to draw matching binned 2D distributions.</p>
+    </div>
+  </li>
+
+  <li class="contribution-ledger__entry">
+    <div class="contribution-ledger__event">
+      <time datetime="2026-09-16">Sep 16</time>
+      <span class="contribution-status contribution-status--open">Open</span>
+    </div>
+    <div class="contribution-ledger__content">
+      <h2 id="arviz-plots-bivariate-histograms"><code>arviz-plots</code> — Add bivariate histograms to pair plots</h2>
+      <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-plots/pull/568">PR #568</a>
+      <p>Added the rectangular and hexagonal bivariate histograms created in the above <a href="https://github.com/arviz-devs/arviz-stats/pull/438"><code>arviz-stats</code> contribution</a> to <code>plot_pair()</code> and <code>plot_pair_focus()</code>. This gives users binned alternatives to scatter plots for dense pairwise distributions.</p>
     </div>
   </li>
 </ol>
