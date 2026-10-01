@@ -4,7 +4,7 @@ classes: wide
 title: "Open Source Contributions in 2026"
 date: 2026-09-16
 permalink: /blog/open-source/open-source-contributions
-last_modified_at: 2026-09-16
+last_modified_at: 2026-10-01
 living: true
 categories: Software
 tags: [open-source]
@@ -19,7 +19,7 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
 
 <div class="contribution-summary" aria-label="Contribution summary">
   <strong>6 contributions</strong>
-  <span>Last updated <time datetime="2026-09-16">September 16, 2026</time></span>
+  <span>Last updated <time datetime="2026-10-01">October 1, 2026</time></span>
 </div>
 
 <ol class="contribution-ledger">
@@ -85,8 +85,8 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
 
   <li class="contribution-ledger__entry">
     <div class="contribution-ledger__event">
-      <time datetime="2026-09-16">Sep 16</time>
-      <span class="contribution-status contribution-status--open">Open</span>
+      <time datetime="2026-10-01">Oct 1</time>
+      <span class="contribution-status contribution-status--merged">Merged</span>
     </div>
     <div class="contribution-ledger__content">
       <h2 id="arviz-plots-bivariate-histograms"><code>arviz-plots</code> — Add bivariate histograms to pair plots</h2>
