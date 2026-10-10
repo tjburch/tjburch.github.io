@@ -4,7 +4,7 @@ classes: wide
 title: "Open Source Contributions in 2026"
 date: 2026-09-16
 permalink: /blog/open-source/open-source-contributions
-last_modified_at: 2026-10-01
+last_modified_at: 2026-10-10
 living: true
 categories: Software
 tags: [open-source]
@@ -19,7 +19,7 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
 
 <div class="contribution-summary" aria-label="Contribution summary">
   <strong>6 contributions</strong>
-  <span>Last updated <time datetime="2026-10-01">October 1, 2026</time></span>
+  <span>Last updated <time datetime="2026-10-10">October 10, 2026</time></span>
 </div>
 
 <ol class="contribution-ledger">
@@ -44,18 +44,6 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="finetune-resample-weights"><code>finetune</code> — Preserve resample weights in racing methods</h2>
       <a class="contribution-ledger__pr" href="https://github.com/tidymodels/finetune/pull/135">PR #135</a>
       <p>Last year I <a href="https://github.com/tidymodels/tune/pull/1007">contributed fold weights to <code>tune</code></a> to help enable variable-sized folds. While testing them with racing methods, I noticed that <code>randomize_resamples()</code> did not carry them correctly. This PR fixed that.</p>
-    </div>
-  </li>
-
-  <li class="contribution-ledger__entry">
-    <div class="contribution-ledger__event">
-      <time datetime="2026-09-06">Sep 6</time>
-      <span class="contribution-status contribution-status--open">Open</span>
-    </div>
-    <div class="contribution-ledger__content">
-      <h2 id="arviz-stats-nested-rhat"><code>arviz-stats</code> — Support short chains in nested R-hat</h2>
-      <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-stats/pull/442">PR #442</a>
-      <p>Made the minimum draw requirement for <code>rhat_nested()</code> depend on the estimator, allowing one draw per chain for the identity method and two for split-based methods (while handling several short-chain edge cases). This supports GPU-friendly sampling workflows that run many short chains in parallel. The previous shared validation did not support that use case, returning <code>nan</code> for valid inputs with fewer than four draws.</p>
     </div>
   </li>
 
@@ -92,6 +80,18 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="arviz-plots-bivariate-histograms"><code>arviz-plots</code> — Add bivariate histograms to pair plots</h2>
       <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-plots/pull/568">PR #568</a>
       <p>Added the rectangular and hexagonal bivariate histograms created in the above <a href="https://github.com/arviz-devs/arviz-stats/pull/438"><code>arviz-stats</code> contribution</a> to <code>plot_pair()</code> and <code>plot_pair_focus()</code>. This gives users binned alternatives to scatter plots for dense pairwise distributions.</p>
+    </div>
+  </li>
+
+  <li class="contribution-ledger__entry">
+    <div class="contribution-ledger__event">
+      <time datetime="2026-10-10">Oct 10</time>
+      <span class="contribution-status contribution-status--merged">Merged</span>
+    </div>
+    <div class="contribution-ledger__content">
+      <h2 id="arviz-stats-nested-rhat"><code>arviz-stats</code> — Support short chains in nested R-hat</h2>
+      <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-stats/pull/442">PR #442</a>
+      <p>Made the minimum draw requirement for <code>rhat_nested()</code> depend on the estimator, allowing one draw per chain for the identity method and two for split-based methods (while handling several short-chain edge cases). This supports GPU-friendly sampling workflows that run many short chains in parallel. The previous shared validation did not support that use case, returning <code>nan</code> for valid inputs with fewer than four draws.</p>
     </div>
   </li>
 </ol>
