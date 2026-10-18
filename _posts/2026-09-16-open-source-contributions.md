@@ -4,7 +4,7 @@ classes: wide
 title: "Open Source Contributions in 2026"
 date: 2026-09-16
 permalink: /blog/open-source/open-source-contributions
-last_modified_at: 2026-10-10
+last_modified_at: 2026-10-17
 living: true
 categories: Software
 tags: [open-source]
@@ -18,8 +18,8 @@ header:
 Below are changes merged in 2026 and active pull requests I've submitted to open-source projects this year. Dates show when merged changes landed or when active contributions were submitted.
 
 <div class="contribution-summary" aria-label="Contribution summary">
-  <strong>6 contributions</strong>
-  <span>Last updated <time datetime="2026-10-10">October 10, 2026</time></span>
+  <strong>7 contributions</strong>
+  <span>Last updated <time datetime="2026-10-17">October 17, 2026</time></span>
 </div>
 
 <ol class="contribution-ledger">
@@ -92,6 +92,18 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="arviz-stats-nested-rhat"><code>arviz-stats</code> — Support short chains in nested R-hat</h2>
       <a class="contribution-ledger__pr" href="https://github.com/arviz-devs/arviz-stats/pull/442">PR #442</a>
       <p>Made the minimum draw requirement for <code>rhat_nested()</code> depend on the estimator, allowing one draw per chain for the identity method and two for split-based methods (while handling several short-chain edge cases). This supports GPU-friendly sampling workflows that run many short chains in parallel. The previous shared validation did not support that use case, returning <code>nan</code> for valid inputs with fewer than four draws.</p>
+    </div>
+  </li>
+
+  <li class="contribution-ledger__entry">
+    <div class="contribution-ledger__event">
+      <time datetime="2026-10-17">Oct 17</time>
+      <span class="contribution-status contribution-status--open">Open</span>
+    </div>
+    <div class="contribution-ledger__content">
+      <h2 id="pymc-lkj-distributions"><code>pymc</code> — Fix LKJ sampling and log densities</h2>
+      <a class="contribution-ledger__pr" href="https://github.com/pymc-devs/pymc/pull/8497">PR #8497</a>
+      <p>While working on covariance terms in Bambi, I found three discrepancies in PyMC's LKJ distributions, which are used to model correlation matrices. This PR corrects the sampling algorithm, adds a missing Jacobian term to <code>LKJCorr</code>'s log density, and fixes normalization errors. These changes address incorrect forward draws and log densities that can affect posterior inference. Also clarified how to recover the correlation matrix from the returned Cholesky factor.</p>
     </div>
   </li>
 </ol>
