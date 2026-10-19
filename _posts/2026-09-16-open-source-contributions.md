@@ -98,12 +98,12 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
   <li class="contribution-ledger__entry">
     <div class="contribution-ledger__event">
       <time datetime="2026-10-18">Oct 18</time>
-      <span class="contribution-status contribution-status--open">Open</span>
+      <span class="contribution-status contribution-status--merged">Merged</span>
     </div>
     <div class="contribution-ledger__content">
       <h2 id="pymc-lkj-distributions"><code>pymc</code> — Fix LKJ sampling and log densities</h2>
       <a class="contribution-ledger__pr" href="https://github.com/pymc-devs/pymc/pull/8497">PR #8497</a>
-      <p>While working on covariance terms in Bambi, I found three discrepancies in PyMC's LKJ distributions, which are used to model correlation matrices. This PR corrects the sampling algorithm, adds a missing Jacobian term to <code>LKJCorr</code>'s log density, and fixes normalization errors. These changes address incorrect forward draws and log densities that can affect posterior inference. Also clarified how to recover the correlation matrix from the returned Cholesky factor.</p>
+      <p>While working on covariance terms in Bambi, I found three discrepancies in PyMC's LKJ distributions, which are used to model correlation matrices. This PR corrected the sampling algorithm, added a missing Jacobian term to <code>LKJCorr</code>'s log density, and fixed normalization errors. These changes address incorrect forward draws and log densities that can affect posterior inference. Also clarified how to recover the correlation matrix from the returned Cholesky factor.</p>
     </div>
   </li>
 </ol>
