@@ -4,7 +4,7 @@ classes: wide
 title: "Open Source Contributions in 2026"
 date: 2026-09-16
 permalink: /blog/open-source/open-source-contributions
-last_modified_at: 2026-10-18
+last_modified_at: 2026-10-23
 living: true
 categories: Software
 tags: [open-source]
@@ -19,7 +19,7 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
 
 <div class="contribution-summary" aria-label="Contribution summary">
   <strong>7 contributions</strong>
-  <span>Last updated <time datetime="2026-10-18">October 18, 2026</time></span>
+  <span>Last updated <time datetime="2026-10-23">October 23, 2026</time></span>
 </div>
 
 <ol class="contribution-ledger">
@@ -44,18 +44,6 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="finetune-resample-weights"><code>finetune</code> — Preserve resample weights in racing methods</h2>
       <a class="contribution-ledger__pr" href="https://github.com/tidymodels/finetune/pull/135">PR #135</a>
       <p>Last year I <a href="https://github.com/tidymodels/tune/pull/1007">contributed fold weights to <code>tune</code></a> to help enable variable-sized folds. While testing them with racing methods, I noticed that <code>randomize_resamples()</code> did not carry them correctly. This PR fixed that.</p>
-    </div>
-  </li>
-
-  <li class="contribution-ledger__entry">
-    <div class="contribution-ledger__event">
-      <time datetime="2026-09-08">Sep 8</time>
-      <span class="contribution-status contribution-status--open">Open</span>
-    </div>
-    <div class="contribution-ledger__content">
-      <h2 id="bambi-nonlinear-formulas"><code>bambi</code> — Add nonlinear formulas</h2>
-      <a class="contribution-ledger__pr" href="https://github.com/bambinos/bambi/pull/1006">PR #1006</a>
-      <p>Added nonlinear expressions for likelihood parent parameters while retaining ordinary Bambi formulas for each named parameter, including common, group-specific, and offset terms. This brings nonlinear models into Bambi's existing formula, prior, prediction, and link machinery, enabling a new class of models. One example is the classic Gelman golf model, which I reproduced end to end.</p>
     </div>
   </li>
 
@@ -104,6 +92,18 @@ Below are changes merged in 2026 and active pull requests I've submitted to open
       <h2 id="pymc-lkj-distributions"><code>pymc</code> — Fix LKJ sampling and log densities</h2>
       <a class="contribution-ledger__pr" href="https://github.com/pymc-devs/pymc/pull/8497">PR #8497</a>
       <p>While working on covariance terms in Bambi, I found three discrepancies in PyMC's LKJ distributions, which are used to model correlation matrices. This PR corrected the sampling algorithm, added a missing Jacobian term to <code>LKJCorr</code>'s log density, and fixed normalization errors. These changes address incorrect forward draws and log densities that can affect posterior inference. Also clarified how to recover the correlation matrix from the returned Cholesky factor.</p>
+    </div>
+  </li>
+
+  <li class="contribution-ledger__entry">
+    <div class="contribution-ledger__event">
+      <time datetime="2026-10-22">Oct 22</time>
+      <span class="contribution-status contribution-status--merged">Merged</span>
+    </div>
+    <div class="contribution-ledger__content">
+      <h2 id="bambi-nonlinear-formulas"><code>bambi</code> — Add nonlinear formulas</h2>
+      <a class="contribution-ledger__pr" href="https://github.com/bambinos/bambi/pull/1006">PR #1006</a>
+      <p>Added nonlinear expressions for likelihood parent parameters while retaining ordinary Bambi formulas for each named parameter, including common, group-specific, and offset terms. This brings nonlinear models into Bambi's existing formula, prior, prediction, and link machinery, enabling a new class of models. One example is the classic Gelman golf model, which I reproduced end to end.</p>
     </div>
   </li>
 </ol>
